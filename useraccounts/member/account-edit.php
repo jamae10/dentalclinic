@@ -10,7 +10,7 @@ if(isset($_POST['update'])){
         return $data;
           }
         
-        $username = validate($_POST['username']);
+        $firstname = validate($_POST['firstname']);
         $email = validate($_POST['email']);
         $phone = validate($_POST['phone']);
         $gender = validate($_POST['gender']);
@@ -19,17 +19,19 @@ if(isset($_POST['update'])){
         //$sql2 = "SELECT * FROM user_clients WHERE email='$username'";
         //$result = mysqli_query($conn, $sql2);
         
+        //alert - not working
         /*if((mysqli_num_rows($result) > 0){
           $_SESSION['status'] = "Error";
           $_SESSION['status_text'] = "The username is taken try another";
           $_SESSION['status_code'] = 'error';
           header('Location: account.php');
         } */
-        $sql = "UPDATE user_clients SET firstname='$username', email='$email', phone='$phone', gender='$gender', address='$address' WHERE email = '$email'";
+
+        $sql = "UPDATE user_clients SET firstname='$firstname', email='$email', phone='$phone', gender='$gender', address='$address' WHERE email = '$email'";
             $result2 = mysqli_query($conn, $sql);
             if($result2){
-              $_SESSION['username2']=$firstname;
-              $_SESSION['email']=$email;
+              $_SESSION['firstname']=$firstname;
+              $_SESSION['username']=$email;
               $_SESSION['phone']=$phone;
               $_SESSION['gender']=$gender;
               $_SESSION['address']=$address;
@@ -38,6 +40,4 @@ if(isset($_POST['update'])){
             }
         
 }
-
-
 ?>

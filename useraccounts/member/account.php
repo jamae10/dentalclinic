@@ -133,7 +133,7 @@ if(isset($_GET['logout'])){
                         <div class="col-sm-4 bg-c-lite-green user-profile">
                             <div class="card-block text-center text-white">
                                 <div class="m-b-25"> <img src="https://img.icons8.com/bubbles/100/000000/user.png" class="img-radius" alt="User-Profile-Image"> </div>
-                                <h6 class="f-w-600"><?php echo $_SESSION['firstname'];?><?php echo $_SESSION['lastname'];?></h6>
+                                <h6 class="f-w-600"><?php echo $_SESSION['firstname'];?> <?php echo $_SESSION['lastname'];?></h6>
                                 <p>Patient</p> 
                                   
                                 <!-- EDIT PROFILE BUTTON -->
@@ -160,7 +160,7 @@ if(isset($_GET['logout'])){
                                     unset($_SESSION['status']);
                                   }
                                   ?>
-                                <input type="text" name="username" class="username form-control" placeholder=" Username"/>
+                                <input type="text" name="firstname" class="username form-control" placeholder=" Username"/>
                                 <input type="text" name="email" class="password form-control" placeholder=" Email"/>
                                 <input type="text" name="phone" class="username form-control" placeholder=" Phone"/>
                                 <input type="text" name="gender" class="username form-control" placeholder=" Gender"/>
@@ -190,7 +190,7 @@ if(isset($_GET['logout'])){
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <p class="m-b-10 f-w-600">Email</p>
-                                        <h6 class="text-muted f-w-400"><?php echo $_SESSION['email'];?></h6>
+                                        <h6 class="text-muted f-w-400"><?php echo $_SESSION['username'];?></h6>
                                     </div>
                                     <div class="col-sm-6">
                                         <p class="m-b-10 f-w-600">Phone</p>
@@ -201,8 +201,8 @@ if(isset($_GET['logout'])){
                                         <h6 class="text-muted f-w-400"><?php echo $_SESSION['gender'];?></h6>
                                     </div>
                                     <div class="col-sm-6">
-                                        <p class="m-b-10 f-w-600"><?php echo $_SESSION['address'];?></p>
-                                        <h6 class="text-muted f-w-400"></h6>
+                                        <p class="m-b-10 f-w-600">Address</p>
+                                        <h6 class="text-muted f-w-400"><?php echo $_SESSION['address'];?></h6>
                                     </div>
                                 </div>
                                 <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Appointment History</h6>
