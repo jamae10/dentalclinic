@@ -2,6 +2,7 @@
 session_start();
 include "config.php";
 
+
 if(isset($_POST['update'])){
     function validate($data){
         $data = trim($data);
