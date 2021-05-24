@@ -76,14 +76,14 @@ else{
 
 if($result -> num_rows > 0){
   $row =mysqli_fetch_assoc($result);
-   /* $username = $row['email'];
+    $username = $row['email'];
     $firstname = $row['firstname'];
     $lastname = $row['lastname'];
     $password = $row['password'];
     //$id = $row['id'];
     $phone = $row['phone'];
     $gender = $row['gender'];
-    $address = $row['address'];*/
+    $address = $row['address'];
     if($row['password'] === $password && $row['role'] == $role){
       switch($role){
         case "admin":
@@ -95,15 +95,15 @@ if($result -> num_rows > 0){
           header('Location:../admin/index-admin.php');
           break;
         case "user":
-          $_SESSION['userlogin']=$row['email'];
-          $_SESSION['firstname']=$row['firstname'];
-          $_SESSION['lastname']=$row['lastname'];
-          $_SESSION['password']=$row['password'];
-          $_SESSION['username']=$row['email'];
+          $_SESSION['userlogin']=$username;
+          $_SESSION['firstname']=$firstname;
+          $_SESSION['lastname']=$lastname;
+          $_SESSION['password']=$password;
+          $_SESSION['username']=$username;
           //$_SESSION['id']=$id;
-          $_SESSION['phone']=$row['phone'];
-          $_SESSION['gender']=$row['gender'];
-          $_SESSION['address']=$row['address'];
+          $_SESSION['phone']=$rphone;
+          $_SESSION['gender']=$gender;
+          $_SESSION['address']=$address;
           header('Location:../member/index-member.php');
           break;
       }

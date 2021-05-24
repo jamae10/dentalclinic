@@ -15,6 +15,7 @@ if(isset($_GET['logout'])){
  ?>
 <!DOCTYPE html>
 <html lang="en">
+<?php $_SESSION["userlogin"]; ?>
   <head>
     <title>Dr. Castillo Dental Clinic</title>
     <meta charset="utf-8">

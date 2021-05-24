@@ -2,8 +2,10 @@
 <?php
 session_start();
 include "config.php";
-if(!isset($_SESSION['userlogin'])){
-  header("Location: ../index.php");
+//include "../login-register/process-login.php";
+if(isset($_SESSION['userlogin'])){
+  header("Location: account.php");
+  $firstname = $_SESSION['firstname'] ?? "";
 }
 
 if(isset($_GET['logout'])){
@@ -112,7 +114,7 @@ if(isset($_GET['logout'])){
       <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
           <div class="col-md-9 ftco-animate text-center">
-            <h1 class="mb-2 bread">Hello, <?php echo $_SESSION['firstname'];?>!</h1>
+            <h1 class="mb-2 bread">Hello, <?php echo "$firstname";?>!</h1>
             <p class="breadcrumbs"><span class="mr-2"><a href="index-member.php">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Appointment <i class="ion-ios-arrow-forward"></i></span></p>
           </div>
         </div>

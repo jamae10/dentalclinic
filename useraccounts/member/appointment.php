@@ -1,5 +1,21 @@
 <!-- Appointment page for members-only -->
+<?php
+session_start();
+include "config.php";
+/*include "process-login.php";
+if(!isset($_SESSION['userlogin'])){
+  header("Location: ../index.php");
+} */
+if(isset($_SESSION['userlogin'])){
+  header("Location: appointment.php");
+}
 
+if(isset($_GET['logout'])){
+  unset($_SESSION);
+  session_destroy();
+  header("Location: ../index.php");
+}
+ ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
