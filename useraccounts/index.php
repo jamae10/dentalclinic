@@ -1,5 +1,17 @@
 <!-- Homepage for non-members -->
+<?php
 
+	session_start();
+    if(isset($_SESSION['userlogin'])){
+      include'login-register/process-login.php';
+      if($role == 'user'){
+        header("Location: ../member/index-member.php");
+      }
+      else if($role == 'admin')
+      header("Location: ../admin/index-admin.php");
+    }
+	
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>

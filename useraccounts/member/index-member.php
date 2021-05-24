@@ -1,5 +1,18 @@
 <!-- Homepage for members -->
+<?php
+session_start();
+include "config.php";
+  if(!isset($_SESSION['userlogin'])){
+    header("Location: ../index.php");
+  }
 
+if(isset($_GET['logout'])){
+  session_destroy();
+  unset($_SESSION);
+  header("Location: ../index.php");
+}
+
+ ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -393,7 +406,12 @@ function danger() {
 })
 .then((okay) => {
    if (okay) {
-    window.location.href = "../index.php";}
+    window.location.href = "../index.php";
+    <?php
+     session_destroy();
+     unset($_SESSION);
+     //header("Location: ../index.php");
+    ?>}
     }
   );
 }

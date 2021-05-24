@@ -3,7 +3,12 @@
 
 	session_start();
 	if(isset($_SESSION['userlogin'])){
-		header("Location: index.php");
+		include'process-login.php';
+		if($_POST['role'] == 'user'){
+			header("Location: ../member/index-member.php");
+		}
+		else if($_POST['role'] == 'admin')
+		header("Location: ../admin/index-admin.php");
 	}
 ?>
 <!DOCTYPE html>

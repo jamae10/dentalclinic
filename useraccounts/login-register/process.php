@@ -15,11 +15,14 @@
   $email = validate($_POST['email']);
   $password = validate($_POST['password']);
   $role = 'user';
+  $phone = '09123456789';
+  $gender = 'None';
+  $address = 'None';
 
   $user_data = 'firstname='. $firstname. '&email='. $email;
 
   //hashing the password
-  $password = $password;
+  //$password = $password;
 
   $sql = "SELECT * FROM users WHERE email='$email'";
   $result = mysqli_query($conn, $sql);
@@ -32,7 +35,7 @@
   }
   else{
     $sql2 = "INSERT INTO users(firstname, lastname, email, password, role) VALUES ('$firstname', '$lastname', '$email', '$password', '$role')";
-    $sql3 = "INSERT INTO user_clients(firstname, lastname, email, password) VALUES ('$firstname', '$lastname', '$email', '$password')";
+    $sql3 = "INSERT INTO user_clients(firstname, lastname, email, password, phone, gender, address) VALUES ('$firstname', '$lastname', '$email', '$password', '$phone', '$gender', '$address')";
     $result2 = mysqli_query($conn, $sql2);
     $result3 = mysqli_query($conn, $sql3);
     if($result2){
