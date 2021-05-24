@@ -1,21 +1,20 @@
 <!-- Homepage for members -->
-<?php
+<?php 
 session_start();
 include "config.php";
-  if(!isset($_SESSION['userlogin'])){
-    header("Location: ../index.php");
-  }
 
-if(isset($_GET['logout'])){
-  session_destroy();
-  unset($_SESSION);
+if(!isset($_SESSION['userlogin'])){
   header("Location: ../index.php");
 }
 
- ?>
+$_SESSION['userlogin'];
+if(isset($_GET['logout'])){
+session_destroy();
+unset($_SESSION);
+header("Location: ../index.php");
+} ?>
 <!DOCTYPE html>
 <html lang="en">
-<?php $_SESSION["userlogin"]; ?>
   <head>
     <title>Dr. Castillo Dental Clinic</title>
     <meta charset="utf-8">
@@ -407,12 +406,7 @@ function danger() {
 })
 .then((okay) => {
    if (okay) {
-    window.location.href = "../index.php";
-    <?php
-     session_destroy();
-     unset($_SESSION);
-     //header("Location: ../index.php");
-    ?>}
+    window.location.href = "../index.php";}
     }
   );
 }

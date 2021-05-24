@@ -462,12 +462,7 @@ function danger() {
 })
 .then((okay) => {
    if (okay) {
-    window.location.href = "../index.php";
-	<?php
-     session_destroy();
-     unset($_SESSION);
-     //header("Location: ../index.php");
-    ?>}
+    window.location.href = "../index.php";}
     }
   );
 }

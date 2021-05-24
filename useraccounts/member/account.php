@@ -2,16 +2,15 @@
 <?php
 session_start();
 include "config.php";
-//include "../login-register/process-login.php";
-if(isset($_SESSION['userlogin'])){
-  header("Location: account.php");
-  $firstname = $_SESSION['firstname'] ?? "";
-}
+  if(!isset($_SESSION['userlogin'])){
+    header("Location: ../index.php");
+  }
 
+  $_SESSION['userlogin'];
 if(isset($_GET['logout'])){
   session_destroy();
   unset($_SESSION);
-  header("Location: ../index.php");
+  header("Location: login.php");
 }
  ?>
 <!DOCTYPE html>
@@ -114,7 +113,7 @@ if(isset($_GET['logout'])){
       <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
           <div class="col-md-9 ftco-animate text-center">
-            <h1 class="mb-2 bread">Hello, <?php echo "$firstname";?>!</h1>
+            <h1 class="mb-2 bread">Hello, <?php echo $_SESSION['firstname'] ?? "";?>!</h1>
             <p class="breadcrumbs"><span class="mr-2"><a href="index-member.php">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Appointment <i class="ion-ios-arrow-forward"></i></span></p>
           </div>
         </div>
@@ -146,7 +145,7 @@ if(isset($_GET['logout'])){
                               <div class="modal-body">
                               <button data-dismiss="modal" class="close">&times;</button>
                               <h4>Edit Profile</h4>
-                              <form action = "account-edit.php" method="post">
+                              <form action = "account-edit.php" method="POST">
                                 <?php 
                                   if(isset($_SESSION['status']) && $_SESSION['status'] !=''){
                                     ?>
@@ -162,8 +161,10 @@ if(isset($_GET['logout'])){
                                     unset($_SESSION['status']);
                                   }
                                   ?>
-                                <input type="text" name="firstname" class="username form-control" placeholder=" Username"/>
-                                <input type="text" name="email" class="password form-control" placeholder=" Email"/>
+                                <input type="text" name="firstname" class="username form-control" placeholder=" Firstname"/>
+                                <input type="text" name="lastname" class="username form-control" placeholder=" Lastname"/>
+                                <input type="email" name="email" class="password form-control" placeholder=" Email"/>
+                                <input type="password" name="password" class="password form-control" placeholder=" Password"/>
                                 <input type="text" name="phone" class="username form-control" placeholder=" Phone"/>
                                 <input type="text" name="gender" class="username form-control" placeholder=" Gender"/>
                                 <input type="text" name="address" class="username form-control" placeholder=" Address"/>
@@ -192,19 +193,19 @@ if(isset($_GET['logout'])){
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <p class="m-b-10 f-w-600">Email</p>
-                                        <h6 class="text-muted f-w-400"><?php echo $_SESSION['username'];?></h6>
+                                        <h6 class="text-muted f-w-400"><?php echo $_SESSION['username'] ?? "";?></h6>
                                     </div>
                                     <div class="col-sm-6">
                                         <p class="m-b-10 f-w-600">Phone</p>
-                                        <h6 class="text-muted f-w-400"><?php echo $_SESSION['phone'];?></h6>
+                                        <h6 class="text-muted f-w-400"><?php echo $_SESSION['phone']?? "";?></h6>
                                     </div>
                                     <div class="col-sm-6">
                                         <p class="m-b-10 f-w-600">Gender</p>
-                                        <h6 class="text-muted f-w-400"><?php echo $_SESSION['gender'];?></h6>
+                                        <h6 class="text-muted f-w-400"><?php echo $_SESSION['gender']?? "";?></h6>
                                     </div>
                                     <div class="col-sm-6">
                                         <p class="m-b-10 f-w-600">Address</p>
-                                        <h6 class="text-muted f-w-400"><?php echo $_SESSION['address'];?></h6>
+                                        <h6 class="text-muted f-w-400"><?php echo $_SESSION['address']?? "";?></h6>
                                     </div>
                                 </div>
                                 <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Appointment History</h6>
@@ -359,10 +360,7 @@ function danger() {
      session_destroy();
      unset($_SESSION);
      //header("Location: ../index.php");
-    ?>
-    
-    
-    }
+    ?>}
     }
   );
 }

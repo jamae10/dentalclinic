@@ -20,7 +20,7 @@ FROM users INNER JOIN user_clients ON users.email=user_clients.email WHERE users
 //$sql = "SELECT * FROM users WHERE email='$username' AND password='$password'";
 $sql2 = "SELECT * FROM users_clients WHERE email='$username' AND password='$password'";
 $result = mysqli_query($conn, $sql);
-$result2 = mysqli_query($conn, $sql2);
+//$result2 = mysqli_query($conn, $sql2);
 $num = mysqli_num_rows($result);
 
 /*
@@ -31,9 +31,7 @@ if(mysqli_num_rows($result) === 1) {
     $lastname = $row['lastname'];
     $password = $row['password'];
     //$id = $row['id'];
-    $phone = $row['phone'];
-    $gender = $row['gender'];
-    $address = $row['address'];
+
     if($row['password'] === $password && $row['role'] == $role){
       switch($role){
         case "admin":
@@ -51,9 +49,6 @@ if(mysqli_num_rows($result) === 1) {
           $_SESSION['password']=$password;
           $_SESSION['username']=$username;
           //$_SESSION['id']=$id;
-          $_SESSION['phone']=$phone;
-          $_SESSION['gender']=$gender;
-          $_SESSION['address']=$address;
           header('Location:../member/index-member.php');
           break;
       }
@@ -101,7 +96,7 @@ if($result -> num_rows > 0){
           $_SESSION['password']=$password;
           $_SESSION['username']=$username;
           //$_SESSION['id']=$id;
-          $_SESSION['phone']=$rphone;
+          $_SESSION['phone']=$phone;
           $_SESSION['gender']=$gender;
           $_SESSION['address']=$address;
           header('Location:../member/index-member.php');

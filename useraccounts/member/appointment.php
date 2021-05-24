@@ -1,21 +1,18 @@
 <!-- Appointment page for members-only -->
-<?php
+<?php 
 session_start();
 include "config.php";
-/*include "process-login.php";
+
 if(!isset($_SESSION['userlogin'])){
   header("Location: ../index.php");
-} */
-if(isset($_SESSION['userlogin'])){
-  header("Location: appointment.php");
 }
 
+$_SESSION['userlogin'];
 if(isset($_GET['logout'])){
-  unset($_SESSION);
-  session_destroy();
-  header("Location: ../index.php");
-}
- ?>
+session_destroy();
+unset($_SESSION);
+header("Location: ../index.php");
+} ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -362,12 +359,7 @@ function danger() {
 })
 .then((okay) => {
    if (okay) {
-    window.location.href = "../index.php";
-    <?php
-     session_destroy();
-     unset($_SESSION);
-     //header("Location: ../index.php");
-    ?>}
+    window.location.href = "../index.php";}
     }
   );
 }
