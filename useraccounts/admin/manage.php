@@ -111,6 +111,14 @@ session_start();
 <button class="tablink" onclick="openPage('About', this, '#84d0b8')"><i class="fas fa-phone-slash"></i> Cancelled Appointments</button>
 
 <div id="Home" class="tabcontent">
+<?php
+  include "config.php";
+  $pending = "pending";
+  $sql = "SELECT firstname, lastname, email, gender, consultation_type, service, date, time, concern, doctor
+  FROM appointments WHERE remarks = '$pending'";
+  $result = mysqli_query($conn, $sql);
+  $num = 1;
+?>
 <table class="table">
   <thead>
     <tr>
@@ -127,56 +135,195 @@ session_start();
       <th scope="col">Doctor</th>
     </tr>
   </thead>
+  <?php
+    if($result){
+      foreach($result as $row){
+  ?>
   <tbody>
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
+      <td><?php echo $num; $num++; ?></td>
+      <td><?php echo $row['firstname'];  ?></td>
+      <td><?php echo $row['lastname'];?></td>
+      <td><?php echo $row['email']; ?></td>
+      <td><?php echo $row['gender']; ?></td>
+      <td><?php echo $row['consultation_type']; ?></td>
+      <td><?php echo $row['service']; ?></td>
+      <td><?php echo $row['date']; ?></td>
+      <td><?php echo $row['time']; ?></td>
+      <td><?php echo $row['concern']; ?></td>
+      <td><?php echo $row['doctor']; ?></td>
     </tr>
   </tbody>
-</table>
-  <?php
-  /*
-  include "config.php";
-  $pending = "pending";
-  $sql = "SELECT firstname, lastname, email, gender, consultation_type, service, date, time, concern, doctor
-  FROM appointments WHERE remarks = '$pending'";
-  $result = $conn -> query($sql);
-
-  if($result -> num_rows >0){
-    while ($row = $result-> fetch_assoc()){
-      echo "<tr><td>" . $row['firstname'] . "</td><td>" . $row['lastname'] . "</td><td>". $row['email'] . "</td><td>". $row['gender'] . "</td><td>". $row['consultation_type'] . "</td><td>". $row['service'] . "</td><td>". $row['date'] . "</td><td>". $row['time'] . "</td><td>". $row['concern'] . "</td><td>". $row['doctor'] . "</td></tr> <br>";
-    }
-  }else{
-    echo "No Results";
-  }
-  $conn->close(); */
+  <?php    
+      }
+      }else{
+        echo "No Results";
+      }
+    $conn->close(); 
   ?>
+</table>
 </div>
 
 <div id="News" class="tabcontent">
- <!-- INSERT TABLE HERE -->
+<?php
+  include "config.php";
+  $pending = "complete";
+  $sql = "SELECT firstname, lastname, email, gender, consultation_type, service, date, time, concern, doctor
+  FROM appointments WHERE remarks = '$pending'";
+  $result = mysqli_query($conn, $sql);
+  $num = 1;
+?>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Gender</th>
+      <th scope="col">Type</th>
+      <th scope="col">Service</th>
+      <th scope="col">Date</th>
+      <th scope="col">Time</th>
+      <th scope="col">Concern</th>
+      <th scope="col">Doctor</th>
+    </tr>
+  </thead>
+  <?php
+    if($result){
+      foreach($result as $row){
+  ?>
+  <tbody>
+    <tr>
+      <td><?php echo $num; $num++; ?></td>
+      <td><?php echo $row['firstname'];  ?></td>
+      <td><?php echo $row['lastname'];?></td>
+      <td><?php echo $row['email']; ?></td>
+      <td><?php echo $row['gender']; ?></td>
+      <td><?php echo $row['consultation_type']; ?></td>
+      <td><?php echo $row['service']; ?></td>
+      <td><?php echo $row['date']; ?></td>
+      <td><?php echo $row['time']; ?></td>
+      <td><?php echo $row['concern']; ?></td>
+      <td><?php echo $row['doctor']; ?></td>
+    </tr>
+  </tbody>
+  <?php    
+      }
+      }else{
+        echo "No Results";
+      }
+    $conn->close(); 
+  ?>
+</table>
 </div>
 
 <div id="Contact" class="tabcontent">
-  <!-- INSERT TABLE HERE -->
+<?php
+  include "config.php";
+  $pending = "postponed";
+  $sql = "SELECT firstname, lastname, email, gender, consultation_type, service, date, time, concern, doctor
+  FROM appointments WHERE remarks = '$pending'";
+  $result = mysqli_query($conn, $sql);
+  $num = 1;
+?>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Gender</th>
+      <th scope="col">Type</th>
+      <th scope="col">Service</th>
+      <th scope="col">Date</th>
+      <th scope="col">Time</th>
+      <th scope="col">Concern</th>
+      <th scope="col">Doctor</th>
+    </tr>
+  </thead>
+  <?php
+    if($result){
+      foreach($result as $row){
+  ?>
+  <tbody>
+    <tr>
+      <td><?php echo $num; $num++; ?></td>
+      <td><?php echo $row['firstname'];  ?></td>
+      <td><?php echo $row['lastname'];?></td>
+      <td><?php echo $row['email']; ?></td>
+      <td><?php echo $row['gender']; ?></td>
+      <td><?php echo $row['consultation_type']; ?></td>
+      <td><?php echo $row['service']; ?></td>
+      <td><?php echo $row['date']; ?></td>
+      <td><?php echo $row['time']; ?></td>
+      <td><?php echo $row['concern']; ?></td>
+      <td><?php echo $row['doctor']; ?></td>
+    </tr>
+  </tbody>
+  <?php    
+      }
+      }else{
+        echo "No Results";
+      }
+    $conn->close(); 
+  ?>
+</table>
 </div>
 
 <div id="About" class="tabcontent">
- <!-- INSERT TABLE HERE -->
+<?php
+  include "config.php";
+  $pending = "cancelled";
+  $sql = "SELECT firstname, lastname, email, gender, consultation_type, service, date, time, concern, doctor
+  FROM appointments WHERE remarks = '$pending'";
+  $result = mysqli_query($conn, $sql);
+  $num = 1;
+?>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Gender</th>
+      <th scope="col">Type</th>
+      <th scope="col">Service</th>
+      <th scope="col">Date</th>
+      <th scope="col">Time</th>
+      <th scope="col">Concern</th>
+      <th scope="col">Doctor</th>
+    </tr>
+  </thead>
+  <?php
+    if($result){
+      foreach($result as $row){
+  ?>
+  <tbody>
+    <tr>
+      <td><?php echo $num; $num++; ?></td>
+      <td><?php echo $row['firstname'];  ?></td>
+      <td><?php echo $row['lastname'];?></td>
+      <td><?php echo $row['email']; ?></td>
+      <td><?php echo $row['gender']; ?></td>
+      <td><?php echo $row['consultation_type']; ?></td>
+      <td><?php echo $row['service']; ?></td>
+      <td><?php echo $row['date']; ?></td>
+      <td><?php echo $row['time']; ?></td>
+      <td><?php echo $row['concern']; ?></td>
+      <td><?php echo $row['doctor']; ?></td>
+    </tr>
+  </tbody>
+  <?php    
+      }
+      }else{
+        echo "No Results";
+      }
+    $conn->close(); 
+  ?>
+</table>
 </div>
 
 <script>
