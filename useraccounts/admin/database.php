@@ -6,9 +6,12 @@
     <title>Dr. Castillo Dental Clinic</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
     <!-- STYLES -->
 
@@ -106,31 +109,76 @@
 <!-- BODY CONTENT -->
 
 <div class="ex1">
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
-
-<table id="myTable">
-  <tr class="header">
-    <th style="width:60%;">Name</th>
-    <th style="width:40%;">Country</th>
-  </tr>
-  <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>Germany</td>
-  </tr>
-  <tr>
-    <td>Berglunds snabbkop</td>
-    <td>Sweden</td>
-  </tr>
-  <tr>
-    <td>Island Trading</td>
-    <td>UK</td>
-  </tr>
-  <tr>
-    <td>Koniglich Essen</td>
-    <td>Germany</td>
-  </tr>
+<input class="form-control" id="myInput" type="text" placeholder="Search..">
+  <br>
+<?php
+  include "config.php";
+  $remark = "complete";
+  $sql = "SELECT * FROM patient_records";
+  $result = mysqli_query($conn, $sql);
+  $num = 1;
+?>
+<table class="table table-hover table-responsive-md text-light ">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Gender</th>
+      <th scope="col">Concern</th>
+      <th scope="col">Service</th>
+      <th scope="col">Date</th>
+      <th scope="col">Doctor</th>
+      <th scope="col">Diagnosis</th>
+      <th scope="col">Treatment</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <?php
+    if($result){
+      foreach($result as $row){
+  ?>
+  <tbody id="myTable">
+    <tr>
+      <td><?php echo $num; $num++; ?></td>
+      <td><?php echo $row['firstname'];  ?></td>
+      <td><?php echo $row['lastname'];?></td>
+      <td><?php echo $row['email']; ?></td>
+      <td><?php echo $row['gender']; ?></td>
+      <td><?php echo $row['concern']; ?></td>
+      <td><?php echo $row['service']; ?></td>
+      <td><?php echo $row['date']; ?></td>
+      <td><?php echo $row['doctor']; ?></td>
+      <td><?php echo $row['diagnosis']; ?></td>
+      <td><?php echo $row['treatment']; ?></td>
+      <td>
+        <!--<a class="add" title="Add" data-toggle="tooltip"><i class="fa fa-user-plus"></i></a>-->
+        <a class="edit" title="Edit" data-toggle="tooltip"><i class="fa fa-edit"></i></a>
+        <a class="delete" title="Delete" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
+      </td>
+    </tr>
+  </tbody>
+  <?php    
+      }
+      }else{
+        echo "No Results";
+      }
+    $conn->close(); 
+  ?>
 </table>
 </div>
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+
 
 <!-- END BODY CONTENT -->
 

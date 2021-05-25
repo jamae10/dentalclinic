@@ -114,9 +114,9 @@ session_start();
 <div id="Home" class="tabcontent">
 <?php
   include "config.php";
-  $pending = "pending";
+  $remark = "pending";
   $sql = "SELECT firstname, lastname, email, gender, consultation_type, service, date, time, concern, doctor
-  FROM appointments WHERE remarks = '$pending'";
+  FROM appointments WHERE remarks = '$remark'";
   $result = mysqli_query($conn, $sql);
   $num = 1;
 ?>
@@ -176,10 +176,12 @@ session_start();
 <div id="News" class="tabcontent">
 <?php
   include "config.php";
-  $completed = "complete";
+  $remark = "complete";
   $sql = "SELECT firstname, lastname, email, gender, consultation_type, service, date, time, concern, doctor
-  FROM appointments WHERE remarks = '$completed'";
+  FROM appointments WHERE remarks = '$remark'";
+  
   $result = mysqli_query($conn, $sql);
+  
   $num = 1;
 ?>
 <table class="table table-hover table-responsive-md  ">
@@ -201,6 +203,12 @@ session_start();
   </thead>
   <?php
     if($result){
+      $sql2 = "INSERT INTO patient_records (firstname, lastname, email, gender, concern, service, date, doctor)
+      SELECT  firstname, lastname, email, gender, concern, service, date, doctor 
+      FROM appointments a 
+      WHERE a.firstname,a.lastname, a.email, a.concern, a.service, a.date, a.doctor NOT IN (SELECT firstname, lastname, email, concern, service, date, doctor FROM patient_records)";
+      $result2 = mysqli_query($conn, $sql2);
+      $result2;
       foreach($result as $row){
   ?>
   <tbody>
@@ -237,9 +245,9 @@ session_start();
 <div id="Contact" class="tabcontent">
 <?php
   include "config.php";
-  $postponed = "postponed";
+  $remark = "postponed";
   $sql = "SELECT firstname, lastname, email, gender, consultation_type, service, date, time, concern, doctor
-  FROM appointments WHERE remarks = '$postponed'";
+  FROM appointments WHERE remarks = '$remark'";
   $result = mysqli_query($conn, $sql);
   $num = 1;
 ?>
@@ -299,9 +307,9 @@ session_start();
 <div id="About" class="tabcontent">
 <?php
   include "config.php";
-  $cancelled = "cancelled";
+  $remark = "cancelled";
   $sql = "SELECT firstname, lastname, email, gender, consultation_type, service, date, time, concern, doctor
-  FROM appointments WHERE remarks = '$cancelled'";
+  FROM appointments WHERE remarks = '$remark'";
   $result = mysqli_query($conn, $sql);
   $num = 1;
 ?>
