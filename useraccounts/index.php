@@ -7,8 +7,12 @@ session_start();
       if($role == 'user'){
         header("Location: ../member/index-member.php");
       }
-      else if($role == 'admin')
-      header("Location: ../admin/index-admin.php");
+    }
+    else if(isset($_SESSION['admin_login'])){
+      if($role == 'admin'){
+        require_once "login-register/process-login.php";
+        header("Location: ../admin/index-admin.php");
+      }
     }
     ?>
 <!DOCTYPE html>

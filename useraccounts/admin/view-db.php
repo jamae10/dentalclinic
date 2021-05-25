@@ -70,7 +70,7 @@
         
         <p class="button-custom order-lg-last mb-0">
           <a href="manage.php"><button type="button" class ="btn btn-secondary"><i class="fas fa-tasks"></i> Manage Appointments </button></a>
-          <a href="view-db.php"> <button type="button" class ="btn btn-danger"><i class="fas fa-user"></i>  View Database  </button></a>
+          <a href="view-db.php"> <button type="button" class ="btn btn-danger"><i class="fas fa-user"></i>  Patient Records  </button></a>
           <button type="button" class ="btn btn-danger2"><i class="fas fa-sign-out-alt"></i> Logout </button>
           </p>
   
@@ -95,8 +95,8 @@
       <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
           <div class="col-md-9 ftco-animate text-center">
-            <h1 class="mb-2 bread">View Database</h1>
-            <p class="breadcrumbs"><span class="mr-2"><a href="index-admin.php">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>View Database <i class="ion-ios-arrow-forward"></i></span></p>
+            <h1 class="mb-2 bread">Patient Records</h1>
+            <p class="breadcrumbs"><span class="mr-2"><a href="index-admin.php">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Patient Records <i class="ion-ios-arrow-forward"></i></span></p>
           </div>
         </div>
       </div>

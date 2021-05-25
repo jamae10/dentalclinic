@@ -1,5 +1,18 @@
 <!-- Homepage for admin -->
+<?php 
+session_start();
+include "config.php";
 
+if(!isset($_SESSION['admin_login'])){
+  header("Location: ../index.php");
+}
+
+$_SESSION['admin_login'];
+if(isset($_GET['logout'])){
+session_destroy();
+unset($_SESSION);
+header("Location: ../index.php");
+} ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -68,7 +81,7 @@
         
         <p class="button-custom order-lg-last mb-0">
 	      <a href="manage.php"><button type="button" class ="btn btn-secondary"><i class="fas fa-tasks"></i> Manage Appointments </button></a>
-        <a href="database.php"> <button type="button" class ="btn btn-danger"><i class="fas fa-user"></i>  View Database  </button></a>
+        <a href="database.php"> <button type="button" class ="btn btn-danger"><i class="fas fa-user"></i>  Patient Records  </button></a>
         <button type="button" class ="btn btn-danger2"><i class="fas fa-sign-out-alt"></i> Logout </button>
 	      </p>
 

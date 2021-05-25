@@ -11,7 +11,7 @@ session_start();
 
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
+    <script src="jquery.tabledit.min.js"></script>
     <!-- STYLES -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/open-iconic-bootstrap.min.css">
@@ -72,7 +72,7 @@ session_start();
         
        <p class="button-custom order-lg-last mb-0">
 	      <a href="manage.php"><button type="button" class ="btn btn-secondary"><i class="fas fa-tasks"></i> Manage Appointments </button></a>
-        <a href="database.php"> <button type="button" class ="btn btn-danger"><i class="fas fa-user"></i>  View Database  </button></a>
+        <a href="database.php"> <button type="button" class ="btn btn-danger"><i class="fas fa-user"></i>  Patient Records  </button></a>
         <button type="button" class ="btn btn-danger2"><i class="fas fa-sign-out-alt"></i> Logout </button>
 	      </p>
 
@@ -110,6 +110,7 @@ session_start();
 <button class="tablink" onclick="openPage('Contact', this, '#62a59e')"><i class="fas fa-hourglass-start"></i> Postponed Appointments</button>
 <button class="tablink" onclick="openPage('About', this, '#84d0b8')"><i class="fas fa-phone-slash"></i> Cancelled Appointments</button>
 
+<!-- PENDING -->
 <div id="Home" class="tabcontent">
 <?php
   include "config.php";
@@ -119,7 +120,8 @@ session_start();
   $result = mysqli_query($conn, $sql);
   $num = 1;
 ?>
-<table class="table">
+
+<table class="table table-hover table-responsive-md ">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -133,6 +135,7 @@ session_start();
       <th scope="col">Time</th>
       <th scope="col">Concern</th>
       <th scope="col">Doctor</th>
+      <th scope="col">Actions</th>
     </tr>
   </thead>
   <?php
@@ -152,6 +155,11 @@ session_start();
       <td><?php echo $row['time']; ?></td>
       <td><?php echo $row['concern']; ?></td>
       <td><?php echo $row['doctor']; ?></td>
+      <td>
+        <!--<a class="add" title="Add" data-toggle="tooltip"><i class="fa fa-user-plus"></i></a>-->
+        <a class="edit" title="Edit" data-toggle="tooltip"><i class="fa fa-edit"></i></a>
+        <a class="delete" title="Delete" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
+      </td>
     </tr>
   </tbody>
   <?php    
@@ -164,16 +172,17 @@ session_start();
 </table>
 </div>
 
+<!-- COMPLETED -->
 <div id="News" class="tabcontent">
 <?php
   include "config.php";
-  $pending = "complete";
+  $completed = "complete";
   $sql = "SELECT firstname, lastname, email, gender, consultation_type, service, date, time, concern, doctor
-  FROM appointments WHERE remarks = '$pending'";
+  FROM appointments WHERE remarks = '$completed'";
   $result = mysqli_query($conn, $sql);
   $num = 1;
 ?>
-<table class="table">
+<table class="table table-hover table-responsive-md  ">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -187,6 +196,7 @@ session_start();
       <th scope="col">Time</th>
       <th scope="col">Concern</th>
       <th scope="col">Doctor</th>
+      <th scope="col">Action</th>
     </tr>
   </thead>
   <?php
@@ -206,6 +216,11 @@ session_start();
       <td><?php echo $row['time']; ?></td>
       <td><?php echo $row['concern']; ?></td>
       <td><?php echo $row['doctor']; ?></td>
+      <td>
+        <!--<a class="add" title="Add" data-toggle="tooltip"><i class="fa fa-user-plus"></i></a>-->
+        <a class="edit" title="Edit" data-toggle="tooltip"><i class="fa fa-edit"></i></a>
+        <a class="delete" title="Delete" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
+      </td>
     </tr>
   </tbody>
   <?php    
@@ -218,16 +233,17 @@ session_start();
 </table>
 </div>
 
+<!-- POSTPONED -->
 <div id="Contact" class="tabcontent">
 <?php
   include "config.php";
-  $pending = "postponed";
+  $postponed = "postponed";
   $sql = "SELECT firstname, lastname, email, gender, consultation_type, service, date, time, concern, doctor
-  FROM appointments WHERE remarks = '$pending'";
+  FROM appointments WHERE remarks = '$postponed'";
   $result = mysqli_query($conn, $sql);
   $num = 1;
 ?>
-<table class="table">
+<table class="table table-hover table-responsive-md ">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -241,6 +257,7 @@ session_start();
       <th scope="col">Time</th>
       <th scope="col">Concern</th>
       <th scope="col">Doctor</th>
+      <th scope="col">Action</th>
     </tr>
   </thead>
   <?php
@@ -260,6 +277,11 @@ session_start();
       <td><?php echo $row['time']; ?></td>
       <td><?php echo $row['concern']; ?></td>
       <td><?php echo $row['doctor']; ?></td>
+      <td>
+        <!--<a class="add" title="Add" data-toggle="tooltip"><i class="fa fa-user-plus"></i></a>-->
+        <a class="edit" title="Edit" data-toggle="tooltip"><i class="fa fa-edit"></i></a>
+        <a class="delete" title="Delete" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
+      </td>
     </tr>
   </tbody>
   <?php    
@@ -272,16 +294,18 @@ session_start();
 </table>
 </div>
 
+
+<!-- CANCELLED -->
 <div id="About" class="tabcontent">
 <?php
   include "config.php";
-  $pending = "cancelled";
+  $cancelled = "cancelled";
   $sql = "SELECT firstname, lastname, email, gender, consultation_type, service, date, time, concern, doctor
-  FROM appointments WHERE remarks = '$pending'";
+  FROM appointments WHERE remarks = '$cancelled'";
   $result = mysqli_query($conn, $sql);
   $num = 1;
 ?>
-<table class="table">
+<table class="table table-hover table-responsive-md ">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -295,6 +319,7 @@ session_start();
       <th scope="col">Time</th>
       <th scope="col">Concern</th>
       <th scope="col">Doctor</th>
+      <th scope="col">Action</th>
     </tr>
   </thead>
   <?php
@@ -314,6 +339,11 @@ session_start();
       <td><?php echo $row['time']; ?></td>
       <td><?php echo $row['concern']; ?></td>
       <td><?php echo $row['doctor']; ?></td>
+      <td>
+        <!--<a class="add" title="Add" data-toggle="tooltip"><i class="fa fa-user-plus"></i></a>-->
+        <a class="edit" title="Edit" data-toggle="tooltip"><i class="fa fa-edit"></i></a>
+        <a class="delete" title="Delete" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
+      </td>
     </tr>
   </tbody>
   <?php    
