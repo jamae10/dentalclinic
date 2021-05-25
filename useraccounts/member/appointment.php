@@ -316,26 +316,10 @@ header("Location: ../index.php");
 <!-- REVIEW DETAILS PROMPT -->
 
 <script>
-/*
+/* ORIGINAL
 document.querySelector('.submit-btn').addEventListener('click', danger);
 
 function danger() {
-
-  var valid = this.form.checkValidity();
-
-  if(valid){
-  var fullname = $('#fullname').val();
-  var sevice = $('#sevice').val();
-  var date = $('#date').val();
-  var time = $('#time').val();
-  var concern = $('#concern').val();
-  var doctor = $('#doctor').val();
-
-
-$.ajax({
-  type: 'POST',
-  url: 'proccess-appointment.php',
-  data: {fullname: fullname, sevice: sevice,date: date,time: time,concern: concern,doctor: doctor},
   swal(
     {
       title: "Review Details:",
@@ -346,17 +330,18 @@ $.ajax({
 })
       .then((willDelete) => {
   if (willDelete) {
-    swal("<?php echo $_SESSION['message']; ?>", {
+
+    swal("Done! Please wait for an email confirmation.", {
       icon: "success",
     });
   } else {
-    swal("<?php echo $_SESSION['message']; ?>");
+    swal("You can still edit your input!");
   }
-    });
-  });
-}
+    }
+  );
 } */
 
+// NOT WORKING 
 $('.submit-btn').on('click', danger){
   function danger(){
   var fullname = $('#fullname').val();
