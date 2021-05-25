@@ -137,15 +137,15 @@ header("Location: ../index.php");
           
 					<div class="col-md-7 col-md-offset-1">
 						<div class="booking-form">
-							<form>
+							<form >
 								<div class="form-group">
 									<div class="form-checkbox">
 									<label for="roundtrip">
-											<input type="radio" id="roundtrip" name="flight-type">
+											<input name="appointment_type" value="online" type="radio"  id="roundtrip" name="flight-type">
 											<span></span>Online Appointment
 										</label>
 										<label for="one-way">
-											<input type="radio" id="one-way" name="flight-type">
+											<input name="appointment_type" value="onsite" id="one-way" type="radio" name="flight-type">
 											<span></span>On-Site Appointment
 										</label>
 									</div>
@@ -154,13 +154,13 @@ header("Location: ../index.php");
 									<div class="col-md-6">
 										<div class="form-group">
 											<span class="form-label">Patient's Name</span>
-											<input class="form-control" type="text" placeholder="Full Name">
+											<input name = "fullname"  id="fullname" class="form-control" type="text" placeholder="Full Name">
 										</div>
 									</div>
 									<div class="col-md-6">
 										<div class="form-group">
 											<span class="form-label">Service Required</span>
-											<input class="form-control" type="text" placeholder="Teeth Cleaning">
+											<input name = "service"  id="service"  class="form-control" type="text" placeholder="Teeth Cleaning">
 										</div>
 									</div>
 								</div>
@@ -168,13 +168,13 @@ header("Location: ../index.php");
 									<div class="col-md-6">
 										<div class="form-group">
 											<span class="form-label">Preferred Date</span>
-											<input class="form-control" type="date" required>
+											<input name = "date"  id="date" class="form-control" type="date" required>
 										</div>
 									</div>
 									<div class="col-md-6">
 										<div class="form-group">
 											<span class="form-label">Preferred Time</span>
-											<input class="form-control" type="time" required>
+											<input name = "time"  id="time" class="form-control" type="time" required>
 										</div>
 									</div>
 								</div>
@@ -182,7 +182,7 @@ header("Location: ../index.php");
 									<div class="col-md-8">
 										<div class="form-group">
                     <span class="form-label">Concern</span>
-											<input class="form-control" type="text" placeholder="What is your concern?">
+											<input name= "concern" id="concern"  class="form-control" type="text" placeholder="What is your concern?">
 											<span class="select-arrow"></span>
 										</div>
 									</div>
@@ -190,10 +190,10 @@ header("Location: ../index.php");
 									<div class="col-md-4">
 										<div class="form-group">
 											<span class="form-label">Doctor</span>
-											<select class="form-control">
-												<option>Doctor Stone</option>
-												<option>Doctor Strange</option>
-												<option>Doctor Pepper</option>
+											<select name = "doctor" id="doctor" class="form-control">
+												<option name="doctor1">Doctor Stone</option>
+												<option name="doctor2">Doctor Strange</option>
+												<option name="doctor3">Doctor Pepper</option>
 											</select>
 											<span class="select-arrow"></span>
 										</div>
@@ -316,9 +316,26 @@ header("Location: ../index.php");
 <!-- REVIEW DETAILS PROMPT -->
 
 <script>
+/*
 document.querySelector('.submit-btn').addEventListener('click', danger);
 
 function danger() {
+
+  var valid = this.form.checkValidity();
+
+  if(valid){
+  var fullname = $('#fullname').val();
+  var sevice = $('#sevice').val();
+  var date = $('#date').val();
+  var time = $('#time').val();
+  var concern = $('#concern').val();
+  var doctor = $('#doctor').val();
+
+
+$.ajax({
+  type: 'POST',
+  url: 'proccess-appointment.php',
+  data: {fullname: fullname, sevice: sevice,date: date,time: time,concern: concern,doctor: doctor},
   swal(
     {
       title: "Review Details:",
@@ -329,16 +346,59 @@ function danger() {
 })
       .then((willDelete) => {
   if (willDelete) {
-
-    swal("Done! Please wait for an email confirmation.", {
+    swal("<?php echo $_SESSION['message']; ?>", {
       icon: "success",
     });
   } else {
-    swal("You can still edit your input!");
+    swal("<?php echo $_SESSION['message']; ?>");
   }
-    }
-  );
+    });
+  });
 }
+} */
+
+$('.submit-btn').on('click', danger){
+  function danger(){
+  var fullname = $('#fullname').val();
+  var sevice = $('#sevice').val();
+  var date = $('#date').val();
+  var time = $('#time').val();
+  var concern = $('#concern').val();
+  var doctor = $('#doctor').val();
+  //e.preventDefault();
+
+  swal({
+      title: "Review Details:",
+      text: "Patient's Name:\n Service: \n Preffered Date:\n Preffered Time: \n Type: \n Doctor: ",
+      icon: '../images/dentist-icon.png',
+      imageSize: '100x100',
+      buttons: ["Back", "OK"],
+  })
+    .then(willDelete)=>{
+      if(willDelete){
+
+        $.ajax({
+          type: 'POST',
+          url: 'proccess-appointment.php',
+          data: {fullname: fullname, sevice: sevice,date: date,time: time,concern: concern,doctor: doctor},
+        });
+
+        swal("<?php echo $_SESSION['message']; ?>", {
+        icon: "success",
+    });
+      }
+      else{
+        $.ajax({
+          type: 'POST',
+          url: 'proccess-appointment.php',
+          data: {fullname: fullname, sevice: sevice,date: date,time: time,concern: concern,doctor: doctor},
+        });
+        swal("<?php echo $_SESSION['message']; ?>");
+      }
+    }
+  }
+}
+
 
 </script>
 
