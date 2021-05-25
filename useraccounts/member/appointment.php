@@ -3,16 +3,27 @@
 session_start();
 include "config.php";
 
+/*
 if(!isset($_SESSION['userlogin'])){
   header("Location: ../index.php");
+}*/
+/*
+if(isset($_SESSION['userlogin'])){
+  //include "../login-register/process-login.php";
+  if($_SESSION['role'] === 'user'){
+    header("Location: appointment.php");
+  } 
 }
+*/
 
-$_SESSION['userlogin'];
-if(isset($_GET['logout'])){
+//$_SESSION['userlogin'];
+/*if(isset($_GET['logout'])){
 session_destroy();
 unset($_SESSION);
 header("Location: ../index.php");
-} ?>
+}*/
+if($_SESSION["userlogin"]) {
+ ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -414,3 +425,4 @@ function danger() {
 
   </body>
 </html>
+<?php } else header ("Location: ../index.php") ?>

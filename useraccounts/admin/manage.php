@@ -1,5 +1,7 @@
 <!-- Manage database for admin-->
-
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -11,7 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
     <!-- STYLES -->
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="../css/animate.css">
     <link rel="stylesheet" href="../css/owl.carousel.min.css">
@@ -102,6 +104,101 @@
       </div>
     </section>
 <!-- END BANNER -->
+<!-- TABLE TABS -->
+<button class="tablink" onclick="openPage('Home', this, '#1c1d5c')" id="defaultOpen"><i class="far fa-clock"></i> Pending Appointments</button>
+<button class="tablink" onclick="openPage('News', this, '#355f82')" ><i class="far fa-calendar-check"></i> Completed Appointments</button>
+<button class="tablink" onclick="openPage('Contact', this, '#62a59e')"><i class="fas fa-hourglass-start"></i> Postponed Appointments</button>
+<button class="tablink" onclick="openPage('About', this, '#84d0b8')"><i class="fas fa-phone-slash"></i> Cancelled Appointments</button>
+
+<div id="Home" class="tabcontent">
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Gender</th>
+      <th scope="col">Type</th>
+      <th scope="col">Service</th>
+      <th scope="col">Date</th>
+      <th scope="col">Time</th>
+      <th scope="col">Concern</th>
+      <th scope="col">Doctor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
+  <?php
+  /*
+  include "config.php";
+  $pending = "pending";
+  $sql = "SELECT firstname, lastname, email, gender, consultation_type, service, date, time, concern, doctor
+  FROM appointments WHERE remarks = '$pending'";
+  $result = $conn -> query($sql);
+
+  if($result -> num_rows >0){
+    while ($row = $result-> fetch_assoc()){
+      echo "<tr><td>" . $row['firstname'] . "</td><td>" . $row['lastname'] . "</td><td>". $row['email'] . "</td><td>". $row['gender'] . "</td><td>". $row['consultation_type'] . "</td><td>". $row['service'] . "</td><td>". $row['date'] . "</td><td>". $row['time'] . "</td><td>". $row['concern'] . "</td><td>". $row['doctor'] . "</td></tr> <br>";
+    }
+  }else{
+    echo "No Results";
+  }
+  $conn->close(); */
+  ?>
+</div>
+
+<div id="News" class="tabcontent">
+ <!-- INSERT TABLE HERE -->
+</div>
+
+<div id="Contact" class="tabcontent">
+  <!-- INSERT TABLE HERE -->
+</div>
+
+<div id="About" class="tabcontent">
+ <!-- INSERT TABLE HERE -->
+</div>
+
+<script>
+function openPage(pageName,elmnt,color) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].style.backgroundColor = "";
+  }
+  document.getElementById(pageName).style.display = "block";
+  elmnt.style.backgroundColor = color;
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+   
+<!-- END TABLE TABS -->
 
 <!-- BODY CONTENT -->
 

@@ -82,14 +82,17 @@ if($result -> num_rows > 0){
     if($row['password'] === $password && $row['role'] == $role){
       switch($role){
         case "admin":
+          $_SESSION['role'] = "admin";
           $_SESSION['admin_login']=$email;
           $_SESSION['firstname']=$firstname;
           $_SESSION['lastname']=$lastname;
           $_SESSION['password']=$password;
           //$_SESSION['id']=$id;
           header('Location:../admin/index-admin.php');
+          
           break;
         case "user":
+          $_SESSION['role'] = "user";
           $_SESSION['userlogin']=$username;
           $_SESSION['firstname']=$firstname;
           $_SESSION['lastname']=$lastname;

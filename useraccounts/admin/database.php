@@ -103,48 +103,15 @@
     </section>
 <!-- END BANNER -->
 
-<!-- TABLE TABS -->
-<button class="tablink" onclick="openPage('Home', this, '#1c1d5c')"><i class="far fa-clock"></i> Pending Appointments</button>
-<button class="tablink" onclick="openPage('News', this, '#355f82')" id="defaultOpen"><i class="far fa-calendar-check"></i> Completed Appointments</button>
-<button class="tablink" onclick="openPage('Contact', this, '#62a59e')"><i class="fas fa-hourglass-start"></i> Postponed Appointments</button>
-<button class="tablink" onclick="openPage('About', this, '#84d0b8')"><i class="fas fa-phone-slash"></i> Cancelled Appointments</button>
+<!-- BODY CONTENT -->
 
-<div id="Home" class="tabcontent">
-<!-- INSERT TABLE HERE -->
+<div class="ex1">
+    <!-- INSERT DATABASE TABLE HERE -->
 </div>
 
-<div id="News" class="tabcontent">
- <!-- INSERT TABLE HERE -->
-</div>
+<!-- END BODY CONTENT -->
 
-<div id="Contact" class="tabcontent">
-  <!-- INSERT TABLE HERE -->
-</div>
-
-<div id="About" class="tabcontent">
- <!-- INSERT TABLE HERE -->
-</div>
-
-<script>
-function openPage(pageName,elmnt,color) {
-  var i, tabcontent, tablinks;
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("tablink");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].style.backgroundColor = "";
-  }
-  document.getElementById(pageName).style.display = "block";
-  elmnt.style.backgroundColor = color;
-}
-
-// Get the element with id="defaultOpen" and click on it
-document.getElementById("defaultOpen").click();
-</script>
-   
-<!-- END TABLE TABS -->
+<!-- END CONTACT INFO -->
 
 <!-- FOOTER -->
     <footer class="ftco-footer ftco-bg-dark ftco-section">

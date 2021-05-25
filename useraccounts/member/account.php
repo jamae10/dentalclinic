@@ -2,16 +2,17 @@
 <?php
 session_start();
 include "config.php";
+/*
   if(!isset($_SESSION['userlogin'])){
     header("Location: ../index.php");
-  }
-
-  $_SESSION['userlogin'];
+  }*/
+/*
 if(isset($_GET['logout'])){
   session_destroy();
   unset($_SESSION);
   header("Location: login.php");
-}
+}*/
+if($_SESSION["userlogin"]) {
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -193,7 +194,7 @@ if(isset($_GET['logout'])){
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <p class="m-b-10 f-w-600">Email</p>
-                                        <h6 class="text-muted f-w-400"><?php echo $_SESSION['username'] ?? "";?></h6>
+                                        <h6 class="text-muted f-w-400"><?php echo $_SESSION['userlogin'] ?? "";?></h6>
                                     </div>
                                     <div class="col-sm-6">
                                         <p class="m-b-10 f-w-600">Phone</p>
@@ -357,8 +358,8 @@ function danger() {
    if (okay) {
     window.location.href = "../index.php";
     <?php
+    unset($_SESSION);
      session_destroy();
-     unset($_SESSION);
      //header("Location: ../index.php");
     ?>}
     }
@@ -366,8 +367,6 @@ function danger() {
 }
 </script>
 
-<script>
-
-</script>
   </body>
 </html>
+<?php } else header ("Location: ../index.php") ?>
