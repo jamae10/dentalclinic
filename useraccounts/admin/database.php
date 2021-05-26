@@ -91,8 +91,8 @@ if(!isset($_SESSION['admin_login']) && empty($_SESSION['admin_login'])){
             <li class="nav-item"><a href="index-admin.php" class="nav-link pl-0">Home</a></li>
             <li class="nav-item"><a href="about-admin.php" class="nav-link">About Us</a></li>
             <li class="nav-item"><a href="services.php" class="nav-link">Services</a></li>
-            <li class="nav-item"><a href="faqs.php" class="nav-link">FAQs</a></li>
-            <li class="nav-item active"><a href="contact.php" class="nav-link">Contact</a></li>
+            <li class="nav-item"><a href="faqs-admin.php" class="nav-link">FAQs</a></li>
+            <!--<li class="nav-item active"><a href="contact.php" class="nav-link">Contact</a></li>-->
           </ul>
         </div>
       </div>
@@ -225,8 +225,8 @@ $(document).ready(function(){
                 <li><a href="index-admin.php"><span class="ion-ios-arrow-round-forward mr-2"></span>Home</a></li>
                 <li><a href="about-admin.php"><span class="ion-ios-arrow-round-forward mr-2"></span>About</a></li>
                 <li><a href="services.php"><span class="ion-ios-arrow-round-forward mr-2"></span>Services</a></li>
-                <li><a href="faqs.php"><span class="ion-ios-arrow-round-forward mr-2"></span>FAQS</a></li>
-                <li><a href="contact.php"><span class="ion-ios-arrow-round-forward mr-2"></span>Contact</a></li>
+                <li><a href="faqs-admin.php"><span class="ion-ios-arrow-round-forward mr-2"></span>FAQS</a></li>
+               <!-- <li><a href="contact.php"><span class="ion-ios-arrow-round-forward mr-2"></span>Contact</a></li>-->
               </ul>
             </div>
             <div class="ftco-footer-widget mb-5 ml-md-4">

@@ -42,7 +42,7 @@ if(!isset($_SESSION['admin_login']) && empty($_SESSION['admin_login'])){
     	<div class="container">
     		<div class="row no-gutters d-flex align-items-start align-items-center px-3 px-md-0">
     			<div class="col-lg-3 pr-4 align-items-center">
-		    		<a class="navbar-brand" href="index-member.php">Dr. Castillo <span><br>Dental Clinic</span> </a>
+		    		<a class="navbar-brand" href="index-admin.php">Dr. Castillo <span><br>Dental Clinic</span> </a>
 	    		</div>
 	    		<div class="col-lg-9 d-none d-md-block">
 		    		<div class="row d-flex">
@@ -84,11 +84,11 @@ if(!isset($_SESSION['admin_login']) && empty($_SESSION['admin_login'])){
 
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav mr-auto">
-	        	<li class="nav-item active"><a href="index-member.php" class="nav-link pl-0">Home</a></li>
-	        	<li class="nav-item"><a href="about-member.php" class="nav-link">About Us</a></li>
-	        	<li class="nav-item"><a href="services-member.php" class="nav-link">Services</a></li>
-	        	<li class="nav-item"><a href="faqs-member.php" class="nav-link">FAQs</a></li>
-	          	<li class="nav-item"><a href="contact-member.php" class="nav-link">Contact Us</a></li>
+	        	<li class="nav-item active"><a href="index-admin.php" class="nav-link pl-0">Home</a></li>
+	        	<li class="nav-item"><a href="about-admin.php" class="nav-link">About Us</a></li>
+	        	<li class="nav-item"><a href="services-admin.php" class="nav-link">Services</a></li>
+	        	<li class="nav-item"><a href="faqs-admin.php" class="nav-link">FAQs</a></li>
+	          	<!--<li class="nav-item"><a href="contact-admin.php" class="nav-link">Contact Us</a></li>-->
 	        </ul>
 	      </div>
 	    </div>
@@ -314,20 +314,20 @@ if(!isset($_SESSION['admin_login']) && empty($_SESSION['admin_login'])){
             <div class="ftco-footer-widget mb-5 ml-md-4">
               <h2 class="ftco-heading-2">Links</h2>
               <ul class="list-unstyled">
-                <li><a href="index-member.php"><span class="ion-ios-arrow-round-forward mr-2"></span>Home</a></li>
-                <li><a href="about-member.php"><span class="ion-ios-arrow-round-forward mr-2"></span>About</a></li>
-                <li><a href="services-member.php"><span class="ion-ios-arrow-round-forward mr-2"></span>Services</a></li>
-                <li><a href="faqs-member.php"><span class="ion-ios-arrow-round-forward mr-2"></span>FAQS</a></li>
-                <li><a href="contact-member.php"><span class="ion-ios-arrow-round-forward mr-2"></span>Contact</a></li>
+                <li><a href="index-admin.php"><span class="ion-ios-arrow-round-forward mr-2"></span>Home</a></li>
+                <li><a href="about-admin.php"><span class="ion-ios-arrow-round-forward mr-2"></span>About</a></li>
+                <li><a href="services-admin.php"><span class="ion-ios-arrow-round-forward mr-2"></span>Services</a></li>
+                <li><a href="faqs-admin.php"><span class="ion-ios-arrow-round-forward mr-2"></span>FAQS</a></li>
+                <!--<li><a href="contact-admin.php"><span class="ion-ios-arrow-round-forward mr-2"></span>Contact</a></li>-->
               </ul>
             </div>
             <div class="ftco-footer-widget mb-5 ml-md-4">
               <h2 class="ftco-heading-2">Services</h2>
               <ul class="list-unstyled">
-                <li><a href="services-member.php"><span class="ion-ios-arrow-round-forward mr-2"></span>General Dentistry</a></li>
-                <li><a href="services-member.php"><span class="ion-ios-arrow-round-forward mr-2"></span>Orthodontics</a></li>
-                <li><a href="services-member.php"><span class="ion-ios-arrow-round-forward mr-2"></span>Cosmetics Dentistry</a></li>
-                <li><a href="services-member.php"><span class="ion-ios-arrow-round-forward mr-2"></span>Dental Implant</a></li>
+                <li><a href="services-admin.php"><span class="ion-ios-arrow-round-forward mr-2"></span>General Dentistry</a></li>
+                <li><a href="services-admin.php"><span class="ion-ios-arrow-round-forward mr-2"></span>Orthodontics</a></li>
+                <li><a href="services-admin.php"><span class="ion-ios-arrow-round-forward mr-2"></span>Cosmetics Dentistry</a></li>
+                <li><a href="services-admin.php"><span class="ion-ios-arrow-round-forward mr-2"></span>Dental Implant</a></li>
               </ul>
             </div>
           </div>

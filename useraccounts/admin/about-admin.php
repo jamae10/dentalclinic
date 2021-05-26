@@ -1,5 +1,12 @@
-<!-- About page for members -->
+<!-- About page for admin -->
+<?php 
+session_start();
+include "config.php";
 
+if(!isset($_SESSION['admin_login']) && empty($_SESSION['admin_login'])){
+  header ("Location: ../index.php");
+}
+ ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -68,7 +75,7 @@
         
           <p class="button-custom order-lg-last mb-0">
             <a href="manage.php"><button type="button" class ="btn btn-secondary"><i class="fas fa-tasks"></i> Manage Appointments </button></a>
-            <a href="view-db.php"> <button type="button" class ="btn btn-danger"><i class="fas fa-user"></i>  View Database  </button></a>
+            <a href="database.php"> <button type="button" class ="btn btn-danger"><i class="fas fa-user"></i>  View Database  </button></a>
             <button type="button" class ="btn btn-danger2"><i class="fas fa-sign-out-alt"></i> Logout </button>
             </p>
     
@@ -78,9 +85,9 @@
 	        <ul class="navbar-nav mr-auto">
 	        	<li class="nav-item"><a href="index-admin.php" class="nav-link pl-0">Home</a></li>
 	        	<li class="nav-item active"><a href="about-admin.php" class="nav-link">About Us</a></li>
-	        	<li class="nav-item"><a href="service-admin.php" class="nav-link">Services</a></li>
+	        	<li class="nav-item"><a href="services-admin.php" class="nav-link">Services</a></li>
 	        	<li class="nav-item"><a href="faqs-admin.php" class="nav-link">FAQs</a></li>
-	          	<li class="nav-item"><a href="contact-admin.php" class="nav-link">Contact</a></li>
+	          	<!--<li class="nav-item"><a href="contact-admin.php" class="nav-link">Contact</a></li>-->
 	        </ul>
 	      </div>
 	    </div>
@@ -410,7 +417,7 @@
                 <li><a href="about-admin.php"><span class="ion-ios-arrow-round-forward mr-2"></span>About</a></li>
                 <li><a href="services-admin.php"><span class="ion-ios-arrow-round-forward mr-2"></span>Services</a></li>
                 <li><a href="faqs-admin.php"><span class="ion-ios-arrow-round-forward mr-2"></span>FAQS</a></li>
-                <li><a href="contact-admin.php"><span class="ion-ios-arrow-round-forward mr-2"></span>Contact</a></li>
+                <!--<li><a href="contact-admin.php"><span class="ion-ios-arrow-round-forward mr-2"></span>Contact</a></li>-->
               </ul>
             </div>
             <div class="ftco-footer-widget mb-5 ml-md-4">
@@ -493,7 +500,7 @@ function danger() {
 })
 .then((okay) => {
    if (okay) {
-    window.location.href = "../index.php";}
+    window.location.href = "logout.php";}
     }
   );
 }
