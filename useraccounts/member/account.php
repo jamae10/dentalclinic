@@ -4,30 +4,9 @@ ini_set('display_errors','1');
 session_start();
 
 include "config.php";
-/*if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
+if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
   header ("Location: ../index.php");
-}*/
-/*
-  if(!isset($_SESSION['userlogin'])){
-    header("Location: ../index.php");
-  }*/
-/*
-if(isset($_GET['logout'])){
-  session_destroy();
-  unset($_SESSION);
-  header("Location: login.php");
-}*/
-if(isset($_SESSION['userlogin'])) {
-  
-  //echo $_SESSION['userlogin'];
-  /*$username = $_SESSION['userlogin'];
-  $sql = "SELECT email, password FROM user_clients";
-  $result = mysqli_query($conn, $sql);
-  if($result){
-    $row =mysqli_fetch_assoc($result);
-    $_SESSION['userlogin'] = $row['email'];
-    $_SESSION['password'] = $row['password'];*/
-//}
+}
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -373,12 +352,7 @@ if(isset($_SESSION['userlogin'])) {
   })
   .then((okay) => {
     if (okay) {
-      window.location.href = "../index.php";
-      <?php
-      //unset($_SESSION);
-      session_destroy();
-      //header("Location: ../index.php");
-      ?>}
+      window.location.href = "logout.php";}
       }
     );
   }
@@ -388,4 +362,4 @@ if(isset($_SESSION['userlogin'])) {
 </html>
 <?php 
 
-} //else header ("Location: ../index.php") ?>
+//} //else header ("Location: ../index.php") ?>

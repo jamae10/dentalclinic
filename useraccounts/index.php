@@ -3,16 +3,10 @@
 session_start();
 
     if(isset($_SESSION['userlogin'])){
-      require_once "login-register/process-login.php";
-      if($role == 'user'){
-        header("Location: ../member/index-member.php");
-      }
+        header("Location: member/index-member.php");
     }
     else if(isset($_SESSION['admin_login'])){
-      if($role == 'admin'){
-        require_once "login-register/process-login.php";
-        header("Location: ../admin/index-admin.php");
-      }
+        header("Location: admin/index-admin.php");
     }
     ?>
 <!DOCTYPE html>

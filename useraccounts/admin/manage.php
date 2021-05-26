@@ -6,13 +6,7 @@ include "config.php";
 if(!isset($_SESSION['admin_login']) && empty($_SESSION['admin_login'])){
   header ("Location: ../index.php");
 }
-
-$_SESSION['admin_login'];
-if(isset($_GET['logout'])){
-session_destroy();
-unset($_SESSION);
-header("Location: ../index.php");
-} ?>
+ ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -523,7 +517,8 @@ function danger() {
 })
 .then((okay) => {
    if (okay) {
-    window.location.href = "../index.php";}
+    window.location.href = "logout.php";
+    }
     }
   );
 }

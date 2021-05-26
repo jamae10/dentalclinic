@@ -5,38 +5,9 @@ session_start();
 
 include "config.php";
 
-/*if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
+if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
   header ("Location: ../index.php");
-}*/
-/*
-if(!isset($_SESSION['userlogin'])){
-  header("Location: ../index.php");
-}*/
-/*
-if(isset($_SESSION['userlogin'])){
-  //include "../login-register/process-login.php";
-  if($_SESSION['role'] === 'user'){
-    header("Location: appointment.php");
-  } 
 }
-*/
-
-//$_SESSION['userlogin'];
-/*if(isset($_GET['logout'])){
-session_destroy();
-unset($_SESSION);
-header("Location: ../index.php");
-}*/
-if(isset($_SESSION['userlogin'])) {
-  //echo $_SESSION['userlogin'];
-  /*$username = $_SESSION['userlogin'];
-  $sql = "SELECT email, password FROM user_clients";
-  $result = mysqli_query($conn, $sql);
-  if($result){
-    $row =mysqli_fetch_assoc($result);
-    $_SESSION['userlogin'] = $row['email'];
-    $_SESSION['password'] = $row['password'];*/
-  //}
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -430,7 +401,7 @@ function danger() {
 })
 .then((okay) => {
    if (okay) {
-    window.location.href = "../index.php";}
+    window.location.href = "logout.php";}
     }
   );
 }
@@ -443,4 +414,4 @@ function danger() {
 <?php 
 
 
-}// else header ("Location: ../index.php") ?>
+//}// else header ("Location: ../index.php") ?>
