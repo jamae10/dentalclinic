@@ -18,7 +18,7 @@ if(isset($_POST['update'])){
         $phone = validate($_POST['phone']);
         $gender = validate($_POST['gender']);
         $address = validate($_POST['address']);
-
+        $uuid = $_SESSION['uuid'];
         //$sql2 = "SELECT * FROM user_clients WHERE email='$username'";
         //$result = mysqli_query($conn, $sql2);
         
@@ -30,10 +30,10 @@ if(isset($_POST['update'])){
           header('Location: account.php');
         } */
 
-        $sql = "UPDATE user_clients SET firstname='$firstname', lastname='$lastname', email='$email', password='$password', phone='$phone', gender='$gender', address='$address' WHERE email = '$email'";
-        $sql2 = "UPDATE users SET firstname='$firstname', lastname='$lastname', email='$email', password='$password' WHERE email = '$email'";
-        $sql3 = "UPDATE appointments SET firstname='$firstname', lastname='$lastname', email='$email', gender='$gender' WHERE email = '$email'"; 
-        $sql4 = "UPDATE patient_records SET firstname='$firstname', lastname='$lastname', email='$email', gender='$gender' WHERE email = '$email'";
+        $sql = "UPDATE user_clients SET firstname='$firstname', lastname='$lastname', email='$email', password='$password', phone='$phone', gender='$gender', address='$address' WHERE UUID = '$uuid'";
+        $sql2 = "UPDATE users SET firstname='$firstname', lastname='$lastname', email='$email', password='$password' WHERE UUID = '$uuid'";
+        $sql3 = "UPDATE appointments SET firstname='$firstname', lastname='$lastname', email='$email', gender='$gender' WHERE UUID = '$uuid'"; 
+        $sql4 = "UPDATE patient_records SET firstname='$firstname', lastname='$lastname', email='$email', gender='$gender' WHERE UUID = '$uuid'";
         $result =  mysqli_query($conn, $sql2);
         $result2 = mysqli_query($conn, $sql);
         $result3 = mysqli_query($conn, $sql3);

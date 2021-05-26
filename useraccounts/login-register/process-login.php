@@ -15,7 +15,7 @@ $role = validate($_POST['role']);
 
 //$password = $password;
 
-$sql = "SELECT users.firstname, users.lastname, users.email, users.password, users.role, user_clients.phone, user_clients.gender, user_clients.address
+$sql = "SELECT users.UUID, users.firstname, users.lastname, users.email, users.password, users.role, user_clients.phone, user_clients.gender, user_clients.address
 FROM users INNER JOIN user_clients ON users.email=user_clients.email WHERE users.email = '$username' AND users.password='$password'";
 $sql2 = "SELECT * FROM users WHERE email='$username' AND password='$password'";
 //$sql2 = "SELECT * FROM users_clients WHERE email='$username' AND password='$password'";
@@ -71,6 +71,7 @@ else{
 
 if($result2 -> num_rows > 0){
   $row =mysqli_fetch_assoc($result2);
+    $uuid = $row['UUID'];
     $username = $row['email'];
     $firstname = $row['firstname'];
     $lastname = $row['lastname'];
@@ -80,6 +81,7 @@ if($result2 -> num_rows > 0){
     if($row['password'] === $password && $row['role'] == $role){
       switch($role){
         case "admin":
+          $_SESSION['uuid'] = $uuid;
           $_SESSION['role'] = "admin";
           $_SESSION['admin_login']=$username;
           $_SESSION['firstname']=$firstname;
@@ -96,6 +98,7 @@ if($result2 -> num_rows > 0){
             $gender = $row2['gender'];
             $address = $row2['address'];
 
+            $_SESSION['uuid'] = $uuid;
             $_SESSION['role'] = "user";
             $_SESSION['userlogin']=$username;
             $_SESSION['email']=$username;

@@ -19,7 +19,11 @@
   $gender = 'None';
   $address = 'None';
 
-  $user_data = 'firstname='. $firstname. '&email='. $email;
+  //$a = uniqid('id',true);
+  $a = md5(time() . mt_rand(1,1000000));
+
+  $uuid = $a;
+  //$user_data = 'firstname='. $firstname. '&email='. $email;
 
   //hashing the password
   //$password = $password;
@@ -34,8 +38,8 @@
     header('Location: registration.php');
   }
   else{
-    $sql2 = "INSERT INTO users(firstname, lastname, email, password, role) VALUES ('$firstname', '$lastname', '$email', '$password', '$role')";
-    $sql3 = "INSERT INTO user_clients(firstname, lastname, email, password, phone, gender, address) VALUES ('$firstname', '$lastname', '$email', '$password', '$phone', '$gender', '$address')";
+    $sql2 = "INSERT INTO users(UUID, firstname, lastname, email, password, role) VALUES ('$uuid', '$firstname', '$lastname', '$email', '$password', '$role')";
+    $sql3 = "INSERT INTO user_clients(UUID, firstname, lastname, email, password, phone, gender, address) VALUES ('$uuid', '$firstname', '$lastname', '$email', '$password', '$phone', '$gender', '$address')";
     $result2 = mysqli_query($conn, $sql2);
     $result3 = mysqli_query($conn, $sql3);
     if($result2){

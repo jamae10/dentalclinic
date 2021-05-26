@@ -208,10 +208,10 @@ if(!isset($_SESSION['admin_login']) && empty($_SESSION['admin_login'])){
   </thead>
   <?php
     if($result){
-      $sql2 = "INSERT INTO patient_records (firstname, lastname, email, gender, concern, service, date, doctor)
-      SELECT  firstname, lastname, email, gender, concern, service, date, doctor 
+      $sql2 = "INSERT INTO patient_records (UUID, firstname, lastname, email, gender, concern, service, date, doctor)
+      SELECT  UUID, firstname, lastname, email, gender, concern, service, date, doctor 
       FROM appointments a 
-      WHERE a.firstname,a.lastname, a.email, a.concern, a.service, a.date, a.doctor NOT IN (SELECT firstname, lastname, email, concern, service, date, doctor FROM patient_records)";
+      WHERE a.UUID,a.firstname,a.lastname, a.email, a.concern, a.service, a.date, a.doctor NOT IN (SELECT UUID, firstname, lastname, email, concern, service, date, doctor FROM patient_records)";
       $result2 = mysqli_query($conn, $sql2);
       $result2;
       foreach($result as $row){
