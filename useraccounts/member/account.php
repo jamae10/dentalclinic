@@ -23,7 +23,7 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
     
     <!-- STYLES -->
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="../css/animate.css">
     <link rel="stylesheet" href="../css/owl.carousel.min.css">
@@ -207,14 +207,46 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
                                 </div>
                                 <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Appointment History</h6>
                                 <div class="row">
-                                    <div class="col-sm-6">
-                                        <p class="m-b-10 f-w-600">Date</p>
-                                        <h6 class="text-muted f-w-400">05-18-2021</h6>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <p class="m-b-10 f-w-600">Service</p>
-                                        <h6 class="text-muted f-w-400">Check Up</h6>
-                                    </div>
+                                <?php
+  include "config.php";
+  $remark = "pending";
+  $uuid = $_SESSION['uuid'];
+  $email = $_SESSION['email'];
+  $sql = "SELECT date, service FROM patient_records WHERE email = '$email' AND UUID = '$uuid' ";
+  $result = mysqli_query($conn, $sql);
+  //$num = 1;
+?>
+
+<table class="table ">
+  <thead>
+    <tr>
+      <th scope="col">Date</th>
+      <th scope="col">Service</th>
+    </tr>
+  </thead>
+  <?php
+    if($result){
+      foreach($result as $row){
+  ?>
+  <tbody>
+    <tr>
+      <td><?php echo $row['date']; ?></td>
+      <td><?php echo $row['service'];  ?></td>
+    </tr>
+  </tbody>
+  <?php    
+      }
+      }else{ ?>
+        <tbody>
+          <tr>
+            <td><?php echo "No Results"; ?></td>
+            <td><?php echo "No Results";  ?></td>
+          </tr>
+        </tbody>
+     <?php }
+    $conn->close(); 
+  ?>
+</table>
                                 </div>
                                 <ul class="social-link list-unstyled m-t-40 m-b-10">
                                     <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="facebook" data-abc="true"><i class="mdi mdi-facebook feather icon-facebook facebook" aria-hidden="true"></i></a></li>
