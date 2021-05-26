@@ -50,6 +50,7 @@ if(isset($_POST['update'])){
             if ($result2){
               $result;
               $_SESSION['userlogin'] =$email;
+              $_SESSION['email'] =$email;
               $_SESSION['firstname']=$firstname;
               $_SESSION['lastname']=$lastname;
               $_SESSION['username']=$email;

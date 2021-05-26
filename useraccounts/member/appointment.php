@@ -1,8 +1,13 @@
 <!-- Appointment page for members-only -->
 <?php 
+ini_set('display_errors','1');
 session_start();
+
 include "config.php";
 
+/*if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
+  header ("Location: ../index.php");
+}*/
 /*
 if(!isset($_SESSION['userlogin'])){
   header("Location: ../index.php");
@@ -22,7 +27,16 @@ session_destroy();
 unset($_SESSION);
 header("Location: ../index.php");
 }*/
-if($_SESSION["userlogin"]) {
+if(isset($_SESSION['userlogin'])) {
+  //echo $_SESSION['userlogin'];
+  /*$username = $_SESSION['userlogin'];
+  $sql = "SELECT email, password FROM user_clients";
+  $result = mysqli_query($conn, $sql);
+  if($result){
+    $row =mysqli_fetch_assoc($result);
+    $_SESSION['userlogin'] = $row['email'];
+    $_SESSION['password'] = $row['password'];*/
+  //}
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -327,7 +341,7 @@ if($_SESSION["userlogin"]) {
 <!-- REVIEW DETAILS PROMPT -->
 
 <script>
-/* ORIGINAL
+ //ORIGINAL
 document.querySelector('.submit-btn').addEventListener('click', danger);
 
 function danger() {
@@ -350,9 +364,10 @@ function danger() {
   }
     }
   );
-} */
+} 
 
 // NOT WORKING 
+/*
 $('.submit-btn').on('click', danger){
   function danger(){
   var fullname = $('#fullname').val();
@@ -379,7 +394,7 @@ $('.submit-btn').on('click', danger){
           data: {fullname: fullname, sevice: sevice,date: date,time: time,concern: concern,doctor: doctor},
         });
 
-        swal("<?php echo $_SESSION['message']; ?>", {
+        swal("<?php //echo $_SESSION['message']; ?>", {
         icon: "success",
     });
       }
@@ -389,11 +404,11 @@ $('.submit-btn').on('click', danger){
           url: 'proccess-appointment.php',
           data: {fullname: fullname, sevice: sevice,date: date,time: time,concern: concern,doctor: doctor},
         });
-        swal("<?php echo $_SESSION['message']; ?>");
+        swal("<?php //echo $_SESSION['message']; ?>");
       }
     }
   }
-}
+}*/
 
 
 </script>
@@ -425,4 +440,7 @@ function danger() {
 
   </body>
 </html>
-<?php } else header ("Location: ../index.php") ?>
+<?php 
+
+
+}// else header ("Location: ../index.php") ?>

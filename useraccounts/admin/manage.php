@@ -1,7 +1,18 @@
 <!-- Manage database for admin-->
-<?php
+<?php 
 session_start();
-?>
+include "config.php";
+
+if(isset($_SESSION['admin_login'])){
+  header("Location: manage.php");
+}
+
+$_SESSION['admin_login'];
+if(isset($_GET['logout'])){
+session_destroy();
+unset($_SESSION);
+header("Location: ../index.php");
+} ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>

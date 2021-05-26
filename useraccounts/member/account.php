@@ -1,7 +1,12 @@
 <!-- Account page for members only -->
 <?php
+ini_set('display_errors','1');
 session_start();
+
 include "config.php";
+/*if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
+  header ("Location: ../index.php");
+}*/
 /*
   if(!isset($_SESSION['userlogin'])){
     header("Location: ../index.php");
@@ -12,7 +17,17 @@ if(isset($_GET['logout'])){
   unset($_SESSION);
   header("Location: login.php");
 }*/
-if($_SESSION["userlogin"]) {
+if(isset($_SESSION['userlogin'])) {
+  
+  //echo $_SESSION['userlogin'];
+  /*$username = $_SESSION['userlogin'];
+  $sql = "SELECT email, password FROM user_clients";
+  $result = mysqli_query($conn, $sql);
+  if($result){
+    $row =mysqli_fetch_assoc($result);
+    $_SESSION['userlogin'] = $row['email'];
+    $_SESSION['password'] = $row['password'];*/
+//}
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -135,7 +150,7 @@ if($_SESSION["userlogin"]) {
                         <div class="col-sm-4 bg-c-lite-green user-profile">
                             <div class="card-block text-center text-white">
                                 <div class="m-b-25"> <img src="https://img.icons8.com/bubbles/100/000000/user.png" class="img-radius" alt="User-Profile-Image"> </div>
-                                <h6 class="f-w-600"><?php echo $_SESSION['firstname'];?> <?php echo $_SESSION['lastname'];?></h6>
+                                <h6 class="f-w-600"><?php echo $_SESSION['firstname'] ?? "";?> <?php echo $_SESSION['lastname'] ?? "";?></h6>
                                 <p>Patient</p> 
                                   
                                 <!-- EDIT PROFILE BUTTON -->
@@ -148,19 +163,21 @@ if($_SESSION["userlogin"]) {
                               <h4>Edit Profile</h4>
                               <form action = "account-edit.php" method="POST">
                                 <?php 
-                                  if(isset($_SESSION['status']) && $_SESSION['status'] !=''){
+                                  //if(isset($_SESSION['status']) && $_SESSION['status'] !=''){
                                     ?>
-                                    <script>
+                                    <!--<script>
                                       swal({
-                                        title:"<?php echo $_SESSION['status']; ?>",
-                                        text: "<?php echo $_SESSION['status_text']; ?>",
-                                        icon: "<?php echo $_SESSION['status_code'];?>",
+                                        title:"<?php //echo $_SESSION['status']; ?>",
+                                        text: "<?php //echo $_SESSION['status_text']; ?>",
+                                        icon: "<?php //echo $_SESSION['status_code'];?>",
                                         button: "Ok",
                                       });
-                                    </script>
+                                    </script> -->
                                   <?php
-                                    unset($_SESSION['status']);
-                                  }
+                                   /* unset($_SESSION['status']);
+                                    unset($_SESSION['status_text']);
+                                    unset($_SESSION['status_code']);
+                                  }*/
                                   ?>
                                 <input type="text" name="firstname" class="username form-control" placeholder=" Firstname"/>
                                 <input type="text" name="lastname" class="username form-control" placeholder=" Lastname"/>
@@ -307,8 +324,8 @@ if($_SESSION["userlogin"]) {
           <div class="col-md-12 text-center">
 
             <p>
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">BCSAD</a>
-  </p>
+            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">BCSAD</a>
+            </p>
           </div>
         </div>
       </div>
@@ -343,30 +360,32 @@ if($_SESSION["userlogin"]) {
 
   <script>
 
-document.querySelector('.btn-danger2').addEventListener('click', danger);
+  document.querySelector('.btn-danger2').addEventListener('click', danger);
 
-function danger() {
-  swal(
-    {
-      title: "Are you sure to log out?",
-      text: "We still have many services to offer!",
-      icon: '../images/question-mark.png',
-      imageSize: '100x100',
-      buttons: ["Cancel", "Log out"],
-})
-.then((okay) => {
-   if (okay) {
-    window.location.href = "../index.php";
-    <?php
-    unset($_SESSION);
-     session_destroy();
-     //header("Location: ../index.php");
-    ?>}
-    }
-  );
-}
+  function danger() {
+    swal(
+      {
+        title: "Are you sure to log out?",
+        text: "We still have many services to offer!",
+        icon: '../images/question-mark.png',
+        imageSize: '100x100',
+        buttons: ["Cancel", "Log out"],
+  })
+  .then((okay) => {
+    if (okay) {
+      window.location.href = "../index.php";
+      <?php
+      //unset($_SESSION);
+      session_destroy();
+      //header("Location: ../index.php");
+      ?>}
+      }
+    );
+  }
 </script>
 
   </body>
 </html>
-<?php } else header ("Location: ../index.php") ?>
+<?php 
+
+} //else header ("Location: ../index.php") ?>
