@@ -3,8 +3,8 @@
 session_start();
 include "config.php";
 
-if(isset($_SESSION['admin_login'])){
-  header("Location: manage.php");
+if(!isset($_SESSION['admin_login']) && empty($_SESSION['admin_login'])){
+  header ("Location: ../index.php");
 }
 
 $_SESSION['admin_login'];
