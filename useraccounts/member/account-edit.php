@@ -30,10 +30,14 @@ if(isset($_POST['update'])){
           header('Location: account.php');
         } */
 
-        $sql = "UPDATE user_clients SET firstname='$firstname', lastname='$lastname', email='$email', password='$password', phone='$phone', gender='$gender', address='$address' WHERE email = '$email' LIMIT 1";
+        $sql = "UPDATE user_clients SET firstname='$firstname', lastname='$lastname', email='$email', password='$password', phone='$phone', gender='$gender', address='$address' WHERE email = '$email'";
         $sql2 = "UPDATE users SET firstname='$firstname', lastname='$lastname', email='$email', password='$password' WHERE email = '$email'";
+        $sql3 = "UPDATE appointments SET firstname='$firstname', lastname='$lastname', email='$email', gender='$gender' WHERE email = '$email'"; 
+        $sql4 = "UPDATE patient_records SET firstname='$firstname', lastname='$lastname', email='$email', gender='$gender' WHERE email = '$email'";
         $result =  mysqli_query($conn, $sql2);
-            $result2 = mysqli_query($conn, $sql);
+        $result2 = mysqli_query($conn, $sql);
+        $result3 = mysqli_query($conn, $sql3);
+        $result4 = mysqli_query($conn, $sql4);
             /*if($conn->query($sql)===TRUE){
               $result;
               $_SESSION['userlogin'] =$email;
@@ -49,6 +53,8 @@ if(isset($_POST['update'])){
 
             if ($result2){
               $result;
+              $result3;
+              $result4;
               $_SESSION['userlogin'] =$email;
               $_SESSION['email'] =$email;
               $_SESSION['firstname']=$firstname;
