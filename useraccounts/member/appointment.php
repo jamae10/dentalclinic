@@ -133,15 +133,15 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
           
 					<div class="col-md-7 col-md-offset-1">
 						<div class="booking-form">
-							<form >
+							<form  role = "form" method="post">
 								<div class="form-group">
 									<div class="form-checkbox">
 									<label for="roundtrip">
-											<input name="appointment_type" value="online" type="radio"  id="roundtrip" name="flight-type">
+											<input name="appointment_type" value="Online" type="radio"  id="roundtrip" name="flight-type">
 											<span></span>Online Appointment
 										</label>
 										<label for="one-way">
-											<input name="appointment_type" value="onsite" id="one-way" type="radio" name="flight-type">
+											<input name="appointment_type" value="On-Site" id="one-way" type="radio" name="flight-type">
 											<span></span>On-Site Appointment
 										</label>
 									</div>
@@ -196,7 +196,7 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
 									</div>
 								</div>
 								<div class="form-btn">
-								<button type="button" class ="submit-btn">Request Appointment</button>
+								<button id="btn-submit" type="button" class ="submit-btn">Request Appointment</button>
 								</div>
 							</form>
 						</div>
@@ -307,80 +307,74 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="../js/google-map.js"></script>
   <script src="../js/main.js"></script>
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+ 
 <!-- REVIEW DETAILS PROMPT -->
 
 <script>
- //ORIGINAL
-document.querySelector('.submit-btn').addEventListener('click', danger);
-
-function danger() {
-  swal(
-    {
-      title: "Review Details:",
-      text: "Patient's Name:\n Service: \n Preffered Date:\n Preffered Time: \n Type: \n Doctor: ",
-      icon: '../images/dentist-icon.png',
-      imageSize: '100x100',
-      buttons: ["Back", "OK"],
-})
-      .then((willDelete) => {
-  if (willDelete) {
-
-    swal("Done! Please wait for an email confirmation.", {
-      icon: "success",
-    });
-  } else {
-    swal("You can still edit your input!");
-  }
-    }
-  );
-} 
-
-// NOT WORKING 
 /*
-$('.submit-btn').on('click', danger){
-  function danger(){
-  var fullname = $('#fullname').val();
-  var sevice = $('#sevice').val();
-  var date = $('#date').val();
-  var time = $('#time').val();
-  var concern = $('#concern').val();
-  var doctor = $('#doctor').val();
-  //e.preventDefault();
+  $('#btn-submit').on('click', function(e){
 
-  swal({
-      title: "Review Details:",
-      text: "Patient's Name:\n Service: \n Preffered Date:\n Preffered Time: \n Type: \n Doctor: ",
+    Swal.fire({
+      title: 'Review Details:',
+      text: "You won't be able to revert this!",
       icon: '../images/dentist-icon.png',
-      imageSize: '100x100',
-      buttons: ["Back", "OK"],
-  })
-    .then(willDelete)=>{
-      if(willDelete){
-
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        )
+      }
+    })
+  });*/
+  </script>
+  <script src="../sweetalert/jquery-3.6.0.min.js"></script>
+   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script>
+  $('#btn-submit').on('click',function(e) { 
+    var ele = document.getElementsByName('appointment_type');
+    var type;            
+            for(i = 0; i < ele.length; i++) {
+                if(ele[i].checked)
+               type = ele[i].value;
+            }
+    var fullname = $('#fullname').val();
+    var service = $('#service').val();
+    var date = $('#date').val();
+    var time = $('#time').val();
+    var concern = $('#concern').val();
+    var doctor = $('#doctor').val();
+    swal({
+      title: "Are you sure?",
+      text: "Patient's Name:" + fullname +"\nService: " + service +"\nPreffered Date: "+ date+ "\nPreffered Time: " + time + "\nType: "+ type+ "\nConcern: "+ concern+"\nDoctor: " +doctor,
+      icon: 'dentist-icon.png',
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
         $.ajax({
-          type: 'POST',
-          url: 'proccess-appointment.php',
-          data: {fullname: fullname, sevice: sevice,date: date,time: time,concern: concern,doctor: doctor},
+          type: "POST",
+          url: "process-appointment.php",
+          data: { 'fullname': fullname, 'service': service, 'date': date, 'time': time, 'concern': concern, 'doctor': doctor, 'type': type},
+          cache: false,
+        })
+        swal("<?php echo $_SESSION['status_text'] ?>", {
+          icon: "<?php echo $_SESSION['status'] ?>",
         });
-
-        swal("<?php //echo $_SESSION['message']; ?>", {
-        icon: "success",
+      } 
+      else {
+        swal("You can still edit your input!");
+      }
     });
-      }
-      else{
-        $.ajax({
-          type: 'POST',
-          url: 'proccess-appointment.php',
-          data: {fullname: fullname, sevice: sevice,date: date,time: time,concern: concern,doctor: doctor},
-        });
-        swal("<?php //echo $_SESSION['message']; ?>");
-      }
-    }
-  }
-}*/
-
+    e.preventDefault(); 
+  });
 
 </script>
 

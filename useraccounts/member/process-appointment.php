@@ -2,16 +2,14 @@
 
 session_start();
 include "config.php";
-
-if(isset($_POST)){
     function validate($data){
         $data = trim($data);
         $data = stripslashes($data);
         $data = htmlspecialchars($data);
         return $data;
       }
-    
-      $email = validate($_SESSION['userlogin']);
+      $uuid = validate($_SESSION['uuid']);
+      $email = validate($_SESSION['email']);
       $firstname = validate($_SESSION['firstname']);
       $lastname = validate($_SESSION['lastname']);
       $gender = validate($_SESSION['gender']);
@@ -21,19 +19,22 @@ if(isset($_POST)){
       $time = validate($_POST['time']);
       $concern = validate($_POST['concern']);
       $doctor = validate($_POST['doctor']);
-      $remarks = 'PENDING';
+      $type = validate($_POST['type']);
+      $remarks = "pending";
 
-    $sql = "INSERT INTO appointments(firstname,lastname, email, gender, service, date, time, concern, doctor, remarks)
-    VALUES('$firstname', '$lastname', '$email', '$gender', '$service', '$date', '$time', '$concern', '$doctor', '$remarks', )";
+    $sql = "INSERT INTO appointments(UUID, firstname, lastname, email, gender,  consultation_type, service, date, time, concern, doctor, remarks)
+    VALUES('$uuid', '$firstname', '$lastname', '$email', '$gender','$type', '$service', '$date', '$time', '$concern', '$doctor', '$remarks' )";
     $result = mysqli_query($conn, $sql);
-
+    
     if($result){
-        $_SESSION['message'] =  "Done! Please wait for an email confirmation";
+        $_SESSION['status'] =  'success';
+        $_SESSION['status_text'] =  "Done! Please wait for an email confirmation";
     }
     else{
-        $_SESSION['message'] =  "You can still edit your input ";
+        $_SESSION['status'] =  'error';
+        $_SESSION['status_text'] =  "Oops, your request was not saved.";
     }
-}
+
 mysqli_close($conn);
  
 

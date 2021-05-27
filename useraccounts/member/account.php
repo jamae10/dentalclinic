@@ -139,7 +139,7 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
                               <div class="modal-content">
                               <div class="modal-body">
                               <button data-dismiss="modal" class="close">&times;</button>
-                              <h4>Edit Profile</h4>
+                              <h4 >Edit Profile</h4>
                               <form action = "account-edit.php" method="POST">
                                 <?php 
                                   //if(isset($_SESSION['status']) && $_SESSION['status'] !=''){
