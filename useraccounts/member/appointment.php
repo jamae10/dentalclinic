@@ -315,6 +315,7 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
   <script src="../sweetalert/sweetalert.js"></script>
   <script src="../sweetalert/sweetalert.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 <!--<script>
 
   $('#btn-submit').on('click', function(e){
@@ -338,7 +339,8 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
     })
   });
   </script>-->
-  <script>
+
+<script>
   $('#btn-submit').on('click',function(e) { 
     var ele = document.getElementsByName('appointment_type');
     var type;            
@@ -367,9 +369,12 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
           data: { 'fullname': fullname, 'service': service, 'date': date, 'time': time, 'concern': concern, 'doctor': doctor, 'type': type},
           cache: false,
         })
-        swal("<?php echo $_SESSION['status_text'] ?>", {
-          icon: "<?php echo $_SESSION['status'] ?>",
-        });
+        swal({
+							title:"<?php echo $_SESSION['status_title']; ?>",
+							text: "<?php echo $_SESSION['status_text']; ?>",
+							icon: "<?php echo $_SESSION['status'];?>",
+							button: "Ok",
+						});
       } 
       else {
         swal("You can still edit your input!");
