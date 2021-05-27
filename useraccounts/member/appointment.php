@@ -310,12 +310,16 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
  
 <!-- REVIEW DETAILS PROMPT -->
+<script src="../sweetalert/jquery-3.6.0.min.js"></script>
+<script src="../sweetalert2.all.min.js"></script>
+  <script src="../sweetalert/sweetalert.js"></script>
+  <script src="../sweetalert/sweetalert.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<!--<script>
 
-<script>
-/*
   $('#btn-submit').on('click', function(e){
 
-    Swal.fire({
+    swal({
       title: 'Review Details:',
       text: "You won't be able to revert this!",
       icon: '../images/dentist-icon.png',
@@ -325,17 +329,15 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire(
+        swal(
           'Deleted!',
           'Your file has been deleted.',
           'success'
         )
       }
     })
-  });*/
-  </script>
-  <script src="../sweetalert/jquery-3.6.0.min.js"></script>
-   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  });
+  </script>-->
   <script>
   $('#btn-submit').on('click',function(e) { 
     var ele = document.getElementsByName('appointment_type');
