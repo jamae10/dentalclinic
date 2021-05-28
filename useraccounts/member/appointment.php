@@ -316,8 +316,8 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
   <script src="../sweetalert/sweetalert.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
+<!-- Request Appointment Modal - TESTING  -->
 <!--<script>
-
   $('#btn-submit').on('click', function(e){
 
     swal({
@@ -339,7 +339,10 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
     })
   });
   </script>-->
+<!-- Request Appointment Modal - TESTING - End  -->
 
+
+<!-- Request Appointment Modal -->
 <script>
   $('#btn-submit').on('click',function(e) { 
     var ele = document.getElementsByName('appointment_type');
@@ -384,6 +387,7 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
   });
 
 </script>
+<!-- Request Appointment Modal End -->
 
 <!-- Are you sure to log  out? -->
 
