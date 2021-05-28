@@ -150,13 +150,13 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
 									<div class="col-md-6">
 										<div class="form-group">
 											<span class="form-label">Patient's Name</span>
-											<input name = "fullname"  id="fullname" class="form-control" type="text" placeholder="Full Name" required/>
+											<input name = "fullname"  id="fullname" class="form-control" type="text" placeholder="Full Name" >
 										</div>
 									</div>
 									<div class="col-md-6">
 										<div class="form-group">
 											<span class="form-label">Service Required</span>
-											<input name = "service"  id="service"  class="form-control" type="text" placeholder="Teeth Cleaning" required/>
+											<input name = "service"  id="service"  class="form-control" type="text" placeholder="Teeth Cleaning" >
 										</div>
 									</div>
 								</div>
@@ -164,13 +164,13 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
 									<div class="col-md-6">
 										<div class="form-group">
 											<span class="form-label">Preferred Date</span>
-											<input name = "date"  id="date" class="form-control" type="date" required/>
+											<input name = "date"  id="date" class="form-control" type="date" >
 										</div>
 									</div>
 									<div class="col-md-6">
 										<div class="form-group">
 											<span class="form-label">Preferred Time</span>
-											<input name = "time"  id="time" class="form-control" type="time" required/>
+											<input name = "time"  id="time" class="form-control" type="time" >
 										</div>
 									</div>
 								</div>
@@ -178,7 +178,7 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
 									<div class="col-md-8">
 										<div class="form-group">
                     <span class="form-label">Concern</span>
-											<input name= "concern" id="concern"  class="form-control" type="text" placeholder="What is your concern?" required/>
+											<input name= "concern" id="concern"  class="form-control" type="text" placeholder="What is your concern?" >
 											<span class="select-arrow"></span>
 										</div>
 									</div>
@@ -376,32 +376,20 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
             'concern': concern, 
             'doctor': doctor, 
             'type': type },
-            cache: false,
+          cache: false,
         });
         <?php if(isset($_SESSION['success']) && $_SESSION['success'] !=''){ ?>
-          swal({
-							title:"Success!",
-							text: "Done! Please wait for an email confirmation",
-							icon: 'success',
-							button: "Ok",
-						});
+          swal("Success!", "Done! Please wait for an email confirmation", "success");
         
-        <?php } else if(isset($_SESSION['fail']) && $_SESSION['fail'] !=''){ ?>
-          swal({
-              title:"Failed!",
-							text: "Email not sent! Please try again.",
-							icon: 'error',
-							button: "Ok",
-						});
-        }
-        <?php } else if(isset($_SESSION['error']) && $_SESSION['error'] !=''){ ?>
-          swal({
-              title:"Error!",
-							text: "Oops, your request was not saved.",
-							icon: 'error',
-							button: "Ok",
-						});
-       <?php } ?>
+        <?php unset($_SESSION['fail']);
+      } else if(isset($_SESSION['fail']) && $_SESSION['fail'] !=''){ ?>
+          swal("Failed!", "Email not sent. Please try again", "Error");
+        
+        <?php unset($_SESSION['success']);
+      } else if(isset($_SESSION['error']) && $_SESSION['error'] !=''){ ?>
+          swal("Error!", "Oops, your request was not saved.", "Error");
+       <?php unset($_SESSION['error']);
+      }  ?>
       } 
       else {
         swal("You can still edit your input!");
