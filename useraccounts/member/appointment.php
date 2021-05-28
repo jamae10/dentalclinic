@@ -150,13 +150,13 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
 									<div class="col-md-6">
 										<div class="form-group">
 											<span class="form-label">Patient's Name</span>
-											<input name = "fullname"  id="fullname" class="form-control" type="text" placeholder="Full Name">
+											<input name = "fullname"  id="fullname" class="form-control" type="text" placeholder="Full Name" required/>
 										</div>
 									</div>
 									<div class="col-md-6">
 										<div class="form-group">
 											<span class="form-label">Service Required</span>
-											<input name = "service"  id="service"  class="form-control" type="text" placeholder="Teeth Cleaning">
+											<input name = "service"  id="service"  class="form-control" type="text" placeholder="Teeth Cleaning" required/>
 										</div>
 									</div>
 								</div>
@@ -164,13 +164,13 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
 									<div class="col-md-6">
 										<div class="form-group">
 											<span class="form-label">Preferred Date</span>
-											<input name = "date"  id="date" class="form-control" type="date" required>
+											<input name = "date"  id="date" class="form-control" type="date" required/>
 										</div>
 									</div>
 									<div class="col-md-6">
 										<div class="form-group">
 											<span class="form-label">Preferred Time</span>
-											<input name = "time"  id="time" class="form-control" type="time" required>
+											<input name = "time"  id="time" class="form-control" type="time" required/>
 										</div>
 									</div>
 								</div>
@@ -178,7 +178,7 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
 									<div class="col-md-8">
 										<div class="form-group">
                     <span class="form-label">Concern</span>
-											<input name= "concern" id="concern"  class="form-control" type="text" placeholder="What is your concern?">
+											<input name= "concern" id="concern"  class="form-control" type="text" placeholder="What is your concern?" required/>
 											<span class="select-arrow"></span>
 										</div>
 									</div>
@@ -324,17 +324,14 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
       title: 'Review Details:',
       text: "You won't be able to revert this!",
       icon: '../images/dentist-icon.png',
-      showCancelButton: true,
+      //showCancelButton: true,
+      buttons: ["Oh noez!", "Aww yiss!"],
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
-        swal(
-          'Deleted!',
-          'Your file has been deleted.',
-          'success'
-        )
+        swal("Good job!", "You clicked the button!", "success");
       }
     })
   });
@@ -345,6 +342,7 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
 <!-- Request Appointment Modal -->
 <script>
   $('#btn-submit').on('click',function(e) { 
+    e.preventDefault(); 
     var ele = document.getElementsByName('appointment_type');
     var type;            
             for(i = 0; i < ele.length; i++) {
@@ -357,36 +355,61 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
     var time = $('#time').val();
     var concern = $('#concern').val();
     var doctor = $('#doctor').val();
+
     swal({
-      title: "Are you sure?",
-      text: "Patient's Name:" + fullname +"\nService: " + service +"\nPreffered Date: "+ date+ "\nPreffered Time: " + time + "\nType: "+ type+ "\nConcern: "+ concern+"\nDoctor: " +doctor,
+      title: "Review Details:",
+      text: "Patient's Name: \t\t" + fullname +"\nService: \t\t" + service +"\nPreffered Date: \t\t"+ date+ "\nPreffered Time: \t\t" + time + "\nType: \t\t"+ type+ "\nConcern: \t\t"+ concern+"\nDoctor: \t\t" +doctor,
       icon: 'dentist-icon.png',
-      buttons: true,
-      dangerMode: true,
+      buttons: ["Cancel", "Submit"],
+      dangerMode: false,
     })
     .then((willDelete) => {
       if (willDelete) {
         $.ajax({
           type: "POST",
           url: "process-appointment.php",
-          data: { 'fullname': fullname, 'service': service, 'date': date, 'time': time, 'concern': concern, 'doctor': doctor, 'type': type},
-          cache: false,
-        })
-        swal({
-							title:"<?php echo $_SESSION['status_title']; ?>",
-							text: "<?php echo $_SESSION['status_text']; ?>",
-							icon: "<?php echo $_SESSION['status'];?>",
+          data: { 
+            'fullname': fullname, 
+            'service': service, 
+            'date': date, 
+            'time': time, 
+            'concern': concern, 
+            'doctor': doctor, 
+            'type': type },
+            cache: false,
+        });
+        <?php if(isset($_SESSION['success']) && $_SESSION['success'] !=''){ ?>
+          swal({
+							title:"Success!",
+							text: "Done! Please wait for an email confirmation",
+							icon: 'success',
 							button: "Ok",
 						});
+        
+        <?php } else if(isset($_SESSION['fail']) && $_SESSION['fail'] !=''){ ?>
+          swal({
+              title:"Failed!",
+							text: "Email not sent! Please try again.",
+							icon: 'error',
+							button: "Ok",
+						});
+        }
+        <?php } else if(isset($_SESSION['error']) && $_SESSION['error'] !=''){ ?>
+          swal({
+              title:"Error!",
+							text: "Oops, your request was not saved.",
+							icon: 'error',
+							button: "Ok",
+						});
+       <?php } ?>
       } 
       else {
         swal("You can still edit your input!");
       }
     });
-    e.preventDefault(); 
   });
 
-</script>
+</script> 
 <!-- Request Appointment Modal End -->
 
 <!-- Are you sure to log  out? -->

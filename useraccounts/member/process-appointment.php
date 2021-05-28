@@ -36,20 +36,15 @@ include "config.php";
         $message = "Hello World\n First Mail";
         $mail_sent = mail($to, $subject, $message, $headers);
             if($mail_sent){
-                $_SESSION['status_title'] =  'Success!';
-                $_SESSION['status'] =  'success';
-                $_SESSION['status_text'] =  "Done! Please wait for an email confirmation";
+                $_SESSION['success'] =  'Success!';
+
             }
             else{
-                $_SESSION['status_title'] =  'Error!';
-                $_SESSION['status'] =  'error';
-                $_SESSION['status_text'] =  "Mail failed!";
+                $_SESSION['fail'] =  'Failed!';
             }
     }
     else{
-        $_SESSION['status_title'] =  'Error!';
-        $_SESSION['status'] =  'error';
-        $_SESSION['status_text'] =  "Oops, your request was not saved.";
+        $_SESSION['error'] =  'Error!';
     }
 
 mysqli_close($conn);
