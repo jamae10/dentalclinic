@@ -19,10 +19,43 @@
 		crossorigin="anonymous"
 		/>
 		<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-        <link rel="stylesheet" href="registration-styles.css">
+        <link rel="stylesheet" href="login-design.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
         <title>Dental Clinic</title>
     </head>
+	<style>
+		.random-box{
+	padding:21px;
+}
+		
+
+/* Appointment Page Responsinve */
+@media all and (max-width: 400px) {
+.container {
+	height: 570px;
+}
+
+.btn2 {
+	border-radius: 20px;
+	border: 1px solid #0A224E;
+	background-color: white;
+	color: #0A224E;
+	font-size: 12px;
+	padding: 11px 44px;
+	font-weight: bold;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+}
+
+.form-container form{
+	height: 93%;
+
+}
+
+}
+		</style>
+	
 	<body>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 		<div class="container" id="container">
@@ -43,20 +76,12 @@
 					unset($_SESSION['status']);
 				}
 				?>
+				
 				<h1>Sign in</h1>
 				<br>
 				<input name="username" id="username" type="email" placeholder="Email" required />
 				<input name="password2" id="password2" type="password" placeholder="Password" required />
-				<label class="usertype-text">Select User Type:</label>
-				<div class="selectdiv ">
-				<label>
-					<select name="role">
-						<option selected value="user" name = "user">User</option>
-						<option value="admin" name ="admin">Admin</option>
-					</select>
-				</label>
-				</div>
-				<a href="#">Forgot your password?</a>
+				<a href="login-admin.php">Admin account? Log-in here</a>
 				<button id="login">Sign In</button>
 			</form>
 		</div>
@@ -78,14 +103,21 @@
 					unset($_SESSION['status']);
 				}
 				?>	
+				<div class="random-box">
+			</div>
 				<h1>Create Account</h1>
 				<span>Fill up the form with correct values</span>
+				<br>
 				<input type="text" id="firstname" name="firstname" placeholder="First Name" required/>
 				<input type="text" id="lastname" name="lastname" placeholder="Last Name" required/>
 				<input type="email" id="email" name="email" placeholder="Email" required/>
 				<input type="password" id="password" name="password" placeholder="Password" required/> <br>
 				<span>By creating an account you agree to our <br><a href="terms.html">Terms & Conditions</a></span> <br>
 				<button name="create" type="submit" id ="register">Sign Up</button>
+				<div class="hide">
+					<br>
+				<p hidden><a href = "login.php" class ="btn2">Sign in</a><p>
+	</div>
 			</form>
 			<form action="process.php" method="post">
 			<?php 
@@ -103,6 +135,8 @@
 					unset($_SESSION['status']);
 				}
 				?>	
+<div class="remove">
+			<form action="#">
 				<h1>Create Account</h1>
 				<span>Fill up the form with correct values</span>
 				<input type="text" id="firstname" name="firstname" placeholder="First Name" required/>
@@ -111,6 +145,7 @@
 				<input type="password" id="password" name="password" placeholder="Password" required/> <br>
 				<span>By creating an account you agree to our <br><a href="terms.html">Terms & Conditions</a></span> <br>
 				<button name="create" type="submit" id ="register">Sign Up</button>
+</div>
 			</form>
 		</div>
 

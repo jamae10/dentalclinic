@@ -158,13 +158,13 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
                                     unset($_SESSION['status_code']);
                                   }*/
                                   ?>
-                                <input type="text" name="firstname" class="username form-control" placeholder=" Firstname"/>
-                                <input type="text" name="lastname" class="username form-control" placeholder=" Lastname"/>
-                                <input type="email" name="email" class="password form-control" placeholder=" Email"/>
-                                <input type="password" name="password" class="password form-control" placeholder=" Password"/>
-                                <input type="text" name="phone" class="username form-control" placeholder=" Phone"/>
-                                <input type="text" name="gender" class="username form-control" placeholder=" Gender"/>
-                                <input type="text" name="address" class="username form-control" placeholder=" Address"/>
+                                <input type="text" name="firstname" class="username form-control" placeholder=" Firstname" value = "<?php echo $_SESSION['firstname'] ?? "";?>"/>
+                                <input type="text" name="lastname" class="username form-control" placeholder=" Lastname" value = "<?php echo $_SESSION['lastname'] ?? "";?>"/>
+                                <input type="email" name="email" class="password form-control" placeholder=" Email" value = "<?php echo $_SESSION['email'] ?? "";?>"/>
+                                <input type="password" name="password" class="password form-control" placeholder=" Password" value = "<?php echo $_SESSION['password'] ?? "";?>"/>
+                                <input type="text" name="phone" class="username form-control" placeholder=" Phone" value = "<?php echo $_SESSION['phone'] ?? "";?>"/>
+                                <input type="text" name="gender" class="username form-control" placeholder=" Gender" value = "<?php echo $_SESSION['gender'] ?? "";?>"/>
+                                <input type="text" name="address" class="username form-control" placeholder=" Address" value = "<?php echo $_SESSION['address'] ?? "";?>"/>
                                 <input class="btn login" name="update" type="submit" value="Done" />
                               </form>
                               </div>

@@ -54,7 +54,7 @@ button {
 	color: #FFFFFF;
 	font-size: 12px;
 	font-weight: bold;
-	padding: 12px 45px;
+	padding: 12px 57px;
 	letter-spacing: 1px;
 	text-transform: uppercase;
 	transition: transform 80ms ease-in;
@@ -92,27 +92,17 @@ input {
 	width: 100%;
 }
 
-.container {
-	background-color: #fff;
-	border-radius: 10px;
-  	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
-			0 10px 10px rgba(0,0,0,0.22);
-	position: relative;
-	overflow: hidden;
-	width: 768px;
-	max-width: 100%;
-	min-height: 480px;
-}
 
 .form-container {
 	position: absolute;
 	top: 0;
-	height: 100%;
+	height: 104%;
 	transition: all 0.6s ease-in-out;
 }
-
+/*login box */ 
 .form-container form{
-	background: #fff;
+   /* margin-left: 50px; */
+	background: white;
 	display: flex;
 	flex-direction: column;
 	padding: 0 50px;
@@ -251,64 +241,163 @@ footer {
     text-align: center;
     z-index: 999;
 }
+.divider {
+	padding:10px;
+}
+
+.selectdiv select{
+	background-color: #15459f;
+  color: white;
+  padding: 1px;
+  width: 135px;
+  height: 30px;
+  border: none;
+  font-size: 17px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+  -webkit-appearance: button;
+  appearance: button;
+  outline: none;
+
+}
+
+.random-box{
+	padding:15px;
+}
+	
+
 @media only screen and (max-width: 767px){
 	body{
 		background-image: url(images/bg_mobile_registration.jpg);
 	}
 }
 
-.selectdiv {
+	h1 {
+		font-weight: bold;
+		font-size:30px;
+		
+	}
+	
+	.logo-img2 {
+		display: none;
+	}
+
+	.letter h1 {
+		display: none;
+	}
+
+	.letter p {
+		display: none;
+	}
+
+	.ghost {
+		display: none;
+	}
+
+.overlay{
+	display: none;
+}
+
+.form-container form{
+   margin-left: 45px;
+	background: white;
+	display: flex;
+	flex-direction: column;
+	padding: 0 0.1px;
+	height: 98%;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+
+.sign-in-container {
+	width: 85%;
+}
+
+.container {
+	background-color: #fff;
+	border-radius: 10px;
+  	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+			0 10px 10px rgba(0,0,0,0.22);
 	position: relative;
-	/*Don't really need this just for demo styling*/
-	
-	float: left;
-	min-width: 200px;
-	margin: 0px 0px;
-  }
-  
-  .selectdiv:after {
-	  content: '\f078';
-	  font: normal normal normal 16px/.95 FontAwesome;
-	  color: #0A224E;
-	  right: 5px;
-	  top: 6px;
-	  height: 18px;
-	  padding: 10px 0px 0px 3px;
-	  border-left: 1px solid #0A224E;
-	  position: absolute;
-	  pointer-events: none;
-  }
-  
-  /* IE11 hide native button (thanks Matt!) */
-  select::-ms-expand {
-  display: none;
-  }
-  
-  .selectdiv select {
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	appearance: none;
-	/* Add some styling */
-	
-	display: block;
-	width: 70%;
-	max-width: 320px;
-	height: 30px;
-	float: right;
-	margin: 5px 0px;
-	padding: 0px 20px;
-	font-size: 15px;
-	line-height: 1.75;
-	color: #333;
-	background-color: #ffffff;
-	background-image: none;
+	overflow: hidden;
+	width: 380px;
+	max-width: 100%;
+	min-height: 480px;
+}
+
+@media all and (max-width: 400px) {
+    .container {
+        width: 300px;
+    }
+}
+
+.btn2 {
+	border-radius: 20px;
 	border: 1px solid #0A224E;
-	-ms-word-break: normal;
-	word-break: normal;
-  }
-  .usertype-text{
-	  margin-left: 20px;
-	  font-size: 13px;
-  }
-  
- 
+	background-color: white;
+	color: #0A224E;
+	font-size: 12px;
+	padding: 12px 40px;
+	font-weight: bold;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+}
+
+a {
+	color: #1923B0;
+	font-size: 12px;
+	text-decoration: none;
+	margin: 20px 0;
+	outline: none;
+}
+
+
+.hide p {
+	display: contents;
+}
+
+a:focus {
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+	background:black;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+}
+
+a.user-link:focus {
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+	background:lightblue;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+}
+
+.btn2:focus {
+	color: white;
+}
+
+.remove {
+    display: none;
+}
+
+.divider {
+	padding:0px;
+}
+
+.logo-image {
+    position:absolute;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    z-index:9;
+    margin-top:-230px;
+}
+
+p {
+display: contents;
+}
+.random-box{
+	display:none;
+}
+		

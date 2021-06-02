@@ -107,6 +107,7 @@ if(!isset($_SESSION['admin_login']) && empty($_SESSION['admin_login'])){
           <div class="col-md-9 ftco-animate text-center">
             <h1 class="mb-2 bread">Patient Records</h1>
             <p class="breadcrumbs"><span class="mr-2"><a href="index-admin.php">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Patient Records <i class="ion-ios-arrow-forward"></i></span></p>
+            <button onclick="window.print()" class="btn btn-secondary" ><i class="fas fa-print"></i> Print</button>
           </div>
         </div>
       </div>

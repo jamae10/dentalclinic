@@ -30,9 +30,15 @@ if(!isset($_SESSION['admin_login']) && empty($_SESSION['admin_login'])){
     <link rel="stylesheet" href="../css/jquery.timepicker.css">
     <link rel="stylesheet" href="../css/flaticon.css">
     <link rel="stylesheet" href="../css/icomoon.css">
+    <link rel="stylesheet" href="../css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="../css/jquery.timepicker.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <link href="../style/style.css" rel="stylesheet" type="text/css"/>
     <link href="../style/style2.css" rel="stylesheet" type="text/css"/>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
   </head>
   
@@ -83,6 +89,7 @@ if(!isset($_SESSION['admin_login']) && empty($_SESSION['admin_login'])){
 
         <!-- END ADMIN BUTTONS -->
 
+
         <div class="collapse navbar-collapse" id="ftco-nav">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item"><a href="index-admin.php" class="nav-link pl-0">Home</a></li>
@@ -96,6 +103,60 @@ if(!isset($_SESSION['admin_login']) && empty($_SESSION['admin_login'])){
     </nav>
 <!-- END MENU -->
 
+<!-- MODAL SEND EMAIL -->
+
+<div class="modal fade" tabindex="-1" role="dialog" id="modalSendEmail">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Email</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="sendMail.php" method="POST">
+      <?php 
+				if(isset($_SESSION['status_sendMail']) && $_SESSION['status_sendMail'] !=''){
+					?>
+					<script>
+						swal({
+							title:"<?php echo $_SESSION['status_sendMail']; ?>",
+							text: "<?php echo $_SESSION['status_text_sendMail']; ?>",
+							icon: "<?php echo $_SESSION['status_code_sendMail'];?>",
+							button: "Ok",
+						});
+					</script>
+				<?php
+					unset($_SESSION['status_sendMail']);
+				}
+				?>	
+        <div class="modal-body">
+        <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Recipient:</label>
+            <input type="text" class="form-control" id="recipient_name" name="recipient_name" required>
+            <div class="invalid-feedback">
+              Please enter the email address of recepient.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Message:</label>
+            <textarea class="form-control" id="message_text" name="message_text"required></textarea>
+            <div class="invalid-feedback">
+              Please enter a message.
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="submit" id="btnSubmitEmail" name="submitMail" class="btn btn-primary">Send Email</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- END MODAL SEND EMAIL -->
+
 <!-- BANNER -->
     <section class="hero-wrap hero-wrap-2" style="background-image: url('../images/bg_1.jpg');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
@@ -104,6 +165,8 @@ if(!isset($_SESSION['admin_login']) && empty($_SESSION['admin_login'])){
           <div class="col-md-9 ftco-animate text-center">
             <h1 class="mb-2 bread">Manage Appointments</h1>
             <p class="breadcrumbs"><span class="mr-2"><a href="index-admin.php">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Manage Appointments <i class="ion-ios-arrow-forward"></i></span></p>
+            <button type="button" id="btnSendEmail" class ="btn btn-success"><i class="fas fa-envelope"></i> Send Email </button>
+            <button onclick="window.print()" class="btn btn-secondary" ><i class="fas fa-print"></i> Print</button>
           </div>
         </div>
       </div>
@@ -115,12 +178,114 @@ if(!isset($_SESSION['admin_login']) && empty($_SESSION['admin_login'])){
 <button class="tablink" onclick="openPage('Contact', this, '#62a59e')"><i class="fas fa-hourglass-start"></i> Postponed Appointments</button>
 <button class="tablink" onclick="openPage('About', this, '#84d0b8')"><i class="fas fa-phone-slash"></i> Cancelled Appointments</button>
 
+
+<!-- Modal Form -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<div class="modal fade" tabindex="-1" id="editmodal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Information</h5>
+        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="updateCode.php" method="POST">
+      <?php 
+				if(isset($_SESSION['update_status']) && $_SESSION['update_status'] !=''){
+					?>
+					<script>
+						swal({
+							title:"<?php echo $_SESSION['update_status']; ?>",
+							text: "<?php echo $_SESSION['update_status_text']; ?>",
+							icon: "<?php echo $_SESSION['update_status_code'];?>",
+							button: "Ok",
+						});
+					</script>
+				<?php
+					unset($_SESSION['update_status']);
+				}
+				?>				
+      <div class="modal-body row g-3">
+
+        <div class="col-md-12">
+          <label for="appointmentID" class="form-label">Appointment ID</label>
+          <input id = "appointmentID" name="appointmentID" type="text" class="form-control" placeholder="Appointment ID" aria-label="Appointment ID" disabled>
+        </div>
+        <div class="col-md-6">
+          <input id = "firstname" name="firstname" type="text" class="form-control" placeholder="First name" aria-label="First name" >
+        </div>
+        <div class="col-md-6">
+          <input type="text" id = "lastname" name="lastname" class="form-control" placeholder="Last name" aria-label="Last name">
+        </div>
+        <div class="col-8">
+          <input id = "email" name="email" type ="email" class="form-control" placeholder="Email" aria-label="Email">
+        </div>
+        <div class="col-md-4">
+          <label for="gender" class="form-label">Gender</label>
+          <select id="gender" name="gender" class="form-select">
+            <option selected>Choose...</option>
+            <option>Male</option>
+            <option>Female</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+        <input id = "date" name="date" type="text" class="form-control" placeholder="Date" aria-label="Date">
+        </div>
+        <div class="col-md-4">
+        <input id = "time" name="time" type="text" class="form-control" placeholder="Time" aria-label="Time">
+        </div>
+        <div class="col-md-4">
+        <label for="type" class="form-label">Type</label>
+          <select id="type" name="type" class="form-select">
+            <option selected>Choose...</option>
+            <option>Online</option>
+            <option>On-Site</option>
+          </select>
+        </div>
+        <div class="col-md-6">
+        <input id = "service" name="service" type="text" class="form-control" placeholder="Service" aria-label="Service">
+        </div>
+        <div class="col-md-6">
+        <input id = "concern" name="concern" type="text" class="form-control" placeholder="Concern" aria-label="Concern">
+        </div>
+        <div class="col-md-6">
+        <label for="doctor" class="form-label">Doctor</label>
+          <select id="doctor" name="doctor" class="form-select">
+            <option selected>Choose...</option>
+            <option>Doctor Strange</option>
+            <option>Doctor Stone</option>
+            <option>Doctor Pepper</option>
+          </select>
+        </div>
+        <div class="col-md-6">
+        <label for="status" class="form-label">Status</label>
+          <select id="status" name="status" class="form-select">
+            <option selected>Choose...</option>
+            <option>Pending</option>
+            <option>Completed</option>
+            <option>Postponed</option>
+            <option>Cancelled</option>
+          </select>
+        </div>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary" name="updateData">Save changes</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<!-- End Modal Form -->
+
 <!-- PENDING -->
 <div id="Home" class="tabcontent">
 <?php
   include "config.php";
-  $remark = "pending";
-  $sql = "SELECT firstname, lastname, email, gender, consultation_type, service, date, time, concern, doctor
+  $remark = "Pending";
+  $sql = "SELECT appointment_id,firstname, lastname, email, gender, consultation_type, service, date, time, concern, doctor, remarks
   FROM appointments WHERE remarks = '$remark'";
   $result = mysqli_query($conn, $sql);
   $num = 1;
@@ -130,6 +295,7 @@ if(!isset($_SESSION['admin_login']) && empty($_SESSION['admin_login'])){
   <thead>
     <tr>
       <th scope="col">#</th>
+      <th scope="col">Appointment ID</th>
       <th scope="col">First Name</th>
       <th scope="col">Last Name</th>
       <th scope="col">Email</th>
@@ -140,6 +306,7 @@ if(!isset($_SESSION['admin_login']) && empty($_SESSION['admin_login'])){
       <th scope="col">Time</th>
       <th scope="col">Concern</th>
       <th scope="col">Doctor</th>
+      <th scope="col">Status</th>
       <th scope="col">Actions</th>
     </tr>
   </thead>
@@ -150,6 +317,7 @@ if(!isset($_SESSION['admin_login']) && empty($_SESSION['admin_login'])){
   <tbody>
     <tr>
       <td><?php echo $num; $num++; ?></td>
+      <td><?php echo $row['appointment_id'];  ?></td>
       <td><?php echo $row['firstname'];  ?></td>
       <td><?php echo $row['lastname'];?></td>
       <td><?php echo $row['email']; ?></td>
@@ -160,10 +328,10 @@ if(!isset($_SESSION['admin_login']) && empty($_SESSION['admin_login'])){
       <td><?php echo $row['time']; ?></td>
       <td><?php echo $row['concern']; ?></td>
       <td><?php echo $row['doctor']; ?></td>
+      <td><?php echo $row['remarks']; ?></td>
       <td>
-        <!--<a class="add" title="Add" data-toggle="tooltip"><i class="fa fa-user-plus"></i></a>-->
-        <a class="edit" title="Edit" data-toggle="tooltip"><i class="fa fa-edit"></i></a>
-        <a class="delete" title="Delete" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
+        <button type="button" id= "editbtn" class="btn btn-success editbtn"  title="Edit" ><i class="fa fa-edit"></i></button>
+        <button type="button" id= "deletebtn" class="btn btn-danger editbtn"  title="Delete" ><i class="fa fa-trash"></i></button>
       </td>
     </tr>
   </tbody>
@@ -181,8 +349,8 @@ if(!isset($_SESSION['admin_login']) && empty($_SESSION['admin_login'])){
 <div id="News" class="tabcontent">
 <?php
   include "config.php";
-  $remark = "complete";
-  $sql = "SELECT firstname, lastname, email, gender, consultation_type, service, date, time, concern, doctor
+  $remark = "Completed";
+  $sql = "SELECT firstname, lastname, email, gender, consultation_type, service, date, time, concern, doctor, remarks
   FROM appointments WHERE remarks = '$remark'";
   
   $result = mysqli_query($conn, $sql);
@@ -203,6 +371,7 @@ if(!isset($_SESSION['admin_login']) && empty($_SESSION['admin_login'])){
       <th scope="col">Time</th>
       <th scope="col">Concern</th>
       <th scope="col">Doctor</th>
+      <th scope="col">Status</th>
       <th scope="col">Action</th>
     </tr>
   </thead>
@@ -229,9 +398,10 @@ if(!isset($_SESSION['admin_login']) && empty($_SESSION['admin_login'])){
       <td><?php echo $row['time']; ?></td>
       <td><?php echo $row['concern']; ?></td>
       <td><?php echo $row['doctor']; ?></td>
+      <td><?php echo $row['remarks']; ?></td>
       <td>
         <!--<a class="add" title="Add" data-toggle="tooltip"><i class="fa fa-user-plus"></i></a>-->
-        <a class="edit" title="Edit" data-toggle="tooltip"><i class="fa fa-edit"></i></a>
+        <a href = "edit-action.php" class="edit" title="Edit" data-toggle="tooltip"><i class="fa fa-edit"></i></a>
         <a class="delete" title="Delete" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
       </td>
     </tr>
@@ -250,8 +420,8 @@ if(!isset($_SESSION['admin_login']) && empty($_SESSION['admin_login'])){
 <div id="Contact" class="tabcontent">
 <?php
   include "config.php";
-  $remark = "postponed";
-  $sql = "SELECT firstname, lastname, email, gender, consultation_type, service, date, time, concern, doctor
+  $remark = "Postponed";
+  $sql = "SELECT firstname, lastname, email, gender, consultation_type, service, date, time, concern, doctor, remarks
   FROM appointments WHERE remarks = '$remark'";
   $result = mysqli_query($conn, $sql);
   $num = 1;
@@ -270,6 +440,7 @@ if(!isset($_SESSION['admin_login']) && empty($_SESSION['admin_login'])){
       <th scope="col">Time</th>
       <th scope="col">Concern</th>
       <th scope="col">Doctor</th>
+      <th scope="col">Status</th>
       <th scope="col">Action</th>
     </tr>
   </thead>
@@ -290,6 +461,7 @@ if(!isset($_SESSION['admin_login']) && empty($_SESSION['admin_login'])){
       <td><?php echo $row['time']; ?></td>
       <td><?php echo $row['concern']; ?></td>
       <td><?php echo $row['doctor']; ?></td>
+      <td><?php echo $row['remarks']; ?></td>
       <td>
         <!--<a class="add" title="Add" data-toggle="tooltip"><i class="fa fa-user-plus"></i></a>-->
         <a class="edit" title="Edit" data-toggle="tooltip"><i class="fa fa-edit"></i></a>
@@ -312,8 +484,8 @@ if(!isset($_SESSION['admin_login']) && empty($_SESSION['admin_login'])){
 <div id="About" class="tabcontent">
 <?php
   include "config.php";
-  $remark = "cancelled";
-  $sql = "SELECT firstname, lastname, email, gender, consultation_type, service, date, time, concern, doctor
+  $remark = "Cancelled";
+  $sql = "SELECT firstname, lastname, email, gender, consultation_type, service, date, time, concern, doctor, remarks
   FROM appointments WHERE remarks = '$remark'";
   $result = mysqli_query($conn, $sql);
   $num = 1;
@@ -332,6 +504,7 @@ if(!isset($_SESSION['admin_login']) && empty($_SESSION['admin_login'])){
       <th scope="col">Time</th>
       <th scope="col">Concern</th>
       <th scope="col">Doctor</th>
+      <th scope="col">Status</th>
       <th scope="col">Action</th>
     </tr>
   </thead>
@@ -352,6 +525,7 @@ if(!isset($_SESSION['admin_login']) && empty($_SESSION['admin_login'])){
       <td><?php echo $row['time']; ?></td>
       <td><?php echo $row['concern']; ?></td>
       <td><?php echo $row['doctor']; ?></td>
+      <td><?php echo $row['remarks']; ?></td>
       <td>
         <!--<a class="add" title="Add" data-toggle="tooltip"><i class="fa fa-user-plus"></i></a>-->
         <a class="edit" title="Edit" data-toggle="tooltip"><i class="fa fa-edit"></i></a>
@@ -389,6 +563,8 @@ document.getElementById("defaultOpen").click();
 </script>
    
 <!-- END TABLE TABS -->
+
+
 
 <!-- BODY CONTENT -->
 
@@ -524,5 +700,40 @@ function danger() {
 }
 </script>
 
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script>
+  $('#editbtn').on('click', function(){
+    $('#editmodal').modal('show');
+
+    $tr = $(this).closest('tr');
+
+    var data = $tr.children("td").map(function(){
+      return $(this).text();
+    }).get();
+
+    console.log(data);
+    $('#appointmentID').val(data[1]);
+    $('#firstname').val(data[2]);
+    $('#lastname').val(data[3]);
+    $('#email').val(data[4]);
+    $('#gender').val(data[5]);
+    $('#date').val(data[8]);
+    $('#time').val(data[9]);
+    $('#type').val(data[6]);
+    $('#service').val(data[7]);
+    $('#concern').val(data[10]);
+    $('#doctor').val(data[11]);
+    $('#status').val(data[12]);
+  });
+</script>
+
+<script>
+ $('#btnSendEmail').on('click', function(){
+  $('#modalSendEmail').modal('show');
+
+ });
+</script>
   </body>
 </html>

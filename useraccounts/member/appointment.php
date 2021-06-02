@@ -150,13 +150,19 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
 									<div class="col-md-6">
 										<div class="form-group">
 											<span class="form-label">Patient's Name</span>
-											<input name = "fullname"  id="fullname" class="form-control" type="text" placeholder="Full Name" >
+											<input name = "fullname"  id="fullname" class="form-control" type="text" placeholder="Full Name" value="<?php echo $_SESSION['firstname']?? "";?> <?php echo $_SESSION['lastname']?? "";?>">
 										</div>
 									</div>
 									<div class="col-md-6">
 										<div class="form-group">
 											<span class="form-label">Service Required</span>
-											<input name = "service"  id="service"  class="form-control" type="text" placeholder="Teeth Cleaning" >
+											<select name = "service" id="service" class="form-control">
+												<option name="service1">General Dentistry</option>
+												<option name="service2">Orthodontics</option>
+												<option name="service3">Cosmetic Dentistry</option>
+                        <option name="service4">Dental Implant</option>
+											</select>
+											<span class="select-arrow"></span>
 										</div>
 									</div>
 								</div>
@@ -169,8 +175,12 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
 									</div>
 									<div class="col-md-6">
 										<div class="form-group">
-											<span class="form-label">Preferred Time</span>
-											<input name = "time"  id="time" class="form-control" type="time" >
+                    <span class="form-label">Preferred Session</span>
+											<select name = "time" id="time" class="form-control">
+												<option name="time1">Morning</option>
+												<option name="time2">Afternoon</option>
+											</select>
+											<span class="select-arrow"></span>
 										</div>
 									</div>
 								</div>
@@ -378,18 +388,23 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
             'type': type },
           cache: false,
         });
+
         <?php if(isset($_SESSION['success']) && $_SESSION['success'] !=''){ ?>
           swal("Success!", "Done! Please wait for an email confirmation", "success");
-        
-        <?php unset($_SESSION['fail']);
+          <?php unset($_SESSION['fail']);
+
       } else if(isset($_SESSION['fail']) && $_SESSION['fail'] !=''){ ?>
-          swal("Failed!", "Email not sent. Please try again", "Error");
-        
+          swal("Failed!", "Email not sent. Please try again", "error");
         <?php unset($_SESSION['success']);
+
       } else if(isset($_SESSION['error']) && $_SESSION['error'] !=''){ ?>
-          swal("Error!", "Oops, your request was not saved.", "Error");
+          swal("Error!", "Oops, your request was not saved.", "error");
        <?php unset($_SESSION['error']);
-      }  ?>
+
+      } else if(isset($_SESSION['error_duplicate']) && $_SESSION['error_duplicate'] !=''){ ?>
+        swal("Error!", "Appointment Duplication", "error");
+      <?php unset($_SESSION['error_duplicate']);
+      } ?>
       } 
       else {
         swal("You can still edit your input!");

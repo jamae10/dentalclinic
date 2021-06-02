@@ -18,11 +18,18 @@
 		crossorigin="anonymous"
 		/>
 		<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-        <link rel="stylesheet" href="registration-styles.css">
+        <link rel="stylesheet" href="login-design.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
         <title>Dental Clinic</title>
     </head>
+
+	<style>
+	
+</style>
 	<body>
+  
+	<p hidden><img class = "logo-image" src = "images/logo-round.png" width="110" height="110"><br></P>
+
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 		<div class="container" id="container">
@@ -71,25 +78,29 @@
 					unset($_SESSION['status']);
 				}
 				?>	
+
+            <!-- SIGN IN SECTION -->
+		
+          
+			<div class="random-box-1">
+			</div>
+		
 				<h1>Sign in</h1>
 				<br>
 				<input name="username" id="username" type="email" placeholder="Email" required />
 				<input name="password2" id="password2" type="password" placeholder="Password" required />
-				<label class="usertype-text">Select User Type:</label>
-				<div class="selectdiv ">
-				<label>
-					<select name="role">
-						<option selected value="user" name = "user">User</option>
-						<option value="admin" name ="admin">Admin</option>
-					</select>
-				</label>
-				</div>
-				<a href="#">Forgot your password?</a>
+				<a href="login-admin.php" class="user-link">Admin account? Log-in here</a>
 				<button type ="submit" id="login">Sign In</button>
+				<br>
+				<div class = "hide">
+				<p hidden><a href = "registration.php" class ="btn2">Sign Up</a><p>
+	</div>
 			</form>
 		</div>
 
+		 <!-- END SIGN IN SECTION -->
 
+        
 		<div class="overlay-container">
 			<div class="overlay">
 				<div class="overlay-panel overlay-left">

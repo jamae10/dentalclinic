@@ -11,7 +11,7 @@ function validate($data){
 
 $username = validate($_POST['username']);
 $password = validate($_POST['password2']);
-$role = "user";
+$role = "admin";
 
 //$password = $password;
 
@@ -35,29 +35,15 @@ if($result2 -> num_rows > 0){
     
     if($row['password'] === $password && $row['role'] == $role){
       switch($role){
-        
-        case "user":
-          if($result){
-            $row2 =mysqli_fetch_assoc($result);
-            $phone = $row2['phone'];
-            $gender = $row2['gender'];
-            $address = $row2['address'];
-
-            $_SESSION['uuid'] = $uuid;
-            $_SESSION['role'] = "user";
-            $_SESSION['userlogin']=$username;
-            $_SESSION['email']=$username;
-            $_SESSION['firstname']=$firstname;
-            $_SESSION['lastname']=$lastname;
-            $_SESSION['password']=$password;
-            $_SESSION['username']=$username;
-            //$_SESSION['id']=$id;
-            $_SESSION['phone']=$phone;
-            $_SESSION['gender']=$gender;
-            $_SESSION['address']=$address;
-          }
-          
-          header('Location:../member/index-member.php');
+        case "admin":
+          $_SESSION['uuid'] = $uuid;
+          $_SESSION['role'] = "admin";
+          $_SESSION['admin_login']=$username;
+          $_SESSION['firstname']=$firstname;
+          $_SESSION['lastname']=$lastname;
+          $_SESSION['password']=$password;
+          //$_SESSION['id']=$id;
+          header('Location: ../admin/index-admin.php');
           break;
       }
     }
@@ -65,7 +51,7 @@ if($result2 -> num_rows > 0){
       $_SESSION['status'] = "Error";
       $_SESSION['status_text'] = "Incorect Username or password 2";
       $_SESSION['status_code'] = 'error';
-      header('Location: login.php');
+      header('Location: login-admin.php');
       exit();
   }
 }
