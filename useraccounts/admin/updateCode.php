@@ -3,7 +3,7 @@
 session_start();
 include "config.php";
 
-//if(isset($_POST['updateData'])){
+if(isset($_POST['updateData'])){
     
     $firstname = $_POST['firstname'];
     $lastname = $_POST['lastname'];
@@ -39,6 +39,6 @@ include "config.php";
         $_SESSION['update_status_text'] = "Data Not Updated!";
         $_SESSION['update_status_code'] = 'error';
     }
-//}
+}
 
 ?>

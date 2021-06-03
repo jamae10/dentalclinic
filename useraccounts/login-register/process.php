@@ -15,7 +15,7 @@
   $email = validate($_POST['email']);
   $password = validate($_POST['password']);
   $role = 'user';
-  $phone = '00000000000';
+  $phone = 'None';
   $gender = 'None';
   $address = 'None';
 
