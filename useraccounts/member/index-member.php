@@ -34,6 +34,24 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
     <link href="../style/style.css" rel="stylesheet" type="text/css"/>
     
   </head>
+  <style>
+.slider-item{
+    background-image:url(../images/girl_bg.jpg);
+  }
+
+  .slider-item2{
+    background-image:url(../images/dentist_bg.jpg);
+  }
+@media all and (max-width: 400px) {
+  .slider-item{
+    background-image:url(../images/unique3.png);
+  }
+
+  .slider-item2{
+    background-image:url(../images/unique4.png);
+  }
+}
+</style>
   <body>
 
 <!-- HEADER -->
@@ -72,21 +90,19 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
 	      </button>
 
         <!-- BUTTONS -->
-        
         <p class="button-custom order-lg-last mb-0">
-	      <a href="appointment.php"><button type="button" class ="btn btn-secondary"><i class="far fa-calendar-check"></i> Make an Appointment </button></a>
+        <a href="appointment.php"><button type="button" class ="btn btn-secondary"><i class="far fa-calendar-check"></i><span class="one"> Make an Appointment</span><span style="display:none" class="two"> Book</span></button></a>
         <a href="account.php"><button type="button" class ="btn btn-danger"><i class="fas fa-user"></i> My Account </button></a>
         <button type="button" class ="btn btn-danger2"><i class="fas fa-sign-out-alt"></i> Logout </button>
 	      </p>
-
         <!-- END BUTTONS -->
 
-	      <div class="collapse navbar-collapse" id="ftco-nav">
+ <!-- MENU -->
+ <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav mr-auto">
 	        	<li class="nav-item active"><a href="index-member.php" class="nav-link pl-0">Home</a></li>
 	        	<li class="nav-item"><a href="about-member.php" class="nav-link">About Us</a></li>
 	        	<li class="nav-item"><a href="services-member.php" class="nav-link">Services</a></li>
-	        	<li class="nav-item"><a href="faqs-member.php" class="nav-link">FAQs</a></li>
 	          	<li class="nav-item"><a href="contact-member.php" class="nav-link">Contact Us</a></li>
 	        </ul>
 	      </div>
@@ -95,15 +111,15 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
 <!-- END MENU -->
 
 <!-- CAROUSEL -->
-    <section class="home-slider owl-carousel">
-      <div class="slider-item" style="background-image:url(../images/girl_bg.jpg);" data-stellar-background-ratio="0.5">
+<section class="home-slider owl-carousel">
+    <div class="slider-item" data-stellar-background-ratio="0.5">
       	<div class="overlay"></div>
         <div class="container">
           <div class="row no-gutters slider-text align-items-center justify-content-start" data-scrollax-parent="true">
           <div class="col-md-6 text ftco-animate">
             <div class = "box">
-            <h1 class="mb-4">Diagnostic Dental<span>Xray Services</span></h1>
-            <h3 class="subheading">Everyday We Bring Hope and Smile to the Patient We Serve</h3>
+            <h1 class="mb-4">Dental Care<span>Now Available Online.</span></h1>
+            <h3 class="subheading">Accommodate Your Dental Health Needs Anywhere With Our Best Dentists.</h3>
 </div>
           </div>
         </div>
@@ -111,15 +127,15 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
       </div>
       </div>
 
-      <div class="slider-item" style="background-image:url(../images/dentist_bg.jpg);">
+      <div class="slider-item2" >
       	<div class="overlay"></div>
         <div class="container">
           <div class="row no-gutters slider-text align-items-center justify-content-start" data-scrollax-parent="true">
           <div class="col-md-6 text ftco-animate">
           <div class = "box">
-            <h1 class="mb-4">Diagnostic Dental<span>Xray Services</span></h1>
-            <h3 class="subheading">Your Health is Our Top Priority with Comprehensive, Affordable medical.</h3>
-          </div>]
+            <h1 class="mb-4">Diagnostic Dental<span>Services</span></h1>
+            <h3 class="subheading">Your Health is Our Top Priority. Experience Quality Dental Care In Our Clinic.</h3>
+          </div>
         </div>
   </div>
         </div>
@@ -127,8 +143,9 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
     </section>
 <!-- END CAROUSEL -->
 
+
 <!-- 4 boxes-->
-    <section class="ftco-services ftco-no-pb">
+<section class="ftco-services ftco-no-pb">
 		<div class="container container-danger">
 			<div class="row no-gutters">
 
@@ -138,8 +155,8 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
             		<span class="flaticon-doctor"></span>
               </div>
               <div class="media-body p-2 mt-3">
-                <h3 class="heading">Qualitfied Doctors</h3>
-                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+                <h3 class="heading">Qualified Dentists</h3>
+                <p>Only the best dentists, to bring you the best care. We educate our patients about Dental health Importance.</p>
               </div>
             </div>
           </div>
@@ -151,7 +168,7 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
               </div>
               <div class="media-body p-2 mt-3">
                 <h3 class="heading">Emergency Care</h3>
-                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+                <p>We are one phone call away for all dental emergencies, with our dentists ready to assist as soon as possible.</p>
               </div>
             </div>
           </div>
@@ -163,7 +180,7 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
               </div>
               <div class="media-body p-2 mt-3">
                 <h3 class="heading">Outdoor Checkup</h3>
-                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+                <p>We ensure safe dental visits in our clinic, where we provide health protocols for all of our patients.</p>
               </div>
             </div>
           </div>
@@ -174,8 +191,8 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
             		<span class="flaticon-24-hours"></span>
               </div>
               <div class="media-body p-2 mt-3">
-                <h3 class="heading">24 Hours Service</h3>
-                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+                <h3 class="heading">Online Consults</h3>
+                <p>Experience 24 hours service from our team with our online consultations and convenient support system.</p>
               </div>
             </div>
           </div>
@@ -192,7 +209,7 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
           <div class="col-md-8 text-center heading-section ftco-animate">
           	<span class="subheading">Services</span>
             <h2 class="mb-4">Our Services</h2>
-            <p>Separated they live in. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country</p>
+            <p>Our well-vetted Castillo Doctors' expertise is to provide you and your loved ones with expert primary dental care. Here are what we offer in this clinic. </p>
           </div>
         </div>
     		<div class="row">
@@ -206,13 +223,13 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
 	        			<p><span class="price">₱499</span> <span class="per">/ session</span></p>
 	        		</div>
         			<ul>
-        				<li>Diagnostic Services</li>
-								<li>Professional Consultation</li>
-								<li>Tooth Implants</li>
-								<li>Surgical Extractions</li>
-								<li>Teeth Whitening</li>
+        				<li>Teeth Cleaning</li>
+								<li>Painless Ultrasonic</li>
+								<li>Root planning </li>
+								<li>Dental Restoration</li>
+								<li>Endodontics</li>
         			</ul>
-        			<p class="button text-center"><a href="#" class="btn btn-primary px-4 py-3">Get Offer</a></p>
+        			<p class="button text-center"><a href="appointment.php" class="btn btn-primary px-4 py-3">Book Now</a></p>
         		</div>
         	</div>
         	<!-- END GENERAL DENTISTRY -->
@@ -226,13 +243,13 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
 	        			<p><span class="price">₱999</span> <span class="per">/ session</span></p>
 	        		</div>
         			<ul>
-        				<li>Diagnostic Services</li>
-								<li>Professional Consultation</li>
-								<li>Tooth Implants</li>
-								<li>Surgical Extractions</li>
-								<li>Teeth Whitening</li>
+        				<li>Orthodontic Braces</li>
+								<li>Metal Braces</li>
+								<li>Invisalign</li>
+								<li>Sapphire Clear Braces</li>
+								<li>Brace Cleaning</li>
         			</ul>
-        			<p class="button text-center"><a href="#" class="btn btn-primary px-4 py-3">Get Offer</a></p>
+        			<p class="button text-center"><a href="appointment.php" class="btn btn-primary px-4 py-3">Book Now</a></p>
         		</div>
         	</div>
         	<!-- END ORTHODONTICS -->
@@ -246,13 +263,13 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
 	        			<p><span class="price">₱1199</span> <span class="per">/ session</span></p>
 	        		</div>
         			<ul>
-        				<li>Diagnostic Services</li>
-								<li>Professional Consultation</li>
-								<li>Tooth Implants</li>
-								<li>Surgical Extractions</li>
+        				<li>Dental Veneers</li>
 								<li>Teeth Whitening</li>
+                <li>Inlays and Onlays</li>
+								<li>Composite Veneers</li>
+								<li>Cosmetic Bonding</li>
         			</ul>
-        			<p class="button text-center"><a href="#" class="btn btn-primary px-4 py-3">Get Offer</a></p>
+        			<p class="button text-center"><a href="appointment.php" class="btn btn-primary px-4 py-3">Book Now</a></p>
         		</div>
         	</div>
         	<!-- END COSMETICS DENTISTRY -->
@@ -267,13 +284,13 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
 	        			<p><span class="price">₱1249</span> <span class="per">/ session</span></p>
 	        		</div>
         			<ul>
-        				<li>Diagnostic Services</li>
-								<li>Professional Consultation</li>
-								<li>Tooth Implants</li>
-								<li>Surgical Extractions</li>
-								<li>Teeth Whitening</li>
+        				<li>Dentures</li>
+								<li>Dental Crown</li>
+								<li>Teeth Shaping</li>
+								<li>Coatings</li>
+								<li>Gingivoplasty </li>
         			</ul>
-        			<p class="button text-center"><a href="#" class="btn btn-primary px-4 py-3">Get Offer</a></p>
+        			<p class="button text-center"><a href="appointment.php" class="btn btn-primary px-4 py-3">Book Now</a></p>
         		</div>
         	</div>
         	<!-- END DENTAL IMPLANT -->
@@ -283,14 +300,14 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
 <!-- END SERVICES -->
 
 <!-- FOOTER -->
-    <footer class="ftco-footer ftco-bg-dark ftco-section">
+<footer class="ftco-footer ftco-bg-dark ftco-section">
       <div class="container">
         <div class="row mb-5">
 
           <div class="col-md">
             <div class="ftco-footer-widget mb-5">
               <h2 class="ftco-heading-2 logo">Dr. Castillo <span>Dental Clinic</span></h2>
-              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+              <p>Our technology offers you a convenient access to a Dentist, and world-class data security. Experience high-end medical care only with Castillo Dental Clinic.</p>
             </div>
             <div class="ftco-footer-widget mb-5">
             	<h2 class="ftco-heading-2">Have a Questions?</h2>
@@ -298,7 +315,7 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
 	              <ul>
 	                <li><span class="icon icon-map-marker"></span><span class="text">#81 (Commercial) M. Almeda Street Pateros, Metro Manila</span></li>
 	                <li><a href="#"><span class="icon icon-phone"></span><span class="text">(02) 642-8175 / 642-1436</span></a></li>
-	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">drcastilloDC@gmail.com</span></a></li>
+	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">dentalclinic.castillo@gmail.com</span></a></li>
 	              </ul>
 	            </div>
 	            <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
@@ -316,7 +333,6 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
                 <li><a href="index-member.php"><span class="ion-ios-arrow-round-forward mr-2"></span>Home</a></li>
                 <li><a href="about-member.php"><span class="ion-ios-arrow-round-forward mr-2"></span>About</a></li>
                 <li><a href="services-member.php"><span class="ion-ios-arrow-round-forward mr-2"></span>Services</a></li>
-                <li><a href="faqs-member.php"><span class="ion-ios-arrow-round-forward mr-2"></span>FAQS</a></li>
                 <li><a href="contact-member.php"><span class="ion-ios-arrow-round-forward mr-2"></span>Contact</a></li>
               </ul>
             </div>
@@ -334,7 +350,9 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
           <div class="col-md">
           	<div class="ftco-footer-widget mb-5">
             	<h2 class="ftco-heading-2">Opening Hours</h2>
-            	<h3 class="open-hours pl-4"><span class="ion-ios-time mr-3"></span>We are open 24/7</h3>
+              <h3 class="open-hours pl-4"><span class="ion-ios-time mr-3"></span>24/7 (Online Consultation)</h3>
+            	<h3 class="open-hours pl-4"><span class="ion-ios-time mr-3"></span>9:00 AM - 12:00 PM (Appointment)</h3>
+              <h3 class="open-hours pl-4"><span class="ion-ios-time mr-3"></span>9:00 AM - 1:00 PM (X-ray Services)</h3>
             </div>
             <div class="ftco-footer-widget mb-5">
             	<h2 class="ftco-heading-2">Subscribe Us!</h2>

@@ -67,11 +67,17 @@
 	        <span class="oi oi-menu"></span> Menu
 	      </button>
 
-	      <p class="button-custom order-lg-last mb-0">
-		<button type="button" class ="btn btn-secondary"><i class="far fa-calendar-check"></i> Make an Appointment </button>
-        <a href="dental/login.php"> <button type="button" class ="btn btn-danger"><i class="fas fa-sign-in-alt"></i> Login </button></a>
-        <a href="dental/registration.php"> <button type="button" class ="btn btn-danger2"><i class="fas fa-pen-alt"></i> Register </button></a>
-	      </p>
+	     <!-- BUTTONS -->
+       
+       <p class="button-custom order-lg-last mb-0">
+       
+       <button type="button" class ="btn btn-secondary"><i class="far fa-calendar-check"></i><span class="one"> Make an Appointment</span><span style="display:none" class="two"> Book</span></button>
+       <a href="login-register/login.php"> <button type="button" class ="btn btn-danger"><i class="fas fa-sign-in-alt"></i> Login </button></a>
+       <a href="login-register/registration.php"> <button type="button" class ="btn btn-danger2"><i class="fas fa-pen-alt"></i> Register </button></a>
+       </p>
+ 
+  
+       <!-- END BUTTONS -->
 
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav mr-auto">
@@ -87,7 +93,7 @@
 <!-- END MENU -->
 
 <!-- BANNER -->
-    <section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('images/banner-2.jpg');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
@@ -104,24 +110,24 @@
 		<section class="ftco-section ftco-no-pt ftc-no-pb">
 			<div class="container">
 				<div class="row no-gutters">
-					<div class="col-md-5 p-md-5 img img-2 mt-5 mt-md-0" style="background-image: url(images/about.jpg);">
+					<div class="col-md-5 p-md-5 img img-2 mt-5 mt-md-0" style="background-image: url(images/dentist.jpg);">
 					</div>
 					<div class="col-md-7 wrap-about py-4 py-md-5 ftco-animate">
 	          <div class="heading-section mb-5">
 	          	<div class="pl-md-5 ml-md-5">
-		          	<span class="subheading">About Dr.Castillo Dental Clinic</span>
-		            <h2 class="mb-4" style="font-size: 28px;">Medical specialty concerned with the care of acutely ill hospitalized patients</h2>
+		          	<span class="subheading">About Castillo Dental Clinic</span> <br>
+		            <h2 class="mb-4" style="font-size: 28px;">Located at Pateros, Castillo Dental Clinic also provide quality dental care for our patients across Metro Manila.</h2>
 	            </div>
 	          </div>
 	          <div class="pl-md-5 ml-md-5 mb-5">
-							<p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word.</p>
+							<p>Our clinic offers you numerous services and convenient access to our professional Dentists, and world-class dental health care. Experience high-end medical care only with Castillo Dental Clinic.</p>
 							<div class="row mt-5 pt-2">
 								<div class="col-lg-6">
 									<div class="services-2 d-flex">
 										<div class="icon mt-2 mr-3 d-flex justify-content-center align-items-center"><span class="flaticon-first-aid-kit"></span></div>
 										<div class="text">
-											<h3>Primary Care</h3>
-											<p>Far far away, behind the word mountains, far from the countries Vokalia.</p>
+											<h3>Our Dentists</h3>
+											<p>Only the best dentists, to bring you the best care. We educate our patients about the importance of Dental health.</p>
 										</div>
 									</div>
 								</div>
@@ -129,8 +135,8 @@
 									<div class="services-2 d-flex">
 										<div class="icon mt-2 mr-3 d-flex justify-content-center align-items-center"><span class="flaticon-dropper"></span></div>
 										<div class="text">
-											<h3>Lab Test</h3>
-											<p>Far far away, behind the word mountains, far from the countries Vokalia.</p>
+											<h3>Emergency Cares</h3>
+											<p>We are one phone call away for all dental emergencies, with our dentists ready to assist as soon as possible.</p>
 										</div>
 									</div>
 								</div>
@@ -138,8 +144,8 @@
 									<div class="services-2 d-flex">
 										<div class="icon mt-2 mr-3 d-flex justify-content-center align-items-center"><span class="flaticon-experiment-results"></span></div>
 										<div class="text">
-											<h3>Symptom Check</h3>
-											<p>Far far away, behind the word mountains, far from the countries Vokalia.</p>
+											<h3>Outdoor Checkups</h3>
+											<p>We ensure safe dental visits in our clinic, where we provide health protocols for all of our patients.</p>
 										</div>
 									</div>
 								</div>
@@ -147,8 +153,8 @@
 									<div class="services-2 d-flex">
 										<div class="icon mt-2 mr-3 d-flex justify-content-center align-items-center"><span class="flaticon-heart-rate"></span></div>
 										<div class="text">
-											<h3>Heart Rate</h3>
-											<p>Far far away, behind the word mountains, far from the countries Vokalia.</p>
+											<h3>Online Consults</h3>
+											<p>Experience 24 hours service from our team with our online consultations and convenient support system.</p>
 										</div>
 									</div>
 								</div>
@@ -166,12 +172,12 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-9">
-						<h2>We Provide Free Health Care Consultation</h2>
-						<p class="mb-0">Your Health is Our Top Priority with Comprehensive, Affordable medical.</p>
+						<h2>We Provide Online Consultations!</h2>
+						<p class="mb-0">You will get a unique Zoom link for the video consult once you book an appointment.</p>
 						<p></p>
 					</div>
 					<div class="col-md-3 d-flex align-items-center">
-						<p class="mb-0"><a href="#" class="btn btn-secondary px-4 py-3">Free Consutation</a></p>
+						<p class="mb-0"><a href="index.php" class="btn btn-secondary px-4 py-3">Let's do it!</a></p>
 					</div>
 				</div>
 			</div>
@@ -184,8 +190,7 @@
         <div class="row justify-content-center mb-5 pb-2">
           <div class="col-md-8 text-center heading-section ftco-animate">
           	<span class="subheading">Testimonials</span>
-            <h2 class="mb-4">Our Patients Says About Us</h2>
-            <p>Separated they live in. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country</p>
+            <h2 class="mb-4">What our patients say about us.</h2>
           </div>
         </div>
         <div class="row ftco-animate justify-content-center">
@@ -193,15 +198,15 @@
             <div class="carousel-testimony owl-carousel">
               <div class="item">
                 <div class="testimony-wrap d-flex">
-                  <div class="user-img mr-4" style="background-image: url(images/person_1.jpg)">
+                  <div class="user-img mr-4" style="background-image: url(images/random-person.jpg)">
                   </div>
                   <div class="text ml-2 bg-light">
                   	<span class="quote d-flex align-items-center justify-content-center">
                       <i class="icon-quote-left"></i>
                     </span>
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                    <p class="name">Racky Henderson</p>
-                    <span class="position">Farmer</span>
+                    <p>Doctors take their time to talk to you and tried to get to the bottom of the issue. You will feel being cared of.</p>
+                    <p class="name">Ira Fornillos</p>
+                    <span class="position">Programmer</span>
                   </div>
                 </div>
               </div>
@@ -213,7 +218,7 @@
                   	<span class="quote d-flex align-items-center justify-content-center">
                       <i class="icon-quote-left"></i>
                     </span>
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                    <p>Doctor was very friendly, accomodating and transparent. She wanted to know more about me and my condition rather than just give me a prescription. She took time to talk to me and help me.</p>
                     <p class="name">Henry Dee</p>
                     <span class="position">Businessman</span>
                   </div>
@@ -227,9 +232,9 @@
                   	<span class="quote d-flex align-items-center justify-content-center">
                       <i class="icon-quote-left"></i>
                     </span>
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                    <p>Dr. Castillo is very friendly and nice to speak with. She knew her craft very well. A perfect 5-star rating for the medical service received. Thank you!</p>
                     <p class="name">Mark Huff</p>
-                    <span class="position">Students</span>
+                    <span class="position">Student</span>
                   </div>
                 </div>
               </div>
@@ -241,9 +246,9 @@
                   	<span class="quote d-flex align-items-center justify-content-center">
                       <i class="icon-quote-left"></i>
                     </span>
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                    <p>The convenience of online consultation,  I don't need to wait for the bus or get gas for your car. I simply go on the internet and begin my consultation. I can speak with highly trained medical professionals without needing to move from my seat.</p>
                     <p class="name">Rodel Golez</p>
-                    <span class="position">Striper</span>
+                    <span class="position">Teacher</span>
                   </div>
                 </div>
               </div>
@@ -255,7 +260,7 @@
                   	<span class="quote d-flex align-items-center justify-content-center">
                       <i class="icon-quote-left"></i>
                     </span>
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                    <p>The instructions are clear and easy to follow. The attending doctor was very approachable and clear. Overall, it was a good experience and the consultation was very helpful.</p>
                     <p class="name">Ken Bosh</p>
                     <span class="position">Manager</span>
                   </div>
@@ -270,15 +275,14 @@
 
 
 <!-- FOOTER -->
-    <footer class="ftco-footer ftco-bg-dark ftco-section">
+<footer class="ftco-footer ftco-bg-dark ftco-section">
       <div class="container">
         <div class="row mb-5">
 
           <div class="col-md">
             <div class="ftco-footer-widget mb-5">
               <h2 class="ftco-heading-2 logo">Dr. Castillo <span>Dental Clinic</span></h2>
-              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-            </div>
+              <p>Our technology offers you a convenient access to a Dentist, and world-class data security. Experience high-end medical care only with Castillo Dental Clinic.</p>
             <div class="ftco-footer-widget mb-5">
             	<h2 class="ftco-heading-2">Have a Questions?</h2>
             	<div class="block-23 mb-3">
@@ -288,7 +292,6 @@
 	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">drcastilloDC@gmail.com</span></a></li>
 	              </ul>
 	            </div>
-
 	            <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
                 <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
                 <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
@@ -304,7 +307,6 @@
                 <li><a href="index.php"><span class="ion-ios-arrow-round-forward mr-2"></span>Home</a></li>
                 <li><a href="about.php"><span class="ion-ios-arrow-round-forward mr-2"></span>About</a></li>
                 <li><a href="services.php"><span class="ion-ios-arrow-round-forward mr-2"></span>Services</a></li>
-                <li><a href="faqs.php"><span class="ion-ios-arrow-round-forward mr-2"></span>FAQS</a></li>
                 <li><a href="contact.php"><span class="ion-ios-arrow-round-forward mr-2"></span>Contact</a></li>
               </ul>
             </div>
@@ -321,8 +323,10 @@
 
           <div class="col-md">
           	<div class="ftco-footer-widget mb-5">
-            	<h2 class="ftco-heading-2">Opening Hours</h2>
-            	<h3 class="open-hours pl-4"><span class="ion-ios-time mr-3"></span>We are open 24/7</h3>
+            <h2 class="ftco-heading-2">Clinic Hours</h2>
+              <h3 class="open-hours pl-4"><span class="ion-ios-time mr-3"></span>24/7 (Online Consultation)</h3>
+            	<h3 class="open-hours pl-4"><span class="ion-ios-time mr-3"></span>9:00 AM - 12:00 PM (Appointment)</h3>
+              <h3 class="open-hours pl-4"><span class="ion-ios-time mr-3"></span>9:00 AM - 1:00 PM (X-ray Services)</h3>
             </div>
             <div class="ftco-footer-widget mb-5">
             	<h2 class="ftco-heading-2">Subscribe Us!</h2>
@@ -338,9 +342,9 @@
         <div class="row">
           <div class="col-md-12 text-center">
 
-            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+            <p>
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">BCSAD</a>
+ </p>
           </div>
         </div>
       </div>

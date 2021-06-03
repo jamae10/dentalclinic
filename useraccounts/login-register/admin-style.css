@@ -325,7 +325,7 @@ footer {
 	min-height: 480px;
 }
 
-@media all and (max-width: 400px) {
+@media all and (max-width: 450px) {
     .container {
         width: 300px;
     }

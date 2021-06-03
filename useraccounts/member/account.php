@@ -40,6 +40,13 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
     <link href="../style/style3.css" rel="stylesheet" type="text/css"/>
     
   </head>
+  <style>
+  @media all and (max-width: 400px) {
+div.ex1 {
+  background-image: url("../images/clean.png");
+}
+  }
+  </style>
 
   <body>
 
@@ -80,12 +87,14 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
 
      <!-- BUTTONS -->
         
-      <p class="button-custom order-lg-last mb-0">
-      <a href="appointment.php"><button type="button" class ="btn btn-secondary"><i class="far fa-calendar-check"></i> Make an Appointment </button></a>
-      <a href="account.php"><button type="button" class ="btn btn-danger"><i class="fas fa-user"></i> My Account </button></a>
-      <button type="button" class ="btn btn-danger2"><i class="fas fa-sign-out-alt"></i> Logout </button>
-      </p>
-
+           <!-- BUTTONS -->
+           <p class="button-custom order-lg-last mb-0">
+        <a href="appointment.php"><button type="button" class ="btn btn-secondary"><i class="far fa-calendar-check"></i><span class="one"> Make an Appointment</span><span style="display:none" class="two"> Book</span></button></a>
+        <a href="account.php"><button type="button" class ="btn btn-danger"><i class="fas fa-user"></i> <span class="one"> My</span> Account </button></a>
+        <button type="button" class ="btn btn-danger2"><i class="fas fa-sign-out-alt"></i> Logout </button>
+	      </p>
+        <!-- END BUTTONS -->
+        
       <!-- END BUTTONS -->
 
 
@@ -94,7 +103,6 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
             <li class="nav-item"><a href="index-member.php" class="nav-link pl-0">Home</a></li>
             <li class="nav-item"><a href="about-member.php" class="nav-link">About Us</a></li>
             <li class="nav-item"><a href="services-member.php" class="nav-link">Services</a></li>
-            <li class="nav-item"><a href="faqs-member.php" class="nav-link">FAQs</a></li>
             <li class="nav-item active"><a href="contact-member.php" class="nav-link">Contact</a></li>
           </ul>
         </div>
@@ -103,13 +111,13 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
 <!-- END MENU -->
 
 <!-- BANNER -->
-    <section class="hero-wrap hero-wrap-2" style="background-image: url('../images/bg_1.jpg');" data-stellar-background-ratio="0.5">
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('../images/banner-2.jpg');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
           <div class="col-md-9 ftco-animate text-center">
-            <h1 class="mb-2 bread">Hello, <?php echo $_SESSION['firstname'] ?? "";?>!</h1>
-            <p class="breadcrumbs"><span class="mr-2"><a href="index-member.php">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Appointment <i class="ion-ios-arrow-forward"></i></span></p>
+            <h1 class="mb-2 bread">Hello, <?php echo ucfirst($_SESSION['firstname']) ?? "";?>!</h1>
+            <p class="breadcrumbs"><span class="mr-2"><a href="index-member.php">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Account <i class="ion-ios-arrow-forward"></i></span></p>
           </div>
         </div>
       </div>
@@ -129,7 +137,7 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
                         <div class="col-sm-4 bg-c-lite-green user-profile">
                             <div class="card-block text-center text-white">
                                 <div class="m-b-25"> <img src="https://img.icons8.com/bubbles/100/000000/user.png" class="img-radius" alt="User-Profile-Image"> </div>
-                                <h6 class="f-w-600"><?php echo $_SESSION['firstname'] ?? "";?> <?php echo $_SESSION['lastname'] ?? "";?></h6>
+                                <h6 class="f-w-600"><?php echo ucfirst( $_SESSION['firstname']) ?? "";?> <?php echo ucfirst($_SESSION['lastname']) ?? "";?></h6>
                                 <p>Patient</p> 
                                   
                                 <!-- EDIT PROFILE BUTTON -->
@@ -158,8 +166,8 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
                                     unset($_SESSION['status_code']);
                                   }*/
                                   ?>
-                                <input type="text" name="firstname" class="username form-control" placeholder=" Firstname" value = "<?php echo $_SESSION['firstname'] ?? "";?>"/>
-                                <input type="text" name="lastname" class="username form-control" placeholder=" Lastname" value = "<?php echo $_SESSION['lastname'] ?? "";?>"/>
+                                <input type="text" name="firstname" class="username form-control" placeholder=" Firstname" value = "<?php echo ucfirst($_SESSION['firstname']) ?? "";?>"/>
+                                <input type="text" name="lastname" class="username form-control" placeholder=" Lastname" value = "<?php echo ucfirst($_SESSION['lastname']) ?? "";?>"/>
                                 <input type="email" name="email" class="password form-control" placeholder=" Email" value = "<?php echo $_SESSION['email'] ?? "";?>"/>
                                 <input type="password" name="password" class="password form-control" placeholder=" Password" value = "<?php echo $_SESSION['password'] ?? "";?>"/>
                                 <input type="text" name="phone" class="username form-control" placeholder=" Phone" value = "<?php echo $_SESSION['phone'] ?? "";?>"/>
@@ -174,10 +182,10 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
 
                                <!-- END PROFILE EDIT BUTTON -->
 
-                               <!-- ICON ACCOUNT BUTTONS -->
+                                <!-- ICON ACCOUNT BUTTONS -->
 
-                               <a class="login-trigger" href="#" data-target="#login" data-toggle="modal"><button class="button button1"><i class="far fa-edit"></i></button></a>  
-                               <a href="appointment.php"> <button class="button button2"><i class="far fa-calendar-plus"></i></button> </a>
+                                <a class="login-trigger" href="#" data-target="#login" data-toggle="modal"><button class="button button1"><i class="far fa-edit"></i></button></a>  
+                               <button class="button button2"><i class="far fa-calendar-plus"></i></button>
                                 <button class="button button3"><i class="fas fa-sign-out-alt"></i></button>
 
                                <!-- END ICON ACCOUNT BUTTONS -->
@@ -265,27 +273,26 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
 </div>
 </body>
 
-</html>
-<!-- FOOTER -->
-    <footer class="ftco-footer ftco-bg-dark ftco-section">
+</html><!-- FOOTER -->
+<footer class="ftco-footer ftco-bg-dark ftco-section">
       <div class="container">
         <div class="row mb-5">
 
           <div class="col-md">
             <div class="ftco-footer-widget mb-5">
               <h2 class="ftco-heading-2 logo">Dr. Castillo <span>Dental Clinic</span></h2>
-              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+              <p>Our technology offers you a convenient access to a Dentist, and world-class data security. Experience high-end medical care only with Castillo Dental Clinic.</p>
             </div>
             <div class="ftco-footer-widget mb-5">
-              <h2 class="ftco-heading-2">Have a Questions?</h2>
-              <div class="block-23 mb-3">
-                <ul>
-                  <li><span class="icon icon-map-marker"></span><span class="text">#81 (Commercial) M. Almeda Street Pateros, Metro Manila</span></li>
-                  <li><a href="#"><span class="icon icon-phone"></span><span class="text">(02) 642-8175 / 642-1436</span></a></li>
-                  <li><a href="#"><span class="icon icon-envelope"></span><span class="text">drcastilloDC@gmail.com</span></a></li>
-                </ul>
-              </div>
-              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
+            	<h2 class="ftco-heading-2">Have a Questions?</h2>
+            	<div class="block-23 mb-3">
+	              <ul>
+	                <li><span class="icon icon-map-marker"></span><span class="text">#81 (Commercial) M. Almeda Street Pateros, Metro Manila</span></li>
+	                <li><a href="#"><span class="icon icon-phone"></span><span class="text">(02) 642-8175 / 642-1436</span></a></li>
+	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">dentalclinic.castillo@gmail.com</span></a></li>
+	              </ul>
+	            </div>
+	            <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
                 <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
                 <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
                 <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
@@ -300,7 +307,6 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
                 <li><a href="index-member.php"><span class="ion-ios-arrow-round-forward mr-2"></span>Home</a></li>
                 <li><a href="about-member.php"><span class="ion-ios-arrow-round-forward mr-2"></span>About</a></li>
                 <li><a href="services-member.php"><span class="ion-ios-arrow-round-forward mr-2"></span>Services</a></li>
-                <li><a href="faqs-member.php"><span class="ion-ios-arrow-round-forward mr-2"></span>FAQS</a></li>
                 <li><a href="contact-member.php"><span class="ion-ios-arrow-round-forward mr-2"></span>Contact</a></li>
               </ul>
             </div>
@@ -316,12 +322,14 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
           </div>
 
           <div class="col-md">
-            <div class="ftco-footer-widget mb-5">
-              <h2 class="ftco-heading-2">Opening Hours</h2>
-              <h3 class="open-hours pl-4"><span class="ion-ios-time mr-3"></span>We are open 24/7</h3>
+          	<div class="ftco-footer-widget mb-5">
+            	<h2 class="ftco-heading-2">Opening Hours</h2>
+              <h3 class="open-hours pl-4"><span class="ion-ios-time mr-3"></span>24/7 (Online Consultation)</h3>
+            	<h3 class="open-hours pl-4"><span class="ion-ios-time mr-3"></span>9:00 AM - 12:00 PM (Appointment)</h3>
+              <h3 class="open-hours pl-4"><span class="ion-ios-time mr-3"></span>9:00 AM - 1:00 PM (X-ray Services)</h3>
             </div>
             <div class="ftco-footer-widget mb-5">
-              <h2 class="ftco-heading-2">Subscribe Us!</h2>
+            	<h2 class="ftco-heading-2">Subscribe Us!</h2>
               <form action="#" class="subscribe-form">
                 <div class="form-group">
                   <input type="text" class="form-control mb-2 text-center" placeholder="Enter email address">
@@ -335,8 +343,8 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
           <div class="col-md-12 text-center">
 
             <p>
-            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">BCSAD</a>
-            </p>
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">BCSAD</a>
+  </p>
           </div>
         </div>
       </div>
@@ -371,23 +379,41 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
 
   <script>
 
-  document.querySelector('.btn-danger2').addEventListener('click', danger);
+document.querySelector('.btn-danger2').addEventListener('click', danger);
+document.querySelector('.button2').addEventListener('click', stranger);
+document.querySelector('.button3').addEventListener('click', danger);
 
-  function danger() {
-    swal(
-      {
-        title: "Are you sure to log out?",
-        text: "We still have many services to offer!",
-        icon: '../images/question-mark.png',
-        imageSize: '100x100',
-        buttons: ["Cancel", "Log out"],
-  })
-  .then((okay) => {
-    if (okay) {
-      window.location.href = "logout.php";}
-      }
-    );
-  }
+function danger() {
+  swal(
+    {
+      title: "Are you sure to log out?",
+      text: "We still have many services to offer!",
+      icon: '../images/question-mark.png',
+      imageSize: '100x100',
+      buttons: ["Cancel", "Log out"],
+})
+.then((okay) => {
+   if (okay) {
+    window.location.href = "logout.php";}
+    }
+  );
+}
+
+function stranger() {
+  swal(
+    {
+      title: "Ready to add an appointment?",
+      text: "You're a few steps away to a new Dental experience!",
+      icon: '../images/tooth.jpg',
+      imageSize: '100x100',
+      buttons: ["Back", "Let's do it!"],
+})
+.then((okay) => {
+   if (okay) {
+    window.location.href = "appointment.php";}
+    }
+  );
+}
 </script>
 
   </body>

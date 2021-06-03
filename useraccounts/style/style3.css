@@ -45,12 +45,13 @@
 }
 
 div.ex1 {
-  width: auto;
-  margin: auto;
-  height: auto;;
   background-image: url("../images/bruhhh.png");
- background-color: white;
- background-repeat: no-repeat;
+  height: auto;
+  width: auto;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: white;
 }
 
 /*Modal*/

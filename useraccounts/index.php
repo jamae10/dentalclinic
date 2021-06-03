@@ -9,6 +9,7 @@ session_start();
         header("Location: admin/index-admin.php");
     }
     ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -37,14 +38,34 @@ session_start();
     <link href="style/style3.css" rel="stylesheet" type="text/css"/>
 
   </head>
+  <style>
+
+.slider-item{
+    background-image:url(images/girl_bg.jpg);
+  }
+
+  .slider-item2{
+    background-image:url(images/dentist_bg.jpg);
+  }
+@media all and (max-width: 400px) {
+  .slider-item{
+    background-image:url(images/unique3.png);
+  }
+
+  .slider-item2{
+    background-image:url(images/unique4.png);
+  }
+}
+</style>
   <body>
 
+
 <!-- HEADER -->
-    <nav class="navbar py-4 navbar-expand-lg ftco_navbar navbar-light bg-light flex-row">
+<nav class="navbar py-4 navbar-expand-lg ftco_navbar navbar-light bg-light flex-row">
     	<div class="container">
     		<div class="row no-gutters d-flex align-items-start align-items-center px-3 px-md-0">
     			<div class="col-lg-3 pr-4 align-items-center">
-		    		<a class="navbar-brand" href="index.php">Dr. Castillo <span><br>Dental Clinic</span> </a>
+		    		<a class="navbar-brand" href="index-member.php">Dr. Castillo <span><br>Dental Clinic</span> </a>
 	    		</div>
 	    		<div class="col-lg-9 d-none d-md-block">
 		    		<div class="row d-flex">
@@ -75,21 +96,23 @@ session_start();
 	      </button>
 
         <!-- BUTTONS -->
-
+       
 	      <p class="button-custom order-lg-last mb-0">
-        <button type="button" class ="btn btn-secondary"><i class="far fa-calendar-check"></i> Make an Appointment </button>
+       
+        <button type="button" class ="btn btn-secondary"><i class="far fa-calendar-check"></i><span class="one"> Make an Appointment</span><span style="display:none" class="two"> Book</span></button>
         <a href="login-register/login.php"> <button type="button" class ="btn btn-danger"><i class="fas fa-sign-in-alt"></i> Login </button></a>
         <a href="login-register/registration.php"> <button type="button" class ="btn btn-danger2"><i class="fas fa-pen-alt"></i> Register </button></a>
 	      </p>
-
+  
+   
         <!-- END BUTTONS -->
-
+        
+  <!-- MENU -->
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav mr-auto">
 	        	<li class="nav-item active"><a href="index.php" class="nav-link pl-0">Home</a></li>
 	        	<li class="nav-item"><a href="about.php" class="nav-link">About Us</a></li>
 	        	<li class="nav-item"><a href="services.php" class="nav-link">Services</a></li>
-	        	<li class="nav-item"><a href="faqs.php" class="nav-link">FAQs</a></li>
 	          	<li class="nav-item"><a href="contact.php" class="nav-link">Contact Us</a></li>
 	        </ul>
 	      </div>
@@ -98,15 +121,15 @@ session_start();
 <!-- END MENU -->
 
 <!-- CAROUSEL -->
-    <section class="home-slider owl-carousel">
-      <div class="slider-item" style="background-image:url(images/girl_bg.jpg);" data-stellar-background-ratio="0.5">
+<section class="home-slider owl-carousel">
+    <div class="slider-item" data-stellar-background-ratio="0.5">
       	<div class="overlay"></div>
         <div class="container">
           <div class="row no-gutters slider-text align-items-center justify-content-start" data-scrollax-parent="true">
           <div class="col-md-6 text ftco-animate">
             <div class = "box">
-            <h1 class="mb-4">Diagnostic Dental<span>Xray Services</span></h1>
-            <h3 class="subheading">Everyday We Bring Hope and Smile to the Patient We Serve</h3>
+            <h1 class="mb-4">Dental Care<span>Now Available Online.</span></h1>
+            <h3 class="subheading">Accommodate Your Dental Health Needs Anywhere With Our Best Dentists.</h3>
 </div>
           </div>
         </div>
@@ -114,15 +137,15 @@ session_start();
       </div>
       </div>
 
-      <div class="slider-item" style="background-image:url(images/dentist_bg.jpg);">
+      <div class="slider-item2" >
       	<div class="overlay"></div>
         <div class="container">
           <div class="row no-gutters slider-text align-items-center justify-content-start" data-scrollax-parent="true">
           <div class="col-md-6 text ftco-animate">
           <div class = "box">
-            <h1 class="mb-4">Diagnostic Dental<span>Xray Services</span></h1>
-            <h3 class="subheading">Your Health is Our Top Priority with Comprehensive, Affordable medical.</h3>
-          </div>]
+            <h1 class="mb-4">Diagnostic Dental<span>Services</span></h1>
+            <h3 class="subheading">Your Health is Our Top Priority. Experience Quality Dental Care In Our Clinic.</h3>
+          </div>
         </div>
   </div>
         </div>
@@ -130,8 +153,9 @@ session_start();
     </section>
 <!-- END CAROUSEL -->
 
+
 <!-- 4 boxes-->
-    <section class="ftco-services ftco-no-pb">
+<section class="ftco-services ftco-no-pb">
 		<div class="container container-danger">
 			<div class="row no-gutters">
 
@@ -141,8 +165,8 @@ session_start();
             		<span class="flaticon-doctor"></span>
               </div>
               <div class="media-body p-2 mt-3">
-                <h3 class="heading">Qualitfied Doctors</h3>
-                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+                <h3 class="heading">Qualified Dentists</h3>
+                <p>Only the best dentists, to bring you the best care. We educate our patients about Dental health Importance.</p>
               </div>
             </div>
           </div>
@@ -154,7 +178,7 @@ session_start();
               </div>
               <div class="media-body p-2 mt-3">
                 <h3 class="heading">Emergency Care</h3>
-                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+                <p>We are one phone call away for all dental emergencies, with our dentists ready to assist as soon as possible.</p>
               </div>
             </div>
           </div>
@@ -166,7 +190,7 @@ session_start();
               </div>
               <div class="media-body p-2 mt-3">
                 <h3 class="heading">Outdoor Checkup</h3>
-                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+                <p>We ensure safe dental visits in our clinic, where we provide health protocols for all of our patients.</p>
               </div>
             </div>
           </div>
@@ -177,8 +201,8 @@ session_start();
             		<span class="flaticon-24-hours"></span>
               </div>
               <div class="media-body p-2 mt-3">
-                <h3 class="heading">24 Hours Service</h3>
-                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+                <h3 class="heading">Online Consults</h3>
+                <p>Experience 24 hours service from our team with our online consultations and convenient support system.</p>
               </div>
             </div>
           </div>
@@ -195,7 +219,7 @@ session_start();
           <div class="col-md-8 text-center heading-section ftco-animate">
           	<span class="subheading">Services</span>
             <h2 class="mb-4">Our Services</h2>
-            <p>Separated they live in. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country</p>
+            <p>Our well-vetted Castillo Doctors' expertise is to provide you and your loved ones with expert primary dental care. Here are what we offer in this clinic. </p>
           </div>
         </div>
     		<div class="row">
@@ -209,13 +233,13 @@ session_start();
 	        			<p><span class="price">₱499</span> <span class="per">/ session</span></p>
 	        		</div>
         			<ul>
-        				<li>Diagnostic Services</li>
-								<li>Professional Consultation</li>
-								<li>Tooth Implants</li>
-								<li>Surgical Extractions</li>
-								<li>Teeth Whitening</li>
+        				<li>Teeth Cleaning</li>
+								<li>Painless Ultrasonic</li>
+								<li>Root planning </li>
+								<li>Dental Restoration</li>
+								<li>Endodontics</li>
         			</ul>
-        			<p class="button text-center"><a href="#" class="btn btn-primary px-4 py-3">Get Offer</a></p>
+        			<p class="button text-center"><a href="#" class="btn btn-primary px-4 py-3">Book Now</a></p>
         		</div>
         	</div>
         	<!-- END GENERAL DENTISTRY -->
@@ -229,13 +253,13 @@ session_start();
 	        			<p><span class="price">₱999</span> <span class="per">/ session</span></p>
 	        		</div>
         			<ul>
-        				<li>Diagnostic Services</li>
-								<li>Professional Consultation</li>
-								<li>Tooth Implants</li>
-								<li>Surgical Extractions</li>
-								<li>Teeth Whitening</li>
+        				<li>Orthodontic Braces</li>
+								<li>Metal Braces</li>
+								<li>Invisalign</li>
+								<li>Sapphire Clear Braces</li>
+								<li>Brace Cleaning</li>
         			</ul>
-        			<p class="button text-center"><a href="#" class="btn btn-primary px-4 py-3">Get Offer</a></p>
+        			<p class="button text-center"><a href="#" class="btn btn-primary px-4 py-3">Book Now</a></p>
         		</div>
         	</div>
         	<!-- END ORTHODONTICS -->
@@ -249,13 +273,13 @@ session_start();
 	        			<p><span class="price">₱1199</span> <span class="per">/ session</span></p>
 	        		</div>
         			<ul>
-        				<li>Diagnostic Services</li>
-								<li>Professional Consultation</li>
-								<li>Tooth Implants</li>
-								<li>Surgical Extractions</li>
+        				<li>Dental Veneers</li>
 								<li>Teeth Whitening</li>
+                <li>Inlays and Onlays</li>
+								<li>Composite Veneers</li>
+								<li>Cosmetic Bonding</li>
         			</ul>
-        			<p class="button text-center"><a href="#" class="btn btn-primary px-4 py-3">Get Offer</a></p>
+        			<p class="button text-center"><a href="#" class="btn btn-primary px-4 py-3">Book Now</a></p>
         		</div>
         	</div>
         	<!-- END COSMETICS DENTISTRY -->
@@ -270,13 +294,13 @@ session_start();
 	        			<p><span class="price">₱1249</span> <span class="per">/ session</span></p>
 	        		</div>
         			<ul>
-        				<li>Diagnostic Services</li>
-								<li>Professional Consultation</li>
-								<li>Tooth Implants</li>
-								<li>Surgical Extractions</li>
-								<li>Teeth Whitening</li>
+        				<li>Dentures</li>
+								<li>Dental Crown</li>
+								<li>Teeth Shaping</li>
+								<li>Coatings</li>
+								<li>Gingivoplasty </li>
         			</ul>
-        			<p class="button text-center"><a href="#" class="btn btn-primary px-4 py-3">Get Offer</a></p>
+        			<p class="button text-center"><a href="#" class="btn btn-primary px-4 py-3">Book Now</a></p>
         		</div>
         	</div>
         	<!-- END DENTAL IMPLANT -->
@@ -293,8 +317,7 @@ session_start();
           <div class="col-md">
             <div class="ftco-footer-widget mb-5">
               <h2 class="ftco-heading-2 logo">Dr. Castillo <span>Dental Clinic</span></h2>
-              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-            </div>
+              <p>Our technology offers you a convenient access to a Dentist, and world-class data security. Experience high-end medical care only with Castillo Dental Clinic.</p>
             <div class="ftco-footer-widget mb-5">
             	<h2 class="ftco-heading-2">Have a Questions?</h2>
             	<div class="block-23 mb-3">
@@ -319,7 +342,6 @@ session_start();
                 <li><a href="index.php"><span class="ion-ios-arrow-round-forward mr-2"></span>Home</a></li>
                 <li><a href="about.php"><span class="ion-ios-arrow-round-forward mr-2"></span>About</a></li>
                 <li><a href="services.php"><span class="ion-ios-arrow-round-forward mr-2"></span>Services</a></li>
-                <li><a href="faqs.php"><span class="ion-ios-arrow-round-forward mr-2"></span>FAQS</a></li>
                 <li><a href="contact.php"><span class="ion-ios-arrow-round-forward mr-2"></span>Contact</a></li>
               </ul>
             </div>
@@ -336,8 +358,10 @@ session_start();
 
           <div class="col-md">
           	<div class="ftco-footer-widget mb-5">
-            	<h2 class="ftco-heading-2">Opening Hours</h2>
-            	<h3 class="open-hours pl-4"><span class="ion-ios-time mr-3"></span>We are open 24/7</h3>
+            <h2 class="ftco-heading-2">Clinic Hours</h2>
+              <h3 class="open-hours pl-4"><span class="ion-ios-time mr-3"></span>24/7 (Online Consultation)</h3>
+            	<h3 class="open-hours pl-4"><span class="ion-ios-time mr-3"></span>9:00 AM - 12:00 PM (Appointment)</h3>
+              <h3 class="open-hours pl-4"><span class="ion-ios-time mr-3"></span>9:00 AM - 1:00 PM (X-ray Services)</h3>
             </div>
             <div class="ftco-footer-widget mb-5">
             	<h2 class="ftco-heading-2">Subscribe Us!</h2>
@@ -384,6 +408,7 @@ session_start();
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
+  
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <!-- Are you a member yet? -->

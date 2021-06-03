@@ -112,7 +112,7 @@
 				<input type="text" id="lastname" name="lastname" placeholder="Last Name" required/>
 				<input type="email" id="email" name="email" placeholder="Email" required/>
 				<input type="password" id="password" name="password" placeholder="Password" required/> <br>
-				<span>By creating an account you agree to our <br><a href="terms.html">Terms & Conditions</a></span> <br>
+				<span>By creating an account you agree to our <br><a href="terms.html">Terms of Use</a> and <a href="privacy.html">Privacy Policy</a> </span> <br>
 				<button name="create" type="submit" id ="register">Sign Up</button>
 				<div class="hide">
 					<br>
@@ -143,7 +143,7 @@
 				<input type="text" id="lastname" name="lastname" placeholder="Last Name" required/>
 				<input type="email" id="email" name="email" placeholder="Email" required/>
 				<input type="password" id="password" name="password" placeholder="Password" required/> <br>
-				<span>By creating an account you agree to our <br><a href="terms.html">Terms & Conditions</a></span> <br>
+				<span>By creating an account you agree to our <br><a href="terms.html">Terms of Use</a> and <a href="privacy.html">Privacy Policy</a> </span> <br>
 				<button name="create" type="submit" id ="register">Sign Up</button>
 </div>
 			</form>

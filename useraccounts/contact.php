@@ -26,7 +26,7 @@
 
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
-    <link href="css3/style.css" rel="stylesheet" type="text/css"/>
+    <link href="style/style.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   </head>
   <body>
@@ -66,11 +66,17 @@
           <span class="oi oi-menu"></span> Menu
         </button>
 
-        <p class="button-custom order-lg-last mb-0">
-        <button type="button" class ="btn btn-secondary"><i class="far fa-calendar-check"></i> Make an Appointment </button>
-        <a href="dental/login.php"> <button type="button" class ="btn btn-danger"><i class="fas fa-sign-in-alt"></i> Login </button></a>
-        <a href="dental/registration.php"> <button type="button" class ="btn btn-danger2"><i class="fas fa-pen-alt"></i> Register </button></a>
-        </p>
+         <!-- BUTTONS -->
+       
+       <p class="button-custom order-lg-last mb-0">
+       
+       <button type="button" class ="btn btn-secondary"><i class="far fa-calendar-check"></i><span class="one"> Make an Appointment</span><span style="display:none" class="two"> Book</span></button>
+       <a href="login-register/login.php"> <button type="button" class ="btn btn-danger"><i class="fas fa-sign-in-alt"></i> Login </button></a>
+       <a href="login-register/registration.php"> <button type="button" class ="btn btn-danger2"><i class="fas fa-pen-alt"></i> Register </button></a>
+       </p>
+ 
+  
+       <!-- END BUTTONS -->
 
         <div class="collapse navbar-collapse" id="ftco-nav">
           <ul class="navbar-nav mr-auto">
@@ -164,27 +170,25 @@
       </div>
     </section>
 <!-- END CONTACT INFO -->
-
 <!-- FOOTER -->
-    <footer class="ftco-footer ftco-bg-dark ftco-section">
+<footer class="ftco-footer ftco-bg-dark ftco-section">
       <div class="container">
         <div class="row mb-5">
 
           <div class="col-md">
             <div class="ftco-footer-widget mb-5">
               <h2 class="ftco-heading-2 logo">Dr. Castillo <span>Dental Clinic</span></h2>
-              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-            </div>
+              <p>Our technology offers you a convenient access to a Dentist, and world-class data security. Experience high-end medical care only with Castillo Dental Clinic.</p>
             <div class="ftco-footer-widget mb-5">
-              <h2 class="ftco-heading-2">Have a Questions?</h2>
-              <div class="block-23 mb-3">
-                <ul>
-                  <li><span class="icon icon-map-marker"></span><span class="text">#81 (Commercial) M. Almeda Street Pateros, Metro Manila</span></li>
-                  <li><a href="#"><span class="icon icon-phone"></span><span class="text">(02) 642-8175 / 642-1436</span></a></li>
-                  <li><a href="#"><span class="icon icon-envelope"></span><span class="text">drcastilloDC@gmail.com</span></a></li>
-                </ul>
-              </div>
-              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
+            	<h2 class="ftco-heading-2">Have a Questions?</h2>
+            	<div class="block-23 mb-3">
+	              <ul>
+	                <li><span class="icon icon-map-marker"></span><span class="text">#81 (Commercial) M. Almeda Street Pateros, Metro Manila</span></li>
+	                <li><a href="#"><span class="icon icon-phone"></span><span class="text">(02) 642-8175 / 642-1436</span></a></li>
+	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">drcastilloDC@gmail.com</span></a></li>
+	              </ul>
+	            </div>
+	            <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
                 <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
                 <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
                 <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
@@ -196,31 +200,32 @@
             <div class="ftco-footer-widget mb-5 ml-md-4">
               <h2 class="ftco-heading-2">Links</h2>
               <ul class="list-unstyled">
-                <li><a href="index-member.php"><span class="ion-ios-arrow-round-forward mr-2"></span>Home</a></li>
-                <li><a href="about-member.php"><span class="ion-ios-arrow-round-forward mr-2"></span>About</a></li>
-                <li><a href="services-member.php"><span class="ion-ios-arrow-round-forward mr-2"></span>Services</a></li>
-                <li><a href="faqs-member.php"><span class="ion-ios-arrow-round-forward mr-2"></span>FAQS</a></li>
-                <li><a href="contact-member.php"><span class="ion-ios-arrow-round-forward mr-2"></span>Contact</a></li>
+                <li><a href="index.php"><span class="ion-ios-arrow-round-forward mr-2"></span>Home</a></li>
+                <li><a href="about.php"><span class="ion-ios-arrow-round-forward mr-2"></span>About</a></li>
+                <li><a href="services.php"><span class="ion-ios-arrow-round-forward mr-2"></span>Services</a></li>
+                <li><a href="contact.php"><span class="ion-ios-arrow-round-forward mr-2"></span>Contact</a></li>
               </ul>
             </div>
             <div class="ftco-footer-widget mb-5 ml-md-4">
               <h2 class="ftco-heading-2">Services</h2>
               <ul class="list-unstyled">
-                <li><a href="services-member.php"><span class="ion-ios-arrow-round-forward mr-2"></span>General Dentistry</a></li>
-                <li><a href="services-member.php"><span class="ion-ios-arrow-round-forward mr-2"></span>Orthodontics</a></li>
-                <li><a href="services-member.php"><span class="ion-ios-arrow-round-forward mr-2"></span>Cosmetics Dentistry</a></li>
-                <li><a href="services-member.php"><span class="ion-ios-arrow-round-forward mr-2"></span>Dental Implant</a></li>
+                <li><a href="services.php"><span class="ion-ios-arrow-round-forward mr-2"></span>General Dentistry</a></li>
+                <li><a href="services.php"><span class="ion-ios-arrow-round-forward mr-2"></span>Orthodontics</a></li>
+                <li><a href="services.php"><span class="ion-ios-arrow-round-forward mr-2"></span>Cosmetics Dentistry</a></li>
+                <li><a href="services.php"><span class="ion-ios-arrow-round-forward mr-2"></span>Dental Implant</a></li>
               </ul>
             </div>
           </div>
 
           <div class="col-md">
-            <div class="ftco-footer-widget mb-5">
-              <h2 class="ftco-heading-2">Opening Hours</h2>
-              <h3 class="open-hours pl-4"><span class="ion-ios-time mr-3"></span>We are open 24/7</h3>
+          	<div class="ftco-footer-widget mb-5">
+            <h2 class="ftco-heading-2">Clinic Hours</h2>
+              <h3 class="open-hours pl-4"><span class="ion-ios-time mr-3"></span>24/7 (Online Consultation)</h3>
+            	<h3 class="open-hours pl-4"><span class="ion-ios-time mr-3"></span>9:00 AM - 12:00 PM (Appointment)</h3>
+              <h3 class="open-hours pl-4"><span class="ion-ios-time mr-3"></span>9:00 AM - 1:00 PM (X-ray Services)</h3>
             </div>
             <div class="ftco-footer-widget mb-5">
-              <h2 class="ftco-heading-2">Subscribe Us!</h2>
+            	<h2 class="ftco-heading-2">Subscribe Us!</h2>
               <form action="#" class="subscribe-form">
                 <div class="form-group">
                   <input type="text" class="form-control mb-2 text-center" placeholder="Enter email address">
@@ -235,12 +240,13 @@
 
             <p>
   Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">BCSAD</a>
-</p>
+ </p>
           </div>
         </div>
       </div>
     </footer>
 <!-- END FOOTER -->
+
 
 
   <!-- loader -->
