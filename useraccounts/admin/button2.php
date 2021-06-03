@@ -95,11 +95,11 @@ include('config.php');
                     </div>
                     <div class="col-md-12">
                         <label for="diagnosis" class="form-label">Diagnosis</label>
-                        <textarea class="form-control" id="diagnosis" name="diagnosis"></textarea>
+                        <input class="form-control" id="diagnosis" name="diagnosis">
                     </div>
                     <div class="col-md-12">
                         <label for="treatment" class="form-label">Treatment</label>
-                        <textarea class="form-control" id="treatment" name="treatment"></textarea>
+                        <input class="form-control" id="treatment" name="treatment">
                     </div>
                 </div>
                 <div class="modal-footer">
