@@ -103,9 +103,9 @@ include('config.php');
                     <div class="col-md-6">
                     <label for="doctor" class="form-label">Doctor</label>
                     <select id="doctor" name="doctor" class="form-select" value="<?php echo $erow['doctor']; ?>">
-                        <option value = "Doctor Strange" <?php if($erow['doctor']=="Doctor Strange") echo 'selected="selected"';?>>Doctor Strange</option>
-                        <option value = "Doctor Stone" <?php if($erow['doctor']=="Doctor Stone") echo 'selected="selected"';?>>Doctor Stone</option>
-                        <option value = "Doctor Pepper" <?php if($erow['doctor']=="Doctor Pepper") echo 'selected="selected"';?>>Doctor Pepper</option>
+                        <option value = "Dr. Alan" <?php if($erow['doctor']=="Dr. Alan") echo 'selected="selected"';?>>Dr. Alan</option>
+                        <option value = "Dr. Ruby" <?php if($erow['doctor']=="Dr. Ruby") echo 'selected="selected"';?>>Dr. Ruby</option>
+                        <option value = "Dr. Gialana" <?php if($erow['doctor']=="Dr. Gialana") echo 'selected="selected"';?>>Dr. Gialana</option>
                     </select>
                     </div>
                     <div class="col-md-6">
