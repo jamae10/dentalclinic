@@ -178,108 +178,6 @@ if(!isset($_SESSION['admin_login']) && empty($_SESSION['admin_login'])){
 <button class="tablink" onclick="openPage('Contact', this, '#62a59e')"><i class="fas fa-hourglass-start"></i> Postponed Appointments</button>
 <button class="tablink" onclick="openPage('About', this, '#84d0b8')"><i class="fas fa-phone-slash"></i> Cancelled Appointments</button>
 
-
-<!-- Modal Form -->
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<div class="modal fade" tabindex="-1" id="editmodal" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Edit Information</h5>
-        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <form action="updateCode.php" method="POST">
-      <?php 
-				if(isset($_SESSION['update_status']) && $_SESSION['update_status'] !=''){
-					?>
-					<script>
-						swal({
-							title:"<?php echo $_SESSION['update_status']; ?>",
-							text: "<?php echo $_SESSION['update_status_text']; ?>",
-							icon: "<?php echo $_SESSION['update_status_code'];?>",
-							button: "Ok",
-						});
-					</script>
-				<?php
-					unset($_SESSION['update_status']);
-				}
-				?>				
-      <div class="modal-body row g-3">
-
-        <div class="col-md-12">
-          <label for="appointmentID" class="form-label">Appointment ID</label>
-          <input id = "appointmentID" name="appointmentID" type="text" class="form-control" placeholder="Appointment ID" aria-label="Appointment ID" disabled>
-        </div>
-        <div class="col-md-6">
-          <input id = "firstname" name="firstname" type="text" class="form-control" placeholder="First name" aria-label="First name" >
-        </div>
-        <div class="col-md-6">
-          <input type="text" id = "lastname" name="lastname" class="form-control" placeholder="Last name" aria-label="Last name">
-        </div>
-        <div class="col-8">
-          <input id = "email" name="email" type ="email" class="form-control" placeholder="Email" aria-label="Email">
-        </div>
-        <div class="col-md-4">
-          <label for="gender" class="form-label">Gender</label>
-          <select id="gender" name="gender" class="form-select">
-            <option selected>Choose...</option>
-            <option>Male</option>
-            <option>Female</option>
-          </select>
-        </div>
-        <div class="col-md-4">
-        <input id = "date" name="date" type="text" class="form-control" placeholder="Date" aria-label="Date">
-        </div>
-        <div class="col-md-4">
-        <input id = "time" name="time" type="text" class="form-control" placeholder="Time" aria-label="Time">
-        </div>
-        <div class="col-md-4">
-        <label for="type" class="form-label">Type</label>
-          <select id="type" name="type" class="form-select">
-            <option selected>Choose...</option>
-            <option>Online</option>
-            <option>On-Site</option>
-          </select>
-        </div>
-        <div class="col-md-6">
-        <input id = "service" name="service" type="text" class="form-control" placeholder="Service" aria-label="Service">
-        </div>
-        <div class="col-md-6">
-        <input id = "concern" name="concern" type="text" class="form-control" placeholder="Concern" aria-label="Concern">
-        </div>
-        <div class="col-md-6">
-        <label for="doctor" class="form-label">Doctor</label>
-          <select id="doctor" name="doctor" class="form-select">
-            <option selected>Choose...</option>
-            <option>Doctor Strange</option>
-            <option>Doctor Stone</option>
-            <option>Doctor Pepper</option>
-          </select>
-        </div>
-        <div class="col-md-6">
-        <label for="status" class="form-label">Status</label>
-          <select id="status" name="status" class="form-select">
-            <option selected>Choose...</option>
-            <option>Pending</option>
-            <option>Completed</option>
-            <option>Postponed</option>
-            <option>Cancelled</option>
-          </select>
-        </div>
-        
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary" name="updateData">Save changes</button>
-      </div>
-      </form>
-    </div>
-  </div>
-</div>
-
-
-<!-- End Modal Form -->
-
 <!-- PENDING -->
 <div id="Home" class="tabcontent">
 <?php
@@ -330,8 +228,9 @@ if(!isset($_SESSION['admin_login']) && empty($_SESSION['admin_login'])){
       <td><?php echo $row['doctor']; ?></td>
       <td><?php echo $row['remarks']; ?></td>
       <td>
-        <button type="button" id= "editbtn" class="btn btn-success editbtn"  title="Edit" ><i class="fa fa-edit"></i></button>
-        <button type="button" id= "deletebtn" class="btn btn-danger editbtn"  title="Delete" ><i class="fa fa-trash"></i></button>
+        <a href = "#edit<?php echo $row['appointment_id']; ?>" class="edit" title="Edit" data-toggle="modal"><i class="fa fa-edit"></i></a>
+        <a href = "#del<?php echo $row['appointment_id']; ?>" class="delete" title="Delete" data-toggle="modal"><i class="fa fa-trash"></i></a>
+        <?php include('button.php'); ?>
       </td>
     </tr>
   </tbody>
@@ -350,9 +249,7 @@ if(!isset($_SESSION['admin_login']) && empty($_SESSION['admin_login'])){
 <?php
   include "config.php";
   $remark = "Completed";
-  $sql = "SELECT firstname, lastname, email, gender, consultation_type, service, date, time, concern, doctor, remarks
-  FROM appointments WHERE remarks = '$remark'";
-  
+  $sql = "SELECT * FROM appointments WHERE remarks = '$remark'";
   $result = mysqli_query($conn, $sql);
   
   $num = 1;
@@ -361,6 +258,7 @@ if(!isset($_SESSION['admin_login']) && empty($_SESSION['admin_login'])){
   <thead>
     <tr>
       <th scope="col">#</th>
+      <th scope="col">Appointment ID</th>
       <th scope="col">First Name</th>
       <th scope="col">Last Name</th>
       <th scope="col">Email</th>
@@ -377,19 +275,16 @@ if(!isset($_SESSION['admin_login']) && empty($_SESSION['admin_login'])){
   </thead>
   <?php
     if($result){
-      $sql2 = "INSERT INTO patient_records (UUID, firstname, lastname, email, gender, concern, service, date, doctor)
-      SELECT  UUID, firstname, lastname, email, gender, concern, service, date, doctor 
-      FROM appointments a 
-      WHERE a.UUID,a.firstname,a.lastname, a.email, a.concern, a.service, a.date, a.doctor NOT IN (SELECT UUID, firstname, lastname, email, concern, service, date, doctor FROM patient_records)";
-      $result2 = mysqli_query($conn, $sql2);
-      $result2;
+      include('insert_patientRecords.php'); 
+     
       foreach($result as $row){
   ?>
   <tbody>
     <tr>
       <td><?php echo $num; $num++; ?></td>
-      <td><?php echo $row['firstname'];  ?></td>
-      <td><?php echo $row['lastname'];?></td>
+      <td><?php echo $row['appointment_id'];  ?></td>
+      <td><?php echo ucwords($row['firstname']);  ?></td>
+      <td><?php echo ucwords($row['lastname']);?></td>
       <td><?php echo $row['email']; ?></td>
       <td><?php echo $row['gender']; ?></td>
       <td><?php echo $row['consultation_type']; ?></td>
@@ -400,9 +295,9 @@ if(!isset($_SESSION['admin_login']) && empty($_SESSION['admin_login'])){
       <td><?php echo $row['doctor']; ?></td>
       <td><?php echo $row['remarks']; ?></td>
       <td>
-        <!--<a class="add" title="Add" data-toggle="tooltip"><i class="fa fa-user-plus"></i></a>-->
-        <a href = "edit-action.php" class="edit" title="Edit" data-toggle="tooltip"><i class="fa fa-edit"></i></a>
-        <a class="delete" title="Delete" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
+        <a href = "#edit<?php echo $row['appointment_id']; ?>" class="edit" title="Edit" data-toggle="modal"><i class="fa fa-edit"></i></a>
+        <a href = "#del<?php echo $row['appointment_id']; ?>" class="delete" title="Delete" data-toggle="modal"><i class="fa fa-trash"></i></a>
+        <?php include('button.php'); ?>
       </td>
     </tr>
   </tbody>
@@ -421,7 +316,7 @@ if(!isset($_SESSION['admin_login']) && empty($_SESSION['admin_login'])){
 <?php
   include "config.php";
   $remark = "Postponed";
-  $sql = "SELECT firstname, lastname, email, gender, consultation_type, service, date, time, concern, doctor, remarks
+  $sql = "SELECT appointment_id, firstname, lastname, email, gender, consultation_type, service, date, time, concern, doctor, remarks
   FROM appointments WHERE remarks = '$remark'";
   $result = mysqli_query($conn, $sql);
   $num = 1;
@@ -430,6 +325,7 @@ if(!isset($_SESSION['admin_login']) && empty($_SESSION['admin_login'])){
   <thead>
     <tr>
       <th scope="col">#</th>
+      <th scope="col">Appointment ID</th>
       <th scope="col">First Name</th>
       <th scope="col">Last Name</th>
       <th scope="col">Email</th>
@@ -451,6 +347,7 @@ if(!isset($_SESSION['admin_login']) && empty($_SESSION['admin_login'])){
   <tbody>
     <tr>
       <td><?php echo $num; $num++; ?></td>
+      <td><?php echo $row['appointment_id'];  ?></td>
       <td><?php echo $row['firstname'];  ?></td>
       <td><?php echo $row['lastname'];?></td>
       <td><?php echo $row['email']; ?></td>
@@ -463,9 +360,9 @@ if(!isset($_SESSION['admin_login']) && empty($_SESSION['admin_login'])){
       <td><?php echo $row['doctor']; ?></td>
       <td><?php echo $row['remarks']; ?></td>
       <td>
-        <!--<a class="add" title="Add" data-toggle="tooltip"><i class="fa fa-user-plus"></i></a>-->
-        <a class="edit" title="Edit" data-toggle="tooltip"><i class="fa fa-edit"></i></a>
-        <a class="delete" title="Delete" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
+        <a href = "#edit<?php echo $row['appointment_id']; ?>" class="edit" title="Edit" data-toggle="modal"><i class="fa fa-edit"></i></a>
+        <a href = "#del<?php echo $row['appointment_id']; ?>" class="delete" title="Delete" data-toggle="modal"><i class="fa fa-trash"></i></a>
+        <?php include('button.php'); ?>
       </td>
     </tr>
   </tbody>
@@ -485,7 +382,7 @@ if(!isset($_SESSION['admin_login']) && empty($_SESSION['admin_login'])){
 <?php
   include "config.php";
   $remark = "Cancelled";
-  $sql = "SELECT firstname, lastname, email, gender, consultation_type, service, date, time, concern, doctor, remarks
+  $sql = "SELECT appointment_id, firstname, lastname, email, gender, consultation_type, service, date, time, concern, doctor, remarks
   FROM appointments WHERE remarks = '$remark'";
   $result = mysqli_query($conn, $sql);
   $num = 1;
@@ -494,6 +391,7 @@ if(!isset($_SESSION['admin_login']) && empty($_SESSION['admin_login'])){
   <thead>
     <tr>
       <th scope="col">#</th>
+      <th scope="col">Appointment ID</th>
       <th scope="col">First Name</th>
       <th scope="col">Last Name</th>
       <th scope="col">Email</th>
@@ -515,6 +413,7 @@ if(!isset($_SESSION['admin_login']) && empty($_SESSION['admin_login'])){
   <tbody>
     <tr>
       <td><?php echo $num; $num++; ?></td>
+      <td><?php echo $row['appointment_id'];  ?></td>
       <td><?php echo $row['firstname'];  ?></td>
       <td><?php echo $row['lastname'];?></td>
       <td><?php echo $row['email']; ?></td>
@@ -527,9 +426,9 @@ if(!isset($_SESSION['admin_login']) && empty($_SESSION['admin_login'])){
       <td><?php echo $row['doctor']; ?></td>
       <td><?php echo $row['remarks']; ?></td>
       <td>
-        <!--<a class="add" title="Add" data-toggle="tooltip"><i class="fa fa-user-plus"></i></a>-->
-        <a class="edit" title="Edit" data-toggle="tooltip"><i class="fa fa-edit"></i></a>
-        <a class="delete" title="Delete" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
+        <a href = "#edit<?php echo $row['appointment_id']; ?>" class="edit" title="Edit" data-toggle="modal"><i class="fa fa-edit"></i></a>
+        <a href = "#del<?php echo $row['appointment_id']; ?>" class="delete" title="Delete" data-toggle="modal"><i class="fa fa-trash"></i></a>
+        <?php include('button.php'); ?>
       </td>
     </tr>
   </tbody>

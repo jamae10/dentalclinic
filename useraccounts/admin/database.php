@@ -14,6 +14,7 @@ if(!isset($_SESSION['admin_login']) && empty($_SESSION['admin_login'])){
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -36,11 +37,13 @@ if(!isset($_SESSION['admin_login']) && empty($_SESSION['admin_login'])){
 
     <link href="../style/style.css" rel="stylesheet" type="text/css"/>
     <link href="../style/style2.css" rel="stylesheet" type="text/css"/>
-
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </head>
 
   <body>
-
+  <script src="https://use.fontawesome.com/56c2c728b9.js"></script>
 <!-- HEADER -->
     <nav class="navbar py-4 navbar-expand-lg ftco_navbar navbar-light bg-light flex-row">
       <div class="container">
@@ -121,6 +124,7 @@ if(!isset($_SESSION['admin_login']) && empty($_SESSION['admin_login'])){
   <br>
 <?php
   include "config.php";
+  include 'insert_patientRecords.php'; 
   $remark = "complete";
   $sql = "SELECT * FROM patient_records";
   $result = mysqli_query($conn, $sql);
@@ -130,6 +134,7 @@ if(!isset($_SESSION['admin_login']) && empty($_SESSION['admin_login'])){
   <thead>
     <tr>
       <th scope="col">#</th>
+      <th scope="col">Patient ID</th>
       <th scope="col">First Name</th>
       <th scope="col">Last Name</th>
       <th scope="col">Email</th>
@@ -150,6 +155,7 @@ if(!isset($_SESSION['admin_login']) && empty($_SESSION['admin_login'])){
   <tbody id="myTable">
     <tr>
       <td><?php echo $num; $num++; ?></td>
+      <td><?php echo $row['UUID'];  ?></td>
       <td><?php echo $row['firstname'];  ?></td>
       <td><?php echo $row['lastname'];?></td>
       <td><?php echo $row['email']; ?></td>
@@ -161,9 +167,9 @@ if(!isset($_SESSION['admin_login']) && empty($_SESSION['admin_login'])){
       <td><?php echo $row['diagnosis']; ?></td>
       <td><?php echo $row['treatment']; ?></td>
       <td>
-        <!--<a class="add" title="Add" data-toggle="tooltip"><i class="fa fa-user-plus"></i></a>-->
-        <a class="edit" title="Edit" data-toggle="tooltip"><i class="fa fa-edit"></i></a>
-        <a class="delete" title="Delete" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
+        <a href = "#edit<?php echo $row['UUID']; ?>" class="edit" title="Edit" data-toggle="modal"><i class="fa fa-edit"></i></a>
+        <a href = "#del<?php echo $row['UUID']; ?>" class="delete" title="Delete" data-toggle="modal"><i class="fa fa-trash"></i></a>
+        <?php include('button2.php'); ?>
       </td>
     </tr>
   </tbody>

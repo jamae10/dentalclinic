@@ -150,7 +150,7 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
 									<div class="col-md-6">
 										<div class="form-group">
 											<span class="form-label">Patient's Name</span>
-											<input name = "fullname"  id="fullname" class="form-control" type="text" placeholder="Full Name" value="<?php echo $_SESSION['firstname']?? "";?> <?php echo $_SESSION['lastname']?? "";?>">
+											<input name = "fullname"  id="fullname" class="form-control" type="text" placeholder="Full Name" value="<?php echo $_SESSION['firstname']?? "";?><?php echo $_SESSION['lastname']?? "";?>">
 										</div>
 									</div>
 									<div class="col-md-6">
