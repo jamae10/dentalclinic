@@ -49,27 +49,27 @@ CREATE TABLE `appointments` (
 --
 
 INSERT INTO `appointments` (`id`, `UUID`, `appointment_id`, `firstname`, `lastname`, `email`, `gender`, `consultation_type`, `service`, `date`, `time`, `concern`, `doctor`, `remarks`) VALUES
-(1, 'a239bdae077b435f5b802dfae2dc2a74', '22546847163-182168', 'Yuji', 'Itadori', 'yuji@itadori.z', 'Male', 'Online', 'General Dentistry', '06-05-2020', 'Morning', 'Toothache', 'Doctor Strange', 'Completed'),
-(2, 'd338833a9fcab3a0e4d08f008ba86af9', '2365978451-12359874', 'Satoru', 'Gojo', 'sato@ro.goju', 'Male', 'On-Site', 'General Dentistry', '08-06-2021', 'Morning', 'Stained teeth', 'Doctor Stone', 'Pending'),
-(3, 'c7452cf252f3786a59fa2cf1b8fd5727', '2398455587-12648975', 'Rimuru', 'Tempest', 'rimu@ru.t', 'Male', 'On-Site', 'General Dentistry', '10-06-2021', 'Morning', 'Cavities', 'Doctor Pepper', 'Pending'),
-(4, '5a1a9e48f41c05215f6bc35909aeebbd', '3259878787-16598745', 'Osamu', 'Dazai', 'dazaaai@osa.mu', 'Male', 'Online', 'General Dentistry', '06-04-2021', 'Morning', 'Toothache', 'Doctor Pepper', 'Completed'),
-(5, '8042b80fb17d9390cfe49d22d959290c', '2658978951-65874598', 'Tom', 'Holland', 'tomholl@c.c', 'Male', 'Online', 'Orthodontics', '11-03-2021', 'Morning', 'Chipped tooth', 'Doctor Stone', 'Completed'),
-(6, '1e50eedc6305798366bb46b9cd5ebc33', '2365987895-124578953', 'Timothee', 'Chalamet', 'tim@mo.thee', 'Male', 'Online', 'Dental Implant', '01-05-2020', 'Afternoon', 'Impacted teeth', 'Doctor Strange', 'Completed'),
-(7, 'a6be2a5c55c14eda7c7266affaef56ff', '3598745168-23658974', 'Suzy', 'Bae', 'suzy@ba.e', 'Female', 'On-Site', 'General Dentistry', '09-07-2020', 'Morning', 'Toothache', 'Doctor Stone', 'Completed'),
-(8, '183e4f3c834cc168737c4f5cca051ccf', '2351478451-69856235', 'Mikasa', 'Ackerman', 'mikasa@ack.m', 'Female', 'On-Site', 'General Dentistry', '15-06-2021', 'Afternoon', 'Cavities', 'Doctor Strange', 'Pending'),
-(9, '07ac40a84973a78b7e0de947b392221b', '2369998852-32323232', 'Iruma', 'Suzuki', 'iruma@kun.c', 'Male', 'On-Site', 'General Dentistry', '05-05-2020', 'Morning', 'Cavities', 'Doctor Strange', 'Completed'),
-(10, '82b0da3f7f10e8dbbfe260c216ba90f3', '3698562312-23567414', 'Clara', 'Valac', 'clara@va.lac', 'Female', 'On-Site', 'Orthodontics', '19-12-2020', 'Morning', 'Chipped tooth', 'Doctor Pepper', 'Completed'),
-(11, 'ceaef2eb2a11af8173738e3f98748499', '3562147895-23564784', 'Leonardo', 'Dicaprio', 'leo@cap.rio', 'Male', 'Online', 'Orthodontics', '20-06-2021', 'Morning', 'Chipped tooth', 'Doctor Stone', 'Pending'),
-(12, 'df4c6d08bd47c00850e3d13ed5a4d17e', '365985236-6659893312', 'Johnny', 'Depp', 'johnnydepp@mal.com', 'Male', 'Online', 'Dental Implant', '01-07-2021', 'Morning', 'Cracked tooth', 'Doctor Pepper', 'Pending'),
-(13, '907a268589fb972b0406dee967cc7c0a', '3265995412-7548123698', 'Saoirse', 'Ronan', 'saoirse@ro.nan', 'Female', 'On-Site', 'General Dentistry', '12-08-2020', 'Afternoon', 'Sensitive to Cold', 'Doctor Strange', 'Completed'),
-(14, 'ce4ca7bc4b43946f4c8b0a23564d91e7', '3569964158-21354872002', 'Julia', 'Roberts', 'julia@rob.erts', 'Female', 'On-Site', 'Dental Implant', '06-11-2020', 'Afternoon', 'Cracked tooth', 'Doctor Pepper', 'Completed'),
-(15, '9821eb54309ac03a120c64f54be4016c', '9658951236-78451236951', 'Anne', 'Hathaway', 'ann@e.h', 'Female', 'Online', 'Dental Implant', '08-07-2021', 'Afternoon', 'Cracked tooth', 'Doctor Pepper', 'Pending'),
-(16, '58e3b092f97eb1a7ad6dbcc21a44c996', '885412698-98745621', 'Hyeri', 'Lee', 'hyeri@le.e', 'Female', 'Online', 'Dental Implant', '07-05-2020', 'Morning', 'Cracked tooth', 'Doctor Stone', 'Completed'),
-(17, '887ca63f1702523b1f83ae144cd47ec1', '885412698-98745621', 'Joon Gi', 'Lee', 'lee@joon.gi', 'Male', 'Online', 'General Dentistry', '06-05-2020', 'Afternoon', 'Cavities', 'Doctor Stone', 'Completed'),
-(18, 'a239bdae077b435f5b802dfae2dc2a74', '9865231478-182168', 'Yuji', 'Itadori', 'yuji@itadori.z', 'Male', 'Online', 'General Dentistry', '12-12-2020', 'Afternoon', 'Cavities', 'Doctor Strange', 'Completed'),
-(19, '8042b80fb17d9390cfe49d22d959290c', '2236598653-65874598', 'Tom', 'Holland', 'tomholl@c.c', 'Male', 'Online', 'General Dentistry', '25-09-2020', 'Morning', 'Cavities', 'Doctor Stone', 'Completed'),
-(20, 'd338833a9fcab3a0e4d08f008ba86af9', '2258547481-12359874', 'Satoru', 'Gojo', 'sato@ro.goju', 'Male', 'Online', 'Dental Implant', '22-03-2020', 'Morning', 'Cracked tooth', 'Doctor Stone', 'Completed'),
-(21, 'd338833a9fcab3a0e4d08f008ba86af9', '2345888555-12359874', 'Satoru', 'Gojo', 'sato@ro.goju', 'Male', 'Online', 'Dental Implant', '28-11-2020', 'Morning', 'Cavities', 'Doctor Stone', 'Completed');
+(1, 'a239bdae077b435f5b802dfae2dc2a74', '22546847163-182168', 'Yuji', 'Itadori', 'yuji@itadori.z', 'Male', 'Online', 'General Dentistry', '06-05-2020', 'Morning', 'Toothache', 'Dr. Alan', 'Completed'),
+(2, 'd338833a9fcab3a0e4d08f008ba86af9', '2365978451-12359874', 'Satoru', 'Gojo', 'sato@ro.goju', 'Male', 'On-Site', 'General Dentistry', '08-06-2021', 'Morning', 'Stained teeth', 'Dr. Ruby', 'Pending'),
+(3, 'c7452cf252f3786a59fa2cf1b8fd5727', '2398455587-12648975', 'Rimuru', 'Tempest', 'rimu@ru.t', 'Male', 'On-Site', 'General Dentistry', '10-06-2021', 'Morning', 'Cavities', 'Dr. Gialana', 'Pending'),
+(4, '5a1a9e48f41c05215f6bc35909aeebbd', '3259878787-16598745', 'Osamu', 'Dazai', 'dazaaai@osa.mu', 'Male', 'Online', 'General Dentistry', '06-04-2021', 'Morning', 'Toothache', 'Dr. Gialana', 'Completed'),
+(5, '8042b80fb17d9390cfe49d22d959290c', '2658978951-65874598', 'Tom', 'Holland', 'tomholl@c.c', 'Male', 'Online', 'Orthodontics', '11-03-2021', 'Morning', 'Chipped tooth', 'Dr. Ruby', 'Completed'),
+(6, '1e50eedc6305798366bb46b9cd5ebc33', '2365987895-124578953', 'Timothee', 'Chalamet', 'tim@mo.thee', 'Male', 'Online', 'Dental Implant', '01-05-2020', 'Afternoon', 'Impacted teeth', 'Dr. Alan', 'Completed'),
+(7, 'a6be2a5c55c14eda7c7266affaef56ff', '3598745168-23658974', 'Suzy', 'Bae', 'suzy@ba.e', 'Female', 'On-Site', 'General Dentistry', '09-07-2020', 'Morning', 'Toothache', 'Dr. Ruby', 'Completed'),
+(8, '183e4f3c834cc168737c4f5cca051ccf', '2351478451-69856235', 'Mikasa', 'Ackerman', 'mikasa@ack.m', 'Female', 'On-Site', 'General Dentistry', '15-06-2021', 'Afternoon', 'Cavities', 'Dr. Alan', 'Pending'),
+(9, '07ac40a84973a78b7e0de947b392221b', '2369998852-32323232', 'Iruma', 'Suzuki', 'iruma@kun.c', 'Male', 'On-Site', 'General Dentistry', '05-05-2020', 'Morning', 'Cavities', 'Dr. Alan', 'Completed'),
+(10, '82b0da3f7f10e8dbbfe260c216ba90f3', '3698562312-23567414', 'Clara', 'Valac', 'clara@va.lac', 'Female', 'On-Site', 'Orthodontics', '19-12-2020', 'Morning', 'Chipped tooth', 'Dr. Gialana', 'Completed'),
+(11, 'ceaef2eb2a11af8173738e3f98748499', '3562147895-23564784', 'Leonardo', 'Dicaprio', 'leo@cap.rio', 'Male', 'Online', 'Orthodontics', '20-06-2021', 'Morning', 'Chipped tooth', 'Dr. Ruby', 'Pending'),
+(12, 'df4c6d08bd47c00850e3d13ed5a4d17e', '365985236-6659893312', 'Johnny', 'Depp', 'johnnydepp@mal.com', 'Male', 'Online', 'Dental Implant', '01-07-2021', 'Morning', 'Cracked tooth', 'Dr. Gialana', 'Pending'),
+(13, '907a268589fb972b0406dee967cc7c0a', '3265995412-7548123698', 'Saoirse', 'Ronan', 'saoirse@ro.nan', 'Female', 'On-Site', 'General Dentistry', '12-08-2020', 'Afternoon', 'Sensitive to Cold', 'Dr. Alan', 'Completed'),
+(14, 'ce4ca7bc4b43946f4c8b0a23564d91e7', '3569964158-21354872002', 'Julia', 'Roberts', 'julia@rob.erts', 'Female', 'On-Site', 'Dental Implant', '06-11-2020', 'Afternoon', 'Cracked tooth', 'Dr. Gialana', 'Completed'),
+(15, '9821eb54309ac03a120c64f54be4016c', '9658951236-78451236951', 'Anne', 'Hathaway', 'ann@e.h', 'Female', 'Online', 'Dental Implant', '08-07-2021', 'Afternoon', 'Cracked tooth', 'Dr. Gialana', 'Pending'),
+(16, '58e3b092f97eb1a7ad6dbcc21a44c996', '885412698-98745621', 'Hyeri', 'Lee', 'hyeri@le.e', 'Female', 'Online', 'Dental Implant', '07-05-2020', 'Morning', 'Cracked tooth', 'Dr. Ruby', 'Completed'),
+(17, '887ca63f1702523b1f83ae144cd47ec1', '885412698-98745621', 'Joon Gi', 'Lee', 'lee@joon.gi', 'Male', 'Online', 'General Dentistry', '06-05-2020', 'Afternoon', 'Cavities', 'Dr. Ruby', 'Completed'),
+(18, 'a239bdae077b435f5b802dfae2dc2a74', '9865231478-182168', 'Yuji', 'Itadori', 'yuji@itadori.z', 'Male', 'Online', 'General Dentistry', '12-12-2020', 'Afternoon', 'Cavities', 'Dr. Alan', 'Completed'),
+(19, '8042b80fb17d9390cfe49d22d959290c', '2236598653-65874598', 'Tom', 'Holland', 'tomholl@c.c', 'Male', 'Online', 'General Dentistry', '25-09-2020', 'Morning', 'Cavities', 'Dr. Ruby', 'Completed'),
+(20, 'd338833a9fcab3a0e4d08f008ba86af9', '2258547481-12359874', 'Satoru', 'Gojo', 'sato@ro.goju', 'Male', 'Online', 'Dental Implant', '22-03-2020', 'Morning', 'Cracked tooth', 'Dr. Ruby', 'Completed'),
+(21, 'd338833a9fcab3a0e4d08f008ba86af9', '2345888555-12359874', 'Satoru', 'Gojo', 'sato@ro.goju', 'Male', 'Online', 'Dental Implant', '28-11-2020', 'Morning', 'Cavities', 'Dr. Ruby', 'Completed');
 
 -- --------------------------------------------------------
 

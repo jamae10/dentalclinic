@@ -138,11 +138,11 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
 									<div class="form-checkbox">
 									<label for="roundtrip">
 											<input name="appointment_type" value="Online" type="radio"  id="roundtrip" name="flight-type">
-											<span></span>Online Appointment
+											<span></span>Online Consultation
 										</label>
 										<label for="one-way">
 											<input name="appointment_type" value="On-Site" id="one-way" type="radio" name="flight-type">
-											<span></span>On-Site Appointment
+											<span></span>On-Site Consultation
 										</label>
 									</div>
 								</div>
@@ -197,9 +197,9 @@ if(!isset($_SESSION['userlogin']) && empty($_SESSION['userlogin'])){
 										<div class="form-group">
 											<span class="form-label">Doctor</span>
 											<select name = "doctor" id="doctor" class="form-control">
-												<option name="doctor1">Doctor Stone</option>
-												<option name="doctor2">Doctor Strange</option>
-												<option name="doctor3">Doctor Pepper</option>
+												<option name="doctor1">Dr. Alan</option>
+												<option name="doctor2">Dr. Ruby</option>
+												<option name="doctor3">Dr. Gialana</option>
 											</select>
 											<span class="select-arrow"></span>
 										</div>

@@ -85,9 +85,9 @@ include('config.php');
                     <div class="col-md-6">
                         <label for="doctor" class="form-label">Doctor</label>
                         <select id="doctor" name="doctor" class="form-select" value="<?php echo $erow['doctor']; ?>">
-                            <option class="dropdown-item" value = "Doctor Strange" <?php if($erow['doctor']=="Doctor Strange") echo 'selected="selected"';?>>Doctor Strange</option>
-                            <option class="dropdown-item" value = "Doctor Stone" <?php if($erow['doctor']=="Doctor Stone") echo 'selected="selected"';?>>Doctor Stone</option>
-                            <option class="dropdown-item" value = "Doctor Pepper" <?php if($erow['doctor']=="Doctor Pepper") echo 'selected="selected"';?>>Doctor Pepper</option>
+                            <option class="dropdown-item" value = "Dr. Alan" <?php if($erow['doctor']=="Doctor Strange") echo 'selected="selected"';?>>Dr. Alan</option>
+                            <option class="dropdown-item" value = "Dr. Ruby" <?php if($erow['doctor']=="Doctor Stone") echo 'selected="selected"';?>>Dr. Ruby</option>
+                            <option class="dropdown-item" value = "Dr. Gialana" <?php if($erow['doctor']=="Doctor Pepper") echo 'selected="selected"';?>>Dr. Gialana</option>
                         </select>
                     </div>
                     <div class="col-md-6">
